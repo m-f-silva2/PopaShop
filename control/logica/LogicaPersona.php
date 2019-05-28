@@ -13,8 +13,10 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
 
     
+    
     die("Connection failed: " . mysqli_connect_error());
-
+$sql='SELECT * FROM persona';
+$result= $mysql_query($sql,$conn);
 }
 echo "Connected successfully";
 mysqli_close($conn);
