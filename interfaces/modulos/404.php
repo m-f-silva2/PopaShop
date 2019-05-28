@@ -10,6 +10,7 @@
 
     <ol class="breadcrumb">
       <?php 
+      //El @ evita que salga un error por no tener algun valor en la variable $sesionRol
       @$sesionRol = $_SESSION["rol"];
       switch ($sesionRol) {
         case 'Administrador':
