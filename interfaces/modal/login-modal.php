@@ -45,33 +45,66 @@
                 </form>
                 <form method="post" name="frmRegistro" id="frmRegistro">
                     <h3>Registrarse</h3>
+                    <!-- Campo de text: Numero Documento. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Numero de documento" name="regNumeroDocumento" id="regNumeroDocumento">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- Campo de text: Tipo Documento. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Tipo de documento" name="regTipoDocumento" id="regTipoDocumento">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- Campo de text: Nombres. -->
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="nombres" name="regNombre" id="regNombre">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
+                    <!-- Campo de text: Apellidos. -->
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="apellidos" name="regApellido" id="regApellido">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
+                    <!-- Campo de text: Correo. -->
                     <div class="form-group">
                         <div class="input-group">
                             <input type="email" class="form-control" placeholder="correo" name="regCorreo" id="logCorreo">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
+                    <!-- Campo de text: Tipo Documento. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Tipo de documento" name="regTipoDocumento" id="regTipoDocumento">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- Campo de text: . -->
                     <div class="form-group">
                         <div class="input-group">
                             <input type="password" class="form-control" placeholder="Contraseña" name="regPassword" id="regPassword">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
+
                     <div class="modal-footer " id="login-footerM">
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
+                            <?php 
+                            if (isset($_POST["logUsuario"]) && isset($_POST["logPassword"])) {
+                                require "control/logica/RegistrarPersona.php";
+                                $login = new RegistrarPersona();
+                                $login->insert();
+                            }
+                            ?>
                         </div>
                     </div>
                 </form>

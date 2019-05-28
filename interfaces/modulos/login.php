@@ -1,21 +1,3 @@
-<?php 
-/*if(isset($_POST["usuario"]) && isset($_POST["pass"])){
-    //falta password
-    $datoLogin = Controller\ControladorLogin::ctrValidarUsuario($_POST["usuario"],$_POST["pass"]);
-    switch ($datoLogin["idRol"]) {
-        case 1:
-            $_SESSION["rol"] = "Administrador";
-            break;
-        case 2:
-            $_SESSION["rol"] = "Cliente";
-            break;
-        case 3:
-            $_SESSION["rol"] = "Vendedor";
-            break;
-    }
-    header("Location: http://localhost/PopaShop/inicio");
-}*/
-?>
 
 <link rel="stylesheet" href="src/css/login.css">
 <br>
