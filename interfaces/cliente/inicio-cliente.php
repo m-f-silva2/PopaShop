@@ -3,7 +3,7 @@
             <div id="tablaProductos" align="center">
               <h4>Productos</h4>
                 <?php 
-                
+                /*
                 $datoProductos = Controller\ProductoController::ctrMostrarProducto();
                 //var_dump($datoProductos);
                 foreach ($datoProductos as $dato) {
@@ -21,7 +21,7 @@
                             
                         </div><br>
                         </div>';
-                } 
+                } */
                 ?>
                 
             </div>

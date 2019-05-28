@@ -53,6 +53,7 @@
                     break;
             }
         }else{
+            //var_dump($_GET["ruta"]);
             include_once "modulos/404.php";
         }
         include_once "modal/login-modal.php";
