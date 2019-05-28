@@ -51,7 +51,7 @@ class Login{
 			$tabla = "usuario";
 			$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
 			$stmt = $conn->prepare("SELECT idRol FROM $tabla WHERE login = :item AND password = :item2");
-			//$stmt->bindParam(":tabla", $tabla, \PDO::PARAM_STR);
+
 			$stmt->bindParam(":item", $this->usuario, \PDO::PARAM_STR);
 			$stmt->bindParam(":item2", $this->password, \PDO::PARAM_STR);
 			$stmt->execute();
