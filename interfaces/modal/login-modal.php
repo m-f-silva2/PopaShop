@@ -76,22 +76,22 @@
                     <!-- Campo de text: Correo. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="correo" name="regCorreo" id="logCorreo">
+                            <input type="email" class="form-control" placeholder="correo" name="regCorreo" id="RegCorreo">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
-                    <!-- Campo de text: Tipo Documento. -->
+                    <!-- Campo de text: Numero Telefono. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="Tipo de documento" name="regTipoDocumento" id="regTipoDocumento">
+                            <input type="number" class="form-control" placeholder="Numero de telefono" name="regTelefono" id="regTelefono">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
-                    <!-- Campo de text: . -->
+                    <!-- Campo de text: Direccion. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Contraseña" name="regPassword" id="regPassword">
-                            <span class="icon-bar"></span>
+                            <input type="text" class="form-control" placeholder="Direccion" name="regDireccion" id="regDireccion">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
 
