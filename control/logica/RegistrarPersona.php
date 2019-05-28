@@ -1,13 +1,12 @@
 <?php
-include_once 'conexion.php';
-   class RegistrarPersona{
-       
-       
+require_once 'conexion.php';
+
+class RegistrarPersona{
        
 public function insert (){
 
 
-$idPersona=$_POST['idPersona'];
+//$idPersona=$_POST['idPersona'];
 $idTipoDocumento=$_POST['regTipoDocumento'];
 $documentoPersona=$_POST['regNumeroDocumento'];
 $nombrePersona=$_POST['regNombre'];
@@ -17,8 +16,7 @@ $telefonoPersona=$_POST['regTelefono'];
 //$avatarPersona=$_POST['avatarPersona'];
 $direccionPersona=$_POST['regDireccion'];
 
-if(     isset($_POST['idPersona'])
-        &&isset($_POST['regTipoDocumento'])
+if(     isset($_POST['regTipoDocumento'])
         &&isset($_POST['regNumeroDocumento'])
         &&isset($_POST['regNombre'])
         &&isset($_POST['regApellido'])
@@ -28,26 +26,26 @@ if(     isset($_POST['idPersona'])
         &&isset($_POST['regDireccion'])){
  
 
-$query="insert into persona ("
-        . "idPersona,"
-        . "idTipoDocumento,"
-        . "documentoPersona,"
-        . "nombrePersona,"
-        . "apellidoPersona,"
-        . "correoPersona,"
-        . "telefonoPersona,"
-        . "avatarPersona,"
-        . "direccionPersona) "
-        . "values("
-        . "$idPersona,"
-        . "$idTipoDocumento,"
-        . "$documentoPersona,"
-        . "'$nombrePersona',"
-        . "'$apellidoPersona',"
-        . "'$correoPersona',"
-        . "'$telefonoPersona',"
-        . "'NULL',"
-        . "'$direccionPersona')";
+$query="insert into persona (
+        idPersona,
+        idTipoDocumento,
+        documentoPersona,
+        nombrePersona,
+        apellidoPersona,
+        correoPersona,
+        telefonoPersona,
+        avatarPersona,
+        direccionPersona) 
+        values(".NULL.","
+        .$idTipoDocumento.","
+        .$documentoPersona.","
+        .$nombrePersona.","
+        .$apellidoPersona.","
+        .$correoPersona.","
+        .$telefonoPersona.","
+        .NULL.","
+        .$direccionPersona.")";
+        //print_r($query);
 $rs2= mysqli_query($conn, $query);
 echo "Ingresado con exito";
 }    
@@ -73,10 +71,4 @@ while($row = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
     echo json_encode($datos);
 }
    }
-
-
-
-
-
 ?>
-

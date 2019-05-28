@@ -99,7 +99,15 @@
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
                             <?php 
-                            if (isset($_POST["logUsuario"]) && isset($_POST["logPassword"])) {
+                            if(     isset($_POST['regTipoDocumento'])
+                                    &&isset($_POST['regNumeroDocumento'])
+                                    &&isset($_POST['regNombre'])
+                                    &&isset($_POST['regApellido'])
+                                    &&isset($_POST['RegCorreo'])
+                                    &&isset($_POST['regTelefono'])
+                                    //&&isset($_POST['avatarPersona'])
+                                    &&isset($_POST['regDireccion'])){
+ 
                                 require "control/logica/RegistrarPersona.php";
                                 $login = new RegistrarPersona();
                                 $login->insert();
