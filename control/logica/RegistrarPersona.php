@@ -1,7 +1,12 @@
 <?php
 include('../../control/logica/conexion.php');
-   
-    
+   class RegistrarPersona{
+       
+       
+       
+public function insert (){
+
+
 $idPersona=$_REQUEST['idPersona'];
 $idTipoDocumento=$_REQUEST['idTipoDocumento'];
 $documentoPersona=$_REQUEST['documentoPersona'];
@@ -46,7 +51,31 @@ $query="insert into persona ("
         . "'$direccionPersona')";
 $rs2= mysqli_query($conn, $query);
 echo "Ingresado con exito";
+}    
 }
+public function get(){
+    
+    $query="select * from persona where idPersona=1";
+    $rs=mysqli_query($conn,$query);
+
+     $idPersona;
+
+//
+    $datos=array();
+
+while($row = mysqli_fetch_array($rs,MYSQLI_ASSOC)){
+//foreach ($rs as $row){
+    $datos[]=$row;
+    $idPersona= $row['idPersona'];
+    echo $idPersona;
+
+}//}
+
+    echo json_encode($datos);
+}
+   }
+
+
 
 
 
