@@ -14,4 +14,6 @@ if (!$conn) {
 
 }
 
+class Cone
+
 ?>
