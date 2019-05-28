@@ -10,11 +10,9 @@ class Login{
 	private $tabla = 'usuario';
 
 	public function __construct($usuario,$password){
-		$this->usuario = $usuario;
-		$this->password = $password;
 
 		//Aqui si se puede acceder a esta funcion de tipo private.
-		$this->validarLogin($this->usuario,$this->password);
+		$this->validarLogin($usuario,$password);
 	}
 
 	//Validar datos enviados del formulario.
@@ -22,8 +20,8 @@ class Login{
 		if($usuario != null && $password != null){
 				$respuesta = LoginUsuario::validarUsuario($usuario,$password);
 				//$respuesta = \ModeloLogin::mdlValidarUsuario($tabla, $usuario,$password);
-				print_r($respuesta);
-				var_dump($respuesta);
+				//print_r($respuesta);
+				//var_dump($respuesta);
     			switch ($respuesta["idRol"]) {
 	        		case 1:
             			$_SESSION["rol"] = "Administrador";
@@ -55,16 +53,23 @@ class LoginUsuario{
 	private $tabla;
 
 	//Validar datos enviados del formulario con los de la base de datos.
-	public function validarUsuario($usuario,$password){
+	public function validarUsuario($usuario2,$password2){
 
-		if(isset($usuario) && isset($password)){
-			$tabla = 'usuario';
-			$stmt = LoginBd::conectarBD()->prepare("SELECT idRol FROM :tabla WHERE login = :item AND password = :item2");
-			$stmt->bindParam(":tabla", $tabla, \PDO::PARAM_STR);
-			$stmt->bindParam(":item", $usuario, \PDO::PARAM_STR);
-			$stmt->bindParam(":item2", $password, \PDO::PARAM_STR);
+		if(isset($usuario2) && isset($password2)){
+			$tabla = "usuario";
+			$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
+			$stmt = $conn->prepare("SELECT idRol FROM $tabla WHERE login = :item AND password = :item2");
+			//$stmt->bindParam(":tabla", $tabla, \PDO::PARAM_STR);
+			$stmt->bindParam(":item", $usuario2, \PDO::PARAM_STR);
+			$stmt->bindParam(":item2", $password2, \PDO::PARAM_STR);
 			$stmt->execute();
-			return $stmt->fetch();
+			if ($stmt) {
+				return $stmt->fetch();
+			}else{
+				$d = "error";
+				return $d;
+			}
+			
 		}
 	}
 }
