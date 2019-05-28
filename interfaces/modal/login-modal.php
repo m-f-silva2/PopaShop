@@ -36,8 +36,8 @@
                             <button type="submit" value="iniciar">INICIAR</button>
                             <?php 
                             if (isset($_POST["logUsuario"]) && isset($_POST["logPassword"])) {
-                                $login = new Controller\ControladorLogin();
-                                $login->ctrValidarUsuario($_POST["logUsuario"],$_POST["logPassword"]);
+                                require "control/logica/LogicaLogin.php";
+                                $login = new Logica\Login($_POST["logUsuario"],$_POST["logPassword"]);
                             }
                             ?>
                         </div>
