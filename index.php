@@ -7,7 +7,7 @@ class Inicio{
     
     public function index(){
     //Ejecución de plantilla
-    require_once "clases/control/Plantilla.php";
+    require_once "clases/Plantilla.php";
     $plantilla = new Clase\Plantilla();
     $plantilla->Plantilla();
     }
