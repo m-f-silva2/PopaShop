@@ -10,12 +10,19 @@
 
     <ol class="breadcrumb">
       <?php 
-      if (isset($_SESSION["iniciarSesion"])) {
-        echo '<li><a href="contenido"><i class="fa fa-home"></i> Inicio</a></li>';
-      }else{
-        echo '<li><a href="inicio"><i class="fa fa-home"></i> Inicio</a></li>';
+      @$sesionRol = $_SESSION["rol"];
+      switch ($sesionRol) {
+        case 'Administrador':
+          echo '<li><a href="inicio-admin"><i class="fa fa-home"></i> Inicio</a></li>';
+          break;
+        case 'Vendedor':
+          echo '<li><a href="inicio-vendedor"><i class="fa fa-home"></i> Inicio</a></li>';
+          break;
+        default:
+          echo '<li><a href="inicio-cliente"><i class="fa fa-home"></i> Inicio</a></li>';
+          break;
       }
-       ?>
+      ?>
       
       <li class="active">Página no encontrada</li>
     
@@ -43,12 +50,18 @@
         
 Puedes regresar haciendo 
 <?php 
-      if (isset($_SESSION["iniciarSesion"])) {
-        echo '<a href="contenido">click aquí.</a>';
-      }else{
-        echo '<a href="inicio">click aquí.</a>';
+      switch ($sesionRol) {
+        case 'Administrador':
+          echo '<a href="inicio-admin">click aquí.</a>';
+          break;
+        case 'Vendedor':
+          echo '<a href="inicio-vendedor">click aquí.</a>';
+          break;
+        default:
+          echo '<a href="inicio-cliente">click aquí.</a>';
+          break;
       }
-       ?>
+?>
         
         </p>
 
