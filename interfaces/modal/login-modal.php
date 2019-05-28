@@ -76,7 +76,7 @@
                     <!-- Campo de text: Correo. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="correo" name="regCorreo" id="regCorreo">
+                            <input type="text" class="form-control" placeholder="correo" name="regCorreo" id="regCorreo">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
@@ -99,19 +99,10 @@
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
                             <?php 
-                            if(     isset($_POST['regTipoDocumento'])
-                                    &&isset($_POST['regNumeroDocumento'])
-                                    &&isset($_POST['regNombre'])
-                                    &&isset($_POST['regApellido'])
-                                    &&isset($_POST['RegCorreo'])
-                                    &&isset($_POST['regTelefono'])
-                                    //&&isset($_POST['avatarPersona'])
-                                    &&isset($_POST['regDireccion'])){
-                                require "control/logica/RegistrarPersona.php";
-                                $login = new RegistrarPersona();
-                                $login->insert();
-                            }else{
-                                echo $_POST['regTipoDocumento']." ".$_POST['regNumeroDocumento']." ".$_POST['regNombre']." ".$_POST['regApellido']." ".$_POST['regCorreo']." ".$_POST['regTelefono']." ".$_POST['regDireccion'];
+                            if(isset($_POST['regTipoDocumento'])){
+
+                                require "control/logica/LogicaRegistro.php";
+                                $registro = new Logica\Registro($_POST['regTipoDocumento'],$_POST['regNumeroDocumento'],$_POST['regNombre'],$_POST['regApellido'],$_POST['regCorreo'],$_POST['regTelefono'],$_POST['regDireccion']);
                             }
                             ?>
                         </div>
