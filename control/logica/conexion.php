@@ -1,23 +1,17 @@
+
 <?php
 $servername = "localhost";
 $database = "popashop";
 $username = "root";
 $password = "";
 
+//$Persona= new Persona;
 // Create connection
-
 $conn = mysqli_connect($servername, $username, $password, $database);
-
 // Check connection
-
 if (!$conn) {
-
-    
-    
     die("Connection failed: " . mysqli_connect_error());
-$sql='SELECT * FROM persona';
-$result= $mysql_query($sql,$conn);
+
 }
-echo "Connected successfully";
-mysqli_close($conn);
+
 ?>
