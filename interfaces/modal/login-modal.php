@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </form>
-                <form method="post" name="frmRegistro" id="frmRegistro">
+                <form action="" method="post" name="frmRegistro" id="frmRegistro">
                     <h3>Registrarse</h3>
                     <!-- Campo de text: Numero Documento. -->
                     <div class="form-group">
@@ -76,7 +76,7 @@
                     <!-- Campo de text: Correo. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="correo" name="regCorreo" id="RegCorreo">
+                            <input type="email" class="form-control" placeholder="correo" name="regCorreo" id="regCorreo">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
@@ -107,10 +107,11 @@
                                     &&isset($_POST['regTelefono'])
                                     //&&isset($_POST['avatarPersona'])
                                     &&isset($_POST['regDireccion'])){
- 
                                 require "control/logica/RegistrarPersona.php";
                                 $login = new RegistrarPersona();
                                 $login->insert();
+                            }else{
+                                echo $_POST['regTipoDocumento']." ".$_POST['regNumeroDocumento']." ".$_POST['regNombre']." ".$_POST['regApellido']." ".$_POST['regCorreo']." ".$_POST['regTelefono']." ".$_POST['regDireccion'];
                             }
                             ?>
                         </div>
