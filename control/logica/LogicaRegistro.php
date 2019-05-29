@@ -12,6 +12,8 @@ class Registro{
 	private $correo;
 	private $telefono;
 	private $direccion;
+        private $usuario;
+        private $contraseña;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($tipoDocumento,$numeroDocumento,$nombre,$apellido,$correo,$telefono,$direccion){
