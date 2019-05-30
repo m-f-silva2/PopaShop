@@ -13,35 +13,35 @@
                     <!-- Campo de text: Tipo Producto. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="Tipo Producto" name="regTipoProducto" id="regTipoProducto">
+                            <input type="number" class="form-control" placeholder="Tipo Producto" name="tipoProducto" id="tipoProducto">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de text: Nombre Producto. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Nombre Producto" name="regNombreProducto" id="regNombreProducto">
+                            <input type="text" class="form-control" placeholder="Nombre Producto" name="nombreProducto" id="nombreProducto">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de text: Precio. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="decimal" class="form-control" placeholder="Precio Producto" name="regPrecioProducto" id="regPrecioProducto">
+                            <input type="decimal" class="form-control" placeholder="Precio Producto" name="precioProducto" id="precioProducto">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de number: cantidad. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="Cantidad" name="regCantidad" id="regCantidad">
+                            <input type="number" class="form-control" placeholder="Cantidad" name="cantidadProducto" id="cantidadProducto">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
                     <!-- Campo de text: Foto. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Foto" name="regFoto" id="regFoto">
+                            <input type="text" class="form-control" placeholder="Foto" name="fotoProducto" id="fotoProducto">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
@@ -51,11 +51,14 @@
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
                             <?php 
-                            if(isset($_POST['regTipoProducto'])){
+                            if(isset($_POST['tipoProducto'])){
 
-                                require "control/logica/LogicaRegistro.php";
-                                $registro = new Logica\ProductoRegistro($_POST['regTipoProducto'],$_POST['regNombreProducto'],$_POST['regPrecioProducto'],$_POST['regCantidad'],$_POST['regFoto'],$_POST['regTelefono'],$_POST['regDireccion']);
+                                require "control/logica/ProductoRegistrer.php";
+                            $registro = new Logica\RegistroProducto($_POST['tipoProducto'],$_POST['nombreProducto'],$_POST['precioProducto'],$_POST['cantidadProducto'],$_POST['fotoProducto']);
+                           // echo "Registro Exitoso";
                             }
+                            //echo "Error, verifique la información";
+                            
                             ?>
                         </div>
                     </div>

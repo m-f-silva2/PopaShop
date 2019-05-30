@@ -33,7 +33,7 @@ class RegistroProducto{
 	public function validarRegistro(){
 
 		//if(isset($this->tipoDocumento) && isset($this->numeroDocumento) && isset($this->nombre) && isset($this->apellido) && isset($this->correo) && isset($this->telefono) && isset($this->direccion)){
-			$tabla = "persona";
+			$tabla = "producto";
 			$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
 			$stmt = $conn->prepare("INSERT INTO $tabla(
 				idProducto,
@@ -47,7 +47,7 @@ class RegistroProducto{
 			$stmt->bindParam(":item2", $this->nombreProducto, \PDO::PARAM_INT);
 			$stmt->bindParam(":item3", $this->precioProducto, \PDO::PARAM_STR);
 			$stmt->bindParam(":item4", $this->cantidadProducto, \PDO::PARAM_STR);
-			$stmt->bindParam(":item5", $this->fotoProducto, \PDO::PARAM_INT);
+			//$stmt->bindParam(":item5", $this->fotoProducto, \PDO::PARAM_INT);
 			
 			$stmt->execute();
 			if ($stmt) {
