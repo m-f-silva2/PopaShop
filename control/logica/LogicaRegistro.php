@@ -12,11 +12,13 @@ class Registro{
 	private $correo;
 	private $telefono;
 	private $direccion;
-        private $usuario;
-        private $contraseña;
+	
+	private $usuario;
+    private $contraseña;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($tipoDocumento,$numeroDocumento,$nombre,$apellido,$correo,$telefono,$direccion){
+		if ($tipoDocumento != null && $numeroDocumento != null && $nombre != null && $apellido != null && $correo != null && $telefono != null && $direccion != null) {
 		$this->tipoDocumento = $tipoDocumento;
 		$this->numeroDocumento = $numeroDocumento;
 		$this->nombre = $nombre;
@@ -26,21 +28,15 @@ class Registro{
 		$this->direccion = $direccion;
 		//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->validarRegistro();
-	}
-
-	//Conexion a la base de datos.
-	public function conectarBD(){
-		$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
-        return $conn;
+		}
 	}
 
 	//Validar datos enviados del formulario con los de la base de datos.
 	public function validarRegistro(){
 
-		//if(isset($this->tipoDocumento) && isset($this->numeroDocumento) && isset($this->nombre) && isset($this->apellido) && isset($this->correo) && isset($this->telefono) && isset($this->direccion)){
+		require_once "conexion.php";
 			$tabla = "persona";
-			$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
-			$stmt = $conn->prepare("INSERT INTO $tabla(
+			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(
 				idPersona,
 				idTipoDocumento,
 				documentoPersona,
@@ -60,14 +56,12 @@ class Registro{
 			$stmt->bindParam(":item7", $this->direccion, \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
-				$d = "error";
+				$d = "exito";
 				return $d;
 			}else{
 				$d = "error";
 				return $d;
 			}
-			
-		//}
 	}
 }
 ?>

@@ -3,6 +3,7 @@
  *Login
 **/
 
+
 class Login{
 
 	private $usuario;
@@ -14,12 +15,6 @@ class Login{
 		$this->password = $password;
 		//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->validarLogin();
-	}
-
-	//Conexion a la base de datos.
-	public function conectarBD(){
-		$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
-        return $conn;
 	}
 
 	//Validar datos enviados del formulario.
@@ -48,9 +43,9 @@ class Login{
 	public function validarUsuario(){
 
 		if(isset($this->usuario) && isset($this->password)){
+			require_once "conexion.php";
 			$tabla = "usuario";
-			$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
-			$stmt = $conn->prepare("SELECT idRol FROM $tabla WHERE login = :item AND password = :item2");
+			$stmt = Conexion::conectar()->prepare("SELECT idRol FROM $tabla WHERE login = :item AND password = :item2");
 
 			$stmt->bindParam(":item", $this->usuario, \PDO::PARAM_STR);
 			$stmt->bindParam(":item2", $this->password, \PDO::PARAM_STR);
