@@ -1,7 +1,7 @@
 <div class="row" id="row1">
     <div class="col-md-12">
             <div id="tablaProductos" align="center">
-              <h4>Productos</h4>
+              <h4>Productoss</h4>
                 <?php 
                 $datoProductos = Controller\ProductoController::ctrMostrarProducto();
                 //var_dump($datoProductos);
@@ -24,6 +24,4 @@
                 ?>                
             </div>
         </div>
-        </div><br>
-    </div>
-</div>
+        </div>

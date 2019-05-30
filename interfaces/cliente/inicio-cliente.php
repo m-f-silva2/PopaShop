@@ -2,7 +2,15 @@
     <div class="col-md-12">
             <div id="tablaProductos" align="center">
               <h4>Productos</h4>
+               
+              
+              
+              
+              
                 <?php 
+                
+                
+                require "control/logica/ProductosGet.php";
                 /*
                 $datoProductos = Controller\ProductoController::ctrMostrarProducto();
                 //var_dump($datoProductos);
