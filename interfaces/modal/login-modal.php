@@ -99,10 +99,20 @@
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
                             <?php 
-                            if(isset($_POST['regTipoDocumento'])){
+                            if(@$_POST['regTipoDocumento'] != null && $_POST['regNumeroDocumento'] != null && $_POST['regNombre'] != null && $_POST['regApellido'] != null && $_POST['regCorreo'] != null && $_POST['regTelefono'] != null && $_POST['regDireccion'] != null){
+
+                            $datosRegistro = array(
+                                    'tipoDocumento' => $_POST['regTipoDocumento'],
+                                    'numeroDocumento' => $_POST['regNumeroDocumento'],
+                                    'nombre' => $_POST['regNombre'],
+                                    'apellido' => $_POST['regApellido'],
+                                    'correo' => $_POST['regCorreo'],
+                                    'telefono' => $_POST['regTelefono'],
+                                    'direccion' => $_POST['regDireccion']
+                                );
 
                                 require "control/logica/LogicaRegistro.php";
-                                $registro = new Logica\Registro($_POST['regTipoDocumento'],$_POST['regNumeroDocumento'],$_POST['regNombre'],$_POST['regApellido'],$_POST['regCorreo'],$_POST['regTelefono'],$_POST['regDireccion']);
+                                $registro = new Logica\Registro($datosRegistro);
                             }
                             ?>
                         </div>

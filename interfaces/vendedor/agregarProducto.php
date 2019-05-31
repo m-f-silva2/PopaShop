@@ -49,45 +49,24 @@
 
                     <div class="modal-footer " id="login-footerM">
                         <div align="center">
-                            <button type="submit" value="registrarse">REGISTRARSE</button>
+                            <button type="submit" value="enviar">Guardar</button>
                             <?php 
-                            if(isset($_POST['tipoProducto'])){
-
-                                require "control/logica/ProductoRegistrer.php";
-                            $registro = new Logica\RegistroProducto($_POST['tipoProducto'],$_POST['nombreProducto'],$_POST['precioProducto'],$_POST['cantidadProducto'],$_POST['fotoProducto']);
-                           // echo "Registro Exitoso";
-                            }
-                            //echo "Error, verifique la información";
-                            
+                            if($_POST['tipoProducto'] != null && $_POST['nombreProducto'] != null && $_POST['precioProducto'] != null && $_POST['cantidadProducto'] != null){
+                            require "control/logica/ProductoRegistrer.php";
+                            $datosProducto = array(
+                                    'tipoProducto' => $_POST['tipoProducto'],
+                                    'nombreProducto' => $_POST['nombreProducto'],
+                                    'precioProducto' => $_POST['precioProducto'],
+                                    'cantidadProducto' => $_POST['cantidadProducto'],
+                                    'fotoProducto' => $_POST['fotoProducto']
+                                );
+                            $registro = new Logica\RegistroProducto($datosProducto);
+                            }                            
                             ?>
                         </div>
                     </div>
                 </form>
             </div>
-              
-                <?php
-                /*
-                $datoProductos = Controller\ProductoController::ctrMostrarProducto();
-                //var_dump($datoProductos);
-                foreach ($datoProductos as $dato) {
-                    echo '<div class="col-md-2" id="prodCliente">
-                        <div  id="prodClienteDivImagen">
-                            <img class="img-circle img-responsive" src="src/assets/productos/' . $dato["fotoProducto"].'" alt="imagen de '.$dato["nombreProducto"].'" id="prodClienteImagen">
-                        </div>
-                        <div>
-                            <h3>'.$dato["nombreProducto"].'</h3>
-                        </div>
-                        <div>
-                            <h4>$'.$dato["precioProducto"].'</h4>
-                        </div>
-                        <div>
-                            
-                        </div><br>
-                        </div>';
-                } */
-                ?>
-                
-            
         </div>
         </div><br>
          <script>

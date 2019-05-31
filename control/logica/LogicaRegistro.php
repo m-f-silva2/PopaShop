@@ -17,15 +17,17 @@ class Registro{
     private $contraseña;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
-	public function __construct($tipoDocumento,$numeroDocumento,$nombre,$apellido,$correo,$telefono,$direccion){
-		if ($tipoDocumento != null && $numeroDocumento != null && $nombre != null && $apellido != null && $correo != null && $telefono != null && $direccion != null) {
-		$this->tipoDocumento = $tipoDocumento;
-		$this->numeroDocumento = $numeroDocumento;
-		$this->nombre = $nombre;
-		$this->apellido = $apellido;
-		$this->correo = $correo;
-		$this->telefono = $telefono;
-		$this->direccion = $direccion;
+	public function __construct($datos){
+		if (isset($datos)) {
+
+		$this->tipoDocumento = $datos["tipoDocumento"];
+		$this->numeroDocumento = $datos["numeroDocumento"];
+		$this->nombre = $datos["nombre"];
+		$this->apellido = $datos["apellido"];
+		$this->correo = $datos["correo"];
+		$this->telefono = $datos["telefono"];
+		$this->direccion = $datos["direccion"];
+
 		//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->validarRegistro();
 		}
@@ -56,10 +58,10 @@ class Registro{
 			$stmt->bindParam(":item7", $this->direccion, \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
-				$d = "exito";
+				$d = true;
 				return $d;
 			}else{
-				$d = "error";
+				$d = false;
 				return $d;
 			}
 	}
