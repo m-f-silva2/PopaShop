@@ -41,7 +41,7 @@
                             <li><a id="a"  href="ventas">Mis ventas</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
-                            <li><a id="a" href="agregarProducto">Agregar Producto</a></li>
+                            <li><a id="a" href="agregarProducto">Mis Productos</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a id="a" href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>

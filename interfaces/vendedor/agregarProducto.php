@@ -1,14 +1,68 @@
+<div class="content-wrapper">
+    <div class="container" style="width: auto;">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <section class="content-header">
+      <h1>
+        Mis Productos.
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="inicio-vendedor"><i class="fa fa-home"></i> Inicio</a></li>
+        <li class="active">Productos</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content" align="center">
+        <div class="box box-primary">
+            <div class="box-body">
+            <table class="table table-responsive table-hover" id="tablaProductos">
+                  <thead style="background-color: #eceff2;">
+                    <th id="tablaPlanTh">#</th>
+                    <th id="tablaPlanTh">Capital</th>
+                    <th id="tablaPlanTh">Valor Cuota</th>
+                    <th id="tablaPlanTh">Valor Seguro</th>
+                    <th id="tablaPlanTh">Valor Interes</th>
+                    <th id="tablaPlanTh">Valor Estudio Credito</th>
+                    <th id="tablaPlanTh">Total cuota</th>
+                  </thead>
+                  <tbody id="tblProductos">
+                    <?php 
+                    require_once "control/logica/ProductosGet.php";
+                    $datoProductos = Logica\ProductosGet::MostrarProductos();
+                    foreach ($datoProductos as $dato) {
+                        echo "
+                            <tr>
+                                <th>".$dato["idProducto"]."</th>
+                                <th>".$dato["idTipoProducto"]."</th>
+                                <th>".$dato["nombreProducto"]."</th>
+                                <th>".$dato["precioProducto"]."</th>
+                                <th>".$dato["cantidadProducto"]."</th>
+                                <th>".$dato["fotoProducto"]."</th>
+                            </tr>";
+                    }
+                    ?>                
+                  </tbody>
+              </table>
+            
+            <!-- /.box-header -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+      </div>
+
+    </section>
+      </div>
+  </div>
 <div class="row" id="row1">
     <div class="col-md-12">
+
+
            
               <h4>Productos</h4>
                   <div class="modal-body" align="center">
-                <div class="form-group">
-                    
-                    <button id="registrarseAcc_btn"  name="registrarseAcc_btn">REGISTRAR PRODUCTO</button>
-                </div>
                
-                <form action="" method="post" name="frmRegistro" id="frmRegistro">
+                <form action="" method="post" name="frmRegistroProducto" >
                     <h3>Registrar Producto</h3>
                     <!-- Campo de text: Tipo Producto. -->
                     <div class="form-group">
@@ -51,7 +105,7 @@
                         <div align="center">
                             <button type="submit" value="enviar">Guardar</button>
                             <?php 
-                            if($_POST['tipoProducto'] != null && $_POST['nombreProducto'] != null && $_POST['precioProducto'] != null && $_POST['cantidadProducto'] != null){
+                            if(@$_POST['tipoProducto'] != null && $_POST['nombreProducto'] != null && $_POST['precioProducto'] != null && $_POST['cantidadProducto'] != null){
                             require "control/logica/ProductoRegistrer.php";
                             $datosProducto = array(
                                     'tipoProducto' => $_POST['tipoProducto'],
@@ -69,18 +123,5 @@
             </div>
         </div>
         </div><br>
-         <script>
-
-    function cambiarRegistrarse(){
-        document.getElementById("frmRegistro").style.display = "grid"
-        document.getElementById("frmLogin").style.display = "none"
-        registrarseAcc_btn.style.backgroundColor = "#055456"
-        registrarseAcc_btn.style.color = "#FFFFFF"
-        //opacar
-        iniciarAcc_btn.style.backgroundColor = "#214242"
-        iniciarAcc_btn.style.color = "#f0f0f0"
-    }
-    cambiarRegistrarse();
-</script>
     </div>
 </div>
