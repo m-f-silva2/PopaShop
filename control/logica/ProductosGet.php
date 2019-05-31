@@ -9,7 +9,7 @@ class ProductosGet{
 	public function __construct(){
 		
 		//Aqui si se puede acceder a esta funcion de tipo private.
-		$this->validarProductos();
+		$this->mostrarProductos();
 	}
 
 	//Validar datos enviados del formulario con los de la base de datos.
