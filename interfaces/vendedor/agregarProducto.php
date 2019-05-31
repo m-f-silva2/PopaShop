@@ -3,9 +3,9 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <section class="content-header">
-      <h1>
-        Mis Productos.
-      </h1>
+      <h3>
+        Mis Productos
+      </h3>
       <ol class="breadcrumb">
         <li><a href="inicio-vendedor"><i class="fa fa-home"></i> Inicio</a></li>
         <li class="active">Productos</li>
@@ -18,13 +18,12 @@
             <div class="box-body">
             <table class="table table-responsive table-hover" id="tablaProductos">
                   <thead style="background-color: #eceff2;">
-                    <th id="tablaPlanTh">#</th>
-                    <th id="tablaPlanTh">Capital</th>
-                    <th id="tablaPlanTh">Valor Cuota</th>
-                    <th id="tablaPlanTh">Valor Seguro</th>
-                    <th id="tablaPlanTh">Valor Interes</th>
-                    <th id="tablaPlanTh">Valor Estudio Credito</th>
-                    <th id="tablaPlanTh">Total cuota</th>
+                    <th id="tablaProdTh">#</th>
+                    <th id="tablaProdTh">Tipo de producto</th>
+                    <th id="tablaProdTh">NombreProducto</th>
+                    <th id="tablaProdTh">PrecioProducto</th>
+                    <th id="tablaProdTh">Cantidad de producto</th>
+                    <th id="tablaProdTh">Foto de Producto</th>
                   </thead>
                   <tbody id="tblProductos">
                     <?php 
@@ -33,7 +32,7 @@
                     foreach ($datoProductos as $dato) {
                         echo "
                             <tr>
-                                <th>".$dato["idProducto"]."</th>
+                                <th>".@++$con."</th>
                                 <th>".$dato["idTipoProducto"]."</th>
                                 <th>".$dato["nombreProducto"]."</th>
                                 <th>".$dato["precioProducto"]."</th>
@@ -41,7 +40,7 @@
                                 <th>".$dato["fotoProducto"]."</th>
                             </tr>";
                     }
-                    ?>                
+                    ?>
                   </tbody>
               </table>
             
