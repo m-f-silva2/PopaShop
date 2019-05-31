@@ -2,7 +2,9 @@
 /**
  *Login
 **/
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 class RegistrarVendedor{
 
 	private $tipoDocumento;
@@ -13,6 +15,7 @@ class RegistrarVendedor{
 	private $telefono;
 	private $direccion;
 	
+        private $idPersona;
 	private $usuario;
     private $contrasena;
 
@@ -36,12 +39,14 @@ class RegistrarVendedor{
 		}
 	}
 public function registrarUsuario(){
+    $this->traerIdPersona();
+    
     require_once "conexion.php";
     $tabla = "usuario";
-			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (login,
+			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idUsuario, login,
                                                                         password,
                                                                         idRol,
-                                                                        idPersona) values(:item8,:item9,3,13) ");
+                                                                        idPersona) values(NULL,:item8,:item9,3,5) ");
                                                                         $stmt->bindParam(":item8", $this->usuario, \PDO::PARAM_STR);
                                                                         $stmt->bindParam(":item9", $this->contrasena, \PDO::PARAM_STR);
                                                                         //$stmt->bindParam(":item10", $this->idRol, \PDO::PARAM_STR);
@@ -90,5 +95,21 @@ public function registrarUsuario(){
 				return $d;
 			}
 	}
+        public function traerIdPersona(){
+            require_once "conexion.php";
+			$tabla = "persona";
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE numeroDocumento=':item10'");
+            $stmt->bindParam(":item10", $this->numeroDocumento, \PDO::PARAM_INT);
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$idPersonas[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+                      
+        }
 }
 ?>
