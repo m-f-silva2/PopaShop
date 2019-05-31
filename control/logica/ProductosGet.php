@@ -31,7 +31,7 @@ class ProductosGet{
 	}
 
 	public function productosVendedor(){
-		SELECT p.nombreProducto FROM `producto` p inner join `tipoproducto` t on (p.idTipoProducto = t.idTipoProducto) WHERE p.idProducto = 1 ;
+		$query="SELECT p.nombreProducto FROM `producto` p inner join `tipoproducto` t on (p.idTipoProducto = t.idTipoProducto) WHERE p.idProducto = 1" ;
 	}
 }
 ?>
