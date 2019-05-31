@@ -1,1 +1,1 @@
-<h1>Administra Vendedores</h1>
+<h1>Administrar vendedor</h1>
