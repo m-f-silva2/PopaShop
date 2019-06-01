@@ -41,8 +41,7 @@
                                 <li>".$dato["idProducto"]."</li>
                                 <li>".$dato["idTipoProducto"]."</li>                               
                                 <li>".$dato["precioProducto"]."</li>
-                                
-                                
+                                <button id='registrarseAcc_btn' name='registrarseAcc_btn'>REGISTRARSE</button> 
                             </ul>
                             </div>";
                     }

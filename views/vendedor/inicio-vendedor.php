@@ -26,7 +26,7 @@
                     width: 150px;                  
                 }
             </style>
-                 
+                  
                   </thead>
                   <tbody id="tblProductos">
                     <?php 
@@ -36,12 +36,13 @@
                         echo "
                             <div class='contenedorProductos'>
                             <ul>
+                            <li>".$dato["nombreProducto"]."</li>
+                                <li>".$dato["fotoProducto"]."</li>                                
                                 <li>".$dato["idProducto"]."</li>
-                                <li>".$dato["idTipoProducto"]."</li>
-                                <li>".$dato["nombreProducto"]."</li>
+                                <li>".$dato["idTipoProducto"]."</li>                               
                                 <li>".$dato["precioProducto"]."</li>
-                                <li>".$dato["cantidadProducto"]."</li>
-                                <li>".$dato["fotoProducto"]."</li>
+                                
+                                
                             </ul>
                             </div>";
                     }
