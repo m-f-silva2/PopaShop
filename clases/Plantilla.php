@@ -2,7 +2,7 @@
   
   class Plantilla{ 
       public function Plantilla(){
-        include "interfaces/plantilla.php";
+        include "views/plantilla.php";
         //$_GET["ruta"] = "inicio-cliente";
       }
   }
