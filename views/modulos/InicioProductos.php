@@ -2,39 +2,31 @@
     <div class="col-md-12">
         <div class="content-wrapper">
         <section class="content-header">
-            <style>
+            <h4>Productos</h4>
+              <table class="table table-responsive table-hover" id="tablaProductos">
+                  <thead style="background-color: #eceff2;">
+                     <style>
                 .contenedorProductos{
                  margin: auto;
-                 width: 960px;
+                 width:150px;
+                 float: left;
+                 margin-right: 50px;
+                 margin-bottom: 20px;
                  border: 1px solid #000;
                 }
                 
                 ul{
                     list-style: none;
                     margin: 0px;
+                    
                     padding: 0px;
                 }
-               
+                ul li{
                     
-                
-                
-                
+                    width: 150px;                  
+                }
             </style>
-            <h4>Productos</h4>
-              <table class="table table-responsive table-hover" id="tablaProductos">
-                  <thead style="background-color: #eceff2;">
-                      <div class='contenedorProductos'>
-                  <ul >
                   
-                  <li  id="tablaPlanTh">id</li>
-                    <li id="tablaPlanTh">Categoria</li>
-                    <li id="tablaPlanTh">Nombre</li>
-                    <li id="tablaPlanTh">Valor </li>
-                    <li id="tablaPlanTh">Cantidad</li>
-                    <li id="tablaPlanTh">Foto</li>
-                  </ul>
-                    
-                      </div>
                   </thead>
                   <tbody id="tblProductos">
                     <?php 
@@ -44,12 +36,13 @@
                         echo "
                             <div class='contenedorProductos'>
                             <ul>
+                            <li>".$dato["nombreProducto"]."</li>
+                                <li>".$dato["fotoProducto"]."</li>                                
                                 <li>".$dato["idProducto"]."</li>
-                                <li>".$dato["idTipoProducto"]."</li>
-                                <li>".$dato["nombreProducto"]."</li>
+                                <li>".$dato["idTipoProducto"]."</li>                               
                                 <li>".$dato["precioProducto"]."</li>
-                                <li>".$dato["cantidadProducto"]."</li>
-                                <li>".$dato["fotoProducto"]."</li>
+                                
+                                
                             </ul>
                             </div>";
                     }
