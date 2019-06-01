@@ -4,13 +4,12 @@
               <h4>Productoss</h4>
               <table class="table table-responsive table-hover" id="tablaProductos">
                   <thead style="background-color: #eceff2;">
-                    <th id="tablaPlanTh">#</th>
-                    <th id="tablaPlanTh">Capital</th>
-                    <th id="tablaPlanTh">Valor Cuota</th>
-                    <th id="tablaPlanTh">Valor Seguro</th>
-                    <th id="tablaPlanTh">Valor Interes</th>
-                    <th id="tablaPlanTh">Valor Estudio Credito</th>
-                    <th id="tablaPlanTh">Total cuota</th>
+                    <th id="tablaPlanTh">id</th>
+                    <th id="tablaPlanTh">Categoria</th>
+                    <th id="tablaPlanTh">Nombre</th>
+                    <th id="tablaPlanTh">Valor </th>
+                    <th id="tablaPlanTh">Cantidad</th>
+                    <th id="tablaPlanTh">Foto</th>
                   </thead>
                   <tbody id="tblProductos">
                     <?php 

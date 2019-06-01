@@ -95,11 +95,25 @@
                         </div>
                     </div>
 
+                    <!-- Campo de text: Usuario. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Usuario" name="regUsuario" id="regUsuario">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- Campo de text: Contraseña. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Contraseña" name="regContrasena" id="regContrasena">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
                     <div class="modal-footer " id="login-footerM">
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
                             <?php 
-                            if(@$_POST['regTipoDocumento'] != null && $_POST['regNumeroDocumento'] != null && $_POST['regNombre'] != null && $_POST['regApellido'] != null && $_POST['regCorreo'] != null && $_POST['regTelefono'] != null && $_POST['regDireccion'] != null){
+                            if(@$_POST['regTipoDocumento'] != null && $_POST['regNumeroDocumento'] != null && $_POST['regNombre'] != null && $_POST['regApellido'] != null && $_POST['regCorreo'] != null && $_POST['regTelefono'] != null && $_POST['regDireccion'] != null && $_POST['regUsuario'] != null && $_POST['regContrasena'] != null){
 
                             $datosRegistro = array(
                                     'tipoDocumento' => $_POST['regTipoDocumento'],
@@ -108,7 +122,9 @@
                                     'apellido' => $_POST['regApellido'],
                                     'correo' => $_POST['regCorreo'],
                                     'telefono' => $_POST['regTelefono'],
-                                    'direccion' => $_POST['regDireccion']
+                                    'direccion' => $_POST['regDireccion'],
+                                    'usuario' => $_POST['regUsuario'],
+                                    'contrasena' => $_POST['regContrasena']
                                 );
 
                                 require "control/logica/LogicaRegistro.php";

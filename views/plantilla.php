@@ -40,7 +40,7 @@
             }
             else {
                 //include include $_SESSION["isAdmin"]."/404.php";
-                include_once "modulos/404.php";
+                include_once "modulos/InicioProductos.php";
             }
         }else if (in_array($_GET["ruta"], $pegesArray)){
             switch ($_GET["ruta"]) {
@@ -53,7 +53,7 @@
             }
         }else{
             //var_dump($_GET["ruta"]);
-            include_once "modulos/404.php";
+            include_once "modulos/InicioProductos.php";
         }
         include_once "modal/login-modal.php";
         ?>

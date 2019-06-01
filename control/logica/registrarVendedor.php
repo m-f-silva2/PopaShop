@@ -39,7 +39,7 @@ class RegistrarVendedor{
 		}
 	}
 public function registrarUsuario(){
-    $this->traerIdPersona();
+   // $this->traerIdPersona();
     
     require_once "conexion.php";
     $tabla = "usuario";

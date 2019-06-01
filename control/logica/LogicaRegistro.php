@@ -2,7 +2,9 @@
 /**
  *Login
 **/
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 class Registro{
 
 	private $tipoDocumento;
@@ -13,8 +15,9 @@ class Registro{
 	private $telefono;
 	private $direccion;
 	
+        private $idPersona;
 	private $usuario;
-    private $contraseña;
+    private $contrasena;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
@@ -26,13 +29,41 @@ class Registro{
 		$this->apellido = $datos["apellido"];
 		$this->correo = $datos["correo"];
 		$this->telefono = $datos["telefono"];
-		$this->direccion = $datos["direccion"];
+        $this->direccion = $datos["direccion"];
+        $this->usuario = $datos["usuario"];
+        $this->contrasena = $datos["contrasena"];
 
 		//Aqui si se puede acceder a esta funcion de tipo private.
-		$this->validarRegistro();
+        $this->validarRegistro();
+        $this->registrarUsuario();
+        $this->traerIdPersona();
 		}
 	}
+public function registrarUsuario(){
+    //
+    
+    require_once "conexion.php";
+    $tabla = "usuario";
+			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idUsuario, login,
+                                                                        password,
+                                                                        idRol,
+                                                                        idPersona) values(NULL,:item8,:item9,2,5) ");
+                                                                        $stmt->bindParam(":item8", $this->usuario, \PDO::PARAM_STR);
+                                                                        $stmt->bindParam(":item9", $this->contrasena, \PDO::PARAM_STR);
+                                                                        //$stmt->bindParam(":item10", $this->idRol, \PDO::PARAM_STR);
+                                                                        //$stmt->bindParam(":item4", $this->idPersona, \PDO::PARAM_STR);
+                                                                        
+                                                                        $stmt->execute();
+                                                                        
+			if ($stmt) {
+				$d = true;
+				return $d;
+			}else{
+				$d = false;
+				return $d;
+			}
 
+}
 	//Validar datos enviados del formulario con los de la base de datos.
 	public function validarRegistro(){
 
@@ -65,5 +96,15 @@ class Registro{
 				return $d;
 			}
 	}
+        public function traerIdPersona(){
+            require_once "conexion.php";
+			$tabla = "persona";
+            $stmt = Conexion::conectar()->prepare("SELECT idPersona FROM $tabla WHERE numeroDocumento=$this->numeroDocumento");
+            $stmt->execute();
+            
+          
+			
+                      
+        }
 }
 ?>

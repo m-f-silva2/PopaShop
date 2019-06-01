@@ -21,7 +21,7 @@
   <h3>Equipo de desarrolladores</h3><br>
   <div class="row">
     <div class="col-sm-4">
-      <p>Wilmar Bolaños </p>
+      <p>Manuel Silva </p>
       <p>(Programador php) </p>
       <img src="src/assets/monigotes/w.png" style="width:50%">
     </div>
@@ -31,7 +31,7 @@
       <img src="src/assets/monigotes/c.png"style="width:50%">
     </div>
     <div class="col-sm-4">
-      <p>Oscar Montenegro </p>
+      <p>Elkin Ortiz </p>
       <p>(Programador php) </p>
       <img src="src/assets/monigotes/o.png" style="width:50%">
     </div>
