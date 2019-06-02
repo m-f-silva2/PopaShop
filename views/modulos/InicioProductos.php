@@ -13,7 +13,8 @@
                      <style>
                 .contenedorProductos{
                  margin: auto;
-                 width:150px;
+                 width:250px;
+                 height: 250px;
                  float: left;
                  margin-right: 50px;
                  margin-bottom: 20px;
@@ -46,6 +47,7 @@
                             <option>".$dato1["descripcionProducto"]."</option>                                
                             </select>";
                       
+                      
                     }
                       
                     ?>               
@@ -61,20 +63,23 @@
                   <tbody id="tblProductos">
                     <?php 
                     require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
+                    $datoProductos = Logica\ProductosGet::mostrarProductos();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos'>
                             <ul>
                             <li>".$dato["nombreProducto"]."</li>
-                                <li>".$dato["fotoProducto"]."</li>                                
-                                <li>".$dato["idProducto"]."</li>
-                                <li>".$dato["idTipoProducto"]."</li>                               
+                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='120px' height:'80px'></li>
+                                                  
                                 <li> $ ".$dato["precioProducto"]."</li>
+                                    
                                
                                 <li id='buttonLi'><button data-toggle='modal' data-target='#modalAgregarSucursal'>DETALLE</button>
                             </ul>
                             </div>";
+                        
+                        
+                        
                     }
                     ?>               
                   </tbody>
