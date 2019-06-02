@@ -1,5 +1,5 @@
 <div class="row" id="row1" align="center">
-    <div class="col-md-12">
+  <div class="col-md-12">
         <div class="content-wrapper">
         <section class="content-header">
    <!--=====================================
@@ -11,7 +11,7 @@
         estilo de cajon productos
         ======================================-->
                      <style>
-                .contenedorProductos{
+                #contenedorProductos{
                  margin: auto;
                  width:250px;
                  height: 250px;
@@ -21,15 +21,13 @@
                  border: 1px solid #000;
                 }
                 
-                ul{
+                #contenedorProductos > ul{
                     list-style: none;
                     margin: 0px;
-                    
                     padding: 0px;
                 }
-                ul li{
-                    
-                    width: 150px;                  
+                #contenedorProductos > ul ,#contenedorProductos > li{
+                    width: 50px;                  
                 }
             </style>
                   
@@ -66,7 +64,7 @@
                     $datoProductos = Logica\ProductosGet::mostrarProductos();
                     foreach ($datoProductos as $dato) {
                         echo "
-                            <div class='contenedorProductos'>
+                            <div id ='contenedorProductos'>
                             <ul>
                             <li>".$dato["nombreProducto"]."</li>
                                 <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='120px' height:'80px'></li>
@@ -85,56 +83,7 @@
                     ?>               
                   </tbody>
                   </table>
-                  
-              
-            
-            
-          <h1>Página no encontrada</h1>
-          <ol class="breadcrumb">
-            <?php 
-            //El @ evita que salga un error por no tener algun valor en la variable $sesionRol
-            @$sesionRol = $_SESSION["rol"];
-            switch ($sesionRol) {
-              case 'Administrador':
-                echo '<li><a href="inicio-admin"><i class="fa fa-home"></i> Inicio</a></li>';
-                break;
-              case 'Vendedor':
-                echo '<li><a href="inicio-vendedor"><i class="fa fa-home"></i> Inicio</a></li>';
-                break;
-              default:
-                echo '<li><a href="inicio-cliente"><i class="fa fa-home"></i> Inicio</a></li>';
-                break;
-            }
-            ?>      
-            <li class="active">Página no encontrada</li>
-          </ol>
-        </section>
-        <section class="content">
-          <div class="error-page">
-            <h2 class="headline text-primary">404</h2> 
-            <div class="error-content">
-              <h3>
-                <i class="fa fa-warning text-primary"></i> 
-                Ops! Página no encontrada.
-              </h3>
-              <p>Puedes regresar haciendo 
-                <?php 
-                switch ($sesionRol) {
-                  case 'Administrador':
-                    echo '<a href="inicio-admin">click aquí.</a>';
-                    break;
-                  case 'Vendedor':
-                    echo '<a href="inicio-vendedor">click aquí.</a>';
-                    break;
-                  default:
-                    echo '<a href="inicio-cliente">click aquí.</a>';
-                    break;
-                }
-                ?>
-              </p>
-            </div>
-          </div>  
-        </section>
+                </section>
       </div>
     </div>
 </div>

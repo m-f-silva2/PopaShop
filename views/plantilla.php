@@ -24,10 +24,14 @@
 
         $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor");
         //Si no hay una ruta en la url se le asigna inicio.
-        
+        if(!isset($_GET["ruta"])){
+            $_GET["ruta"] = "inicio-cliente";
+            include_once "cliente/".$_GET["ruta"].".php";
+            //include_once "cliente/inicio-cliente.php";
+        }
         
         //Al dar click en un enlace, obtener validar get
-        if(isset($_GET["ruta"]) && isset($_SESSION["rol"])){
+        if(isset($_SESSION["rol"])){
             
             //Si existe el get[] en el array
             if (in_array($_GET["ruta"], $pegesArray)) {
@@ -37,10 +41,9 @@
             else if($_GET["ruta"] == "salir"){
                 session_destroy();
                 header("Location: http://localhost/PopaShop/inicio-cliente");
-            }
-            else {
+            }else{
                 //include include $_SESSION["isAdmin"]."/404.php";
-                include_once "modulos/InicioProductos.php";
+                include_once "modulos/";
             }
         }else if (in_array($_GET["ruta"], $pegesArray)){
             switch ($_GET["ruta"]) {
@@ -52,8 +55,7 @@
                     break;
             }
         }else{
-            //var_dump($_GET["ruta"]);
-            include_once "modulos/InicioProductos.php";
+            include_once "modulos/404.php";
         }
         include_once "modal/login-modal.php";
         ?>
