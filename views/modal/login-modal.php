@@ -20,6 +20,7 @@
                 </div>
                 <form action="" method="post" name="frmLogin" id="frmLogin">
                     <div class="form-group">
+                        <a href="login-modal.php"></a>
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Usuario" name="logUsuario" id="logUsuario" required>
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>

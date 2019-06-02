@@ -40,9 +40,9 @@
                                 <li>".$dato["fotoProducto"]."</li>                                
                                 <li>".$dato["idProducto"]."</li>
                                 <li>".$dato["idTipoProducto"]."</li>                               
-                                <li>".$dato["precioProducto"]."</li>
+                                <li> $ ".$dato["precioProducto"]."</li>
                                 
-                                
+                                 <li id='buttonLi'><button data-toggle='modal' data-target='#modalAgregarSucursal'>DETALLE</button>
                             </ul>
                             </div>";
                     }

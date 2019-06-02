@@ -2,9 +2,14 @@
     <div class="col-md-12">
         <div class="content-wrapper">
         <section class="content-header">
-            <h4>Productos</h4>
+   <!--=====================================
+        Tabla de categorias
+        ======================================-->
               <table class="table table-responsive table-hover" id="tablaProductos">
                   <thead style="background-color: #eceff2;">
+                      <!--=====================================
+        estilo de cajon productos
+        ======================================-->
                      <style>
                 .contenedorProductos{
                  margin: auto;
@@ -28,10 +33,35 @@
             </style>
                   
                   </thead>
+                  <h4>Categorias</h4>
+                  <br>
+                  <tbody id="tblCatego">
+                    <?php 
+                    require_once "control/logica/ProductosGet.php";
+                    $datoCategorias = Logica\ProductosGet::categorias();
+                    
+                    foreach ($datoCategorias as $dato1) {
+                      echo "<select name='Categorias' id='logSelect'>
+                            <option>".$dato1["idTipoProducto"]."</option>
+                            <option>".$dato1["descripcionProducto"]."</option>                                
+                            </select>";
+                      
+                    }
+                      
+                    ?>               
+                  </tbody>
+                  <br>
+                  </table>
+                  <table class="table table-responsive table-hover" id="tablaProductos">
+                      
+                      <!--=====================================
+        tabla de productos
+        ======================================-->
+                      <h4>Productos</h4>
                   <tbody id="tblProductos">
                     <?php 
                     require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::MostrarProductos();
+                    $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos'>
@@ -40,14 +70,17 @@
                                 <li>".$dato["fotoProducto"]."</li>                                
                                 <li>".$dato["idProducto"]."</li>
                                 <li>".$dato["idTipoProducto"]."</li>                               
-                                <li>".$dato["precioProducto"]."</li>
-                                <button id='registrarseAcc_btn' name='registrarseAcc_btn'>REGISTRARSE</button> 
+                                <li> $ ".$dato["precioProducto"]."</li>
+                               
+                                <li id='buttonLi'><button data-toggle='modal' data-target='#modalAgregarSucursal'>DETALLE</button>
                             </ul>
                             </div>";
                     }
-                    ?>                
+                    ?>               
                   </tbody>
-              </table>
+                  </table>
+                  
+              
             
             
           <h1>Página no encontrada</h1>
