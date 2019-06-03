@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace clase;
 /*
  *Clase Empresa.
 **/
@@ -18,34 +18,34 @@ class Empresa{
 	}
 
 	//Getter y setters de atributos.
-	public function set($nombre){
+	public function setNombre($nombre){
 		$this->nombre = $nombre;
 	}
-	public function get(){
+	public function getNombre(){
 		return $this->nombre;
 	}
-	public function set($pais){
+	public function setPais($pais){
 		$this->pais = $pais;
 	}
-	public function get(){
+	public function getPais(){
 		return $this->pais;
 	}
-	public function set($departamento){
+	public function setDepartamento($departamento){
 		$this->departamento = $departamento;
 	}
-	public function get(){
+	public function getDepartamento(){
 		return $this->departamento;
 	}
-	public function set($ciudad){
+	public function setCiudad($ciudad){
 		$this->ciudad = $ciudad;
 	}
-	public function get(){
+	public function getCiudad(){
 		return $this->ciudad;
 	}
-	public function set($direccion){
+	public function setDireccion($direccion){
 		$this->direccion = $direccion;
 	}
-	public function get(){
+	public function getDireccion(){
 		return $this->direccion;
 	}
 }

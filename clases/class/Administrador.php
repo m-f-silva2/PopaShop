@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace clase;
 /*
  *Clase Administrador.
 **/
@@ -10,7 +10,7 @@ class Administrador{
 	public function __construct(){
 
 	}
-	public function GestionarVendedores(){
+	public function gestionarVendedores(){
 
 	}
 }

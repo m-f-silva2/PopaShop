@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace Observer;
 /*
  *Patron observer
  *Clase abstracta Observador.
@@ -8,6 +8,6 @@ abstract class Observador{
 	private $sujeto;
 	
 	//Metodos
-	abstract public function Actualizar();
+	abstract public function actualizar();
 }
 ?>

@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace clase;
 /*
  *Clase Vendedor.
 **/
@@ -12,19 +12,19 @@ class Vendedor{
 	public function __construct(){
 
 	}
-	public function AgregarProducto(){
+	public function agregarProducto(){
 
 	}
-	public function EditarProducto(){
+	public function editarProducto(){
 
 	}
-	public function EliminarProducto(){
+	public function eliminarProducto(){
 		
 	}
-	public function EnviarProducto(){
+	public function enviarProducto(){
 		
 	}
-	public function Actualizar(){
+	public function actualizar(){
 		
 	}
 

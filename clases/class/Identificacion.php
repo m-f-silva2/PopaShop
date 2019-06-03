@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace clase;
 /*
  *Clase Identificacion.
 **/
@@ -14,6 +14,12 @@ class Identificacion{
 	}
 	public function getIdentificacion(){
 		return $this->identificacion;
+	}
+	public function setTipo($tipo){
+		$this->tipo = $tipo;
+	}
+	public function getTipo(){
+		return $this->tipo;
 	}
 }
 ?>

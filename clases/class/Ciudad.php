@@ -1,28 +1,17 @@
-<?php
+<?php namespace clase;
+/*
+ *Clase Ciudad.
+**/
 
 class Ciudad {
-     public $idCiudad;
-     public $nombreCiudad;
-   
+     
+    private $nombre;
+
+    public function setNombre($nombre){
+     	$this->nombre = $nombre;
+    }
+    public function getNombre(){
+    	return $this->nombre;
+    }
 }
-
-function getIdCiudad() {
-    return $this->idCiudad;
-}
-
- function getNombreCiudad() {
-    return $this->nombreCiudad;
-}
-
- function setIdCiudad($idCiudad) {
-    $this->idCiudad = $idCiudad;
-}
-
- function setNombreCiudad($nombreCiudad) {
-    $this->nombreCiudad = $nombreCiudad;
-}
-
-
-
-
 ?>

@@ -1,24 +1,15 @@
-<?php 
+<?php namespace clase;
 class Departamento{
-    public $idDepartamento;
-    public $nombreDepartamento;
+	//Atributos
+    private $nombre;
+
+    //Getter y setter
+    function getNombre() {
+    	return $this->nombre;
+	}
+
+ 	function setNombre($nombre) {
+    	$this->nombre = $nombre;
+	}
 }
-
-function getIdDepartamento() {
-    return $this->idDepartamento;
-}
-
- function getNombreDepartamento() {
-    return $this->nombreDepartamento;
-}
-
- function setIdDepartamento($idDepartamento) {
-    $this->idDepartamento = $idDepartamento;
-}
-
- function setNombreDepartamento($nombreDepartamento) {
-    $this->nombreDepartamento = $nombreDepartamento;
-}
-
-
 ?>

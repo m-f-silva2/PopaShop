@@ -1,4 +1,4 @@
-<?php  
+<?php  namespace clase;
 /*
  *Clase Cliente.
 **/
@@ -10,19 +10,19 @@ class Cliente{
 	public function __construct(){
 
 	}
-	public function GestionarPedido(){
+	public function gestionarPedido(){
 
 	}
-	public function BuscarProducto(){
+	public function buscarProducto(){
 
 	}
-	public function GestionarPerfil(){
+	public function gestionarPerfil(){
 		
 	}
-	public function RegistrarCliente(){
+	public function registrarCliente(){
 		
 	}
-	public function Actualizar(){
+	public function actualizar(){
 		
 	}
 }
