@@ -69,17 +69,13 @@
                             <div class='contenedorProductos'>
                             <ul>
                             <li>".$dato["nombreProducto"]."</li>
-                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='120px' height:'80px'></li>
-                                                  
+                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='120px' height:'80px'></li>             
                                 <li> $ ".$dato["precioProducto"]."</li>
                                     
-                               
-                                <li id='buttonLi'><button data-toggle='modal' data-target='#modalAgregarSucursal'>DETALLE</button>
+                                 <button data-toggle='modal1' data-target='#mi-modal'>DETALLE</button>
+                               <button data-toggle='modal' data-target='#modalAgregarSucursal'>Login</button></a>
                             </ul>
-                            </div>";
-                        
-                        
-                        
+                            </div>"; 
                     }
                     ?>               
                   </tbody>

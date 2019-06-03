@@ -1,0 +1,112 @@
+<div class="content-wrapper">
+    <div class="container" style="width: auto;">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <section class="content-header">
+      <h3>
+          <?php 
+          require_once "control/logica/LogicaLogin.php";
+                    $datoProductos = Logica\Login::traerDatosPorUsuario();
+                    foreach ($datoProductos as $dato) {
+                        echo "<div><ul><li>".$dato["nombrePersona"]."</li>
+                                <li>".$dato["apellidoPersona"]."</li></ul></div>";
+                    }
+          ?>
+          
+        Mis Productos
+      </h3>
+      <ol class="breadcrumb">
+        <li><a href="inicio-vendedor"><i class="fa fa-home"></i> Inicio</a></li>
+        <li class="active">Productos</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content" align="center">
+        <div class="box box-primary">
+            <div class="box-body">
+            <table class="table table-responsive table-hover" id="tablaProductos">
+                  <style>
+                .contenedorProductos{
+                 margin: auto; width:250px; height: 250px; float: left;}
+                ul{list-style: none; margin: 0px; padding: 0px;}
+                ul li{ width: 150px;  }
+                .contenedorProductos2{
+                 margin: auto; width:250px; height: 250px; float: left;  margin-left: 80px; margin-right: 50px; margin-bottom: 20px;border: 1px solid #000;}
+                ul{list-style: none; margin: 0px; padding: 0px;}
+                ul li{ width: 150px; }
+            </style>
+                  <tbody id="tblProductos">
+                    <?php 
+                    require_once "control/logica/ProductosGet.php";
+                    $datoProductos = Logica\ProductosGet::MostrarProductosPorCategoria();
+                    foreach ($datoProductos as $dato) {
+                        echo "
+                            <div class='contenedorProductos'>
+                            <ul>
+                             <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='250px' height:'150px'></li>  
+                           
+                            </ul>
+                            </div>";
+                    }
+                    echo "<div class='contenedorProductos2' align='center'>
+                            <ul>
+                            <li ><h3>".$dato["nombreProducto"]."</h3></li>
+                                <br> 
+                                <li><h4> $ ".$dato["precioProducto"]."</h4></li>
+                            
+                            </ul>
+                            </div>";
+                    ?>
+                  <div class="modal-footer " id="login-footerM">
+                      <div align="center">
+                          <button type="submit" value="enviar">Finalizar Compra</button>
+                            
+                            <?php 
+                           
+                            require "control/logica/CompraLogica.php";
+                            $datosProducto = array(
+                              
+                                );
+                            $registro = new Logica\CompraLogica($datosProducto);
+                                                       
+                            ?>
+                          
+                          
+                      </div></div>
+                         
+                  </tbody>
+              </table>
+            
+            <!-- /.box-header -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+      </div>
+
+    </section>
+      </div>
+  </div>
+<div class="row" id="row1">
+    <div class="col-md-12">
+
+
+           
+              <h4>Productos</h4>
+                  <div class="modal-body" align="center">
+               
+                <form action="" method="post" name="frmRegistroProducto" >
+                    <h3>Registrar Producto</h3>
+                   
+                    <div class="modal-footer " id="login-footerM">
+                        <div align="center">
+                            
+                         
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div><br>
+    </div>
+</div>

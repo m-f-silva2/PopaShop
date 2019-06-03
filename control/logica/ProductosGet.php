@@ -32,7 +32,7 @@ class ProductosGet{
         public function mostrarProductosPorCategoria(){
             $tabla = "producto";
 			require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idTipoProducto=1");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idProducto=1");
 			$stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {

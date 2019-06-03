@@ -51,7 +51,7 @@
                     default:
                         echo ' 
                             <ul class="nav navbar-nav">
-                                <li><a id="a"  href="inicio-cliente">Inicio</a></li>
+                                <li><a id="a"  href="inicio">Inicio</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
                                 <li><a id="a" href="inicio">Producto</a></li>
@@ -61,6 +61,9 @@
                             </ul>
                             <ul class="nav navbar-nav">
                                 <li><a id="a"  href="contactenos">Contactenos</a></li>
+                            </ul>
+                             <ul class="nav navbar-nav">
+                                <li><a id="a"  href="Compra">Compra</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
                                 <li id="buttonLi"><a id="buttonA"><button data-toggle="modal" data-target="#modalAgregarSucursal" id="buttonLogin">Login</button></a>
