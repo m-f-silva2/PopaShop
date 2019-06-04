@@ -61,16 +61,26 @@
                       
                   <div class="modal-footer " id="login-footerM">
                       <div align="center">
-                          <button type="submit" value="enviar">Finalizar Compra</button>
-                          <button data-toggle="content-wrapper" data-target="#compra">Login</button>
-                            
+                          <button  type="submit" value="enviar" onclick="return cancelar()">Cancelar</button>
+                          <script>
+                          function cancelar(){
+                             alert("Cancelado");
+                              <?php 
+                               
+                          ?>
+                          }
+                          </script>
+                          
+                          <button  type="submit" value="enviar" onclick="return FinalizarCompra()">Finalizar Compra</button>
+                          <script>
+                             function FinalizarCompra(){
                             <?php
                             require "control/logica/CompraLogica.php";
                             $datosProducto = array();
                             $registro = new Logica\CompraLogica($datosProducto);
-                                                       
                             ?>
-                          
+                                     alert("Compra Exitosa");
+                             }</script>
                           
                       </div></div>
                          
