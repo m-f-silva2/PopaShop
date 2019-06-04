@@ -57,16 +57,17 @@
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
+                    
                     <!-- Campo de text: Usuario. -->
-                    <div class="form-group">
-                        <div class="input-group">
+                    <div class="form-group" style="color: #a8ccec">
+                        <div class="input-group" style="color: #a8ccec">
                             <input type="text" class="form-control" placeholder="Usuario" name="regUsuario" id="regUsuario">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de text: contraseña. -->
-                    <div class="form-group">
-                        <div class="input-group">
+                    <div class="form-group" style="color: #a8ccec">
+                        <div class="input-group" style="color: #a8ccec">
                             <input type="password" class="form-control" placeholder="Constraseña" name="regContrasena" id="regContrasena">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>

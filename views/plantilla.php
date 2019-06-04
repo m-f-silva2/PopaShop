@@ -40,10 +40,10 @@
             //Si el get es igual a salir, se destruye la sesion creada
             else if($_GET["ruta"] == "salir"){
                 session_destroy();
-                header("Location: http://localhost/PopaShop/inicio-cliente");
+                header("Location: http://localhost/PopaShop/inicio");
             }else{
                 //include include $_SESSION["isAdmin"]."/404.php";
-                include_once "modulos/";
+                include_once "modulos/InicioProductos.php";
             }
         }else if (in_array($_GET["ruta"], $pegesArray)){
             switch ($_GET["ruta"]) {

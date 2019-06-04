@@ -18,9 +18,6 @@
                     case 'Administrador':
                         echo '
                         <ul class="nav navbar-nav">
-                            <li><a id="a"  href="inicio-admin">Inicio</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav">
                             <li><a id="a"  href="administrarVendedores">Administrar Vendedores</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
@@ -48,13 +45,10 @@
                             </ul>
                         ';
                         break;
-                    default:
-                        echo ' 
+                    case 'Cliente':
+                        echo '
                             <ul class="nav navbar-nav">
                                 <li><a id="a"  href="inicio">Inicio</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav">
-                                <li><a id="a" href="inicio">Producto</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
                                 <li><a id="a"  href="nosotros">Nosotros</a></li>
@@ -65,6 +59,24 @@
                              <ul class="nav navbar-nav">
                                 <li><a id="a"  href="Compra">Compra</a></li>
                             </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a id="a" href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                                <li><a id="a" href="salir"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+                            </ul>
+                        ';
+                        break;
+                    default:
+                        echo ' 
+                            <ul class="nav navbar-nav">
+                                <li><a id="a"  href="inicio">Inicio</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li><a id="a"  href="nosotros">Nosotros</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li><a id="a"  href="contactenos">Contactenos</a></li>
+                            </ul>
+                            
                             <ul class="nav navbar-nav">
                                 <li id="buttonLi"><a id="buttonA"><button data-toggle="modal" data-target="#modalAgregarSucursal" id="buttonLogin">Login</button></a>
                                 </li>

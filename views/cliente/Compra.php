@@ -79,7 +79,7 @@
                             $datosProducto = array();
                             $registro = new Logica\CompraLogica($datosProducto);
                             ?>
-                                     alert("Compra Exitosa");
+                            alert("Compra Exitosa");
                              }</script>
                           
                       </div></div>
