@@ -8,8 +8,8 @@
           require_once "control/logica/LogicaLogin.php";
                     $datoProductos = Logica\Login::traerDatosPorUsuario();
                     foreach ($datoProductos as $dato) {
-                        echo "<div><ul><li>".$dato["nombrePersona"]."</li>
-                                <li>".$dato["apellidoPersona"]."</li></ul></div>";
+                        echo "<div style='margin-left: 644px;'><tr><th>".$dato["nombrePersona"]."</th>
+                                <th>".$dato["apellidoPersona"]."</th></tr></div>";
                     }
           ?>
           
@@ -79,7 +79,7 @@
                             $datosProducto = array();
                             $registro = new Logica\CompraLogica($datosProducto);
                             ?>
-                            alert("Compra Exitosa");
+                                     alert("Compra Exitosa");
                              }</script>
                           
                       </div></div>

@@ -18,7 +18,7 @@ class CompraLogica{
                                                                         usuarioIdUsuario,
                                                                         fechaFactura,
                                                                         totalFactura,
-                                                                        idCiudad) values(NULL,NULL,4,'2019-05-08',9600,1) ");
+                                                                        idCiudad) values(NULL,NULL,4,'2019-04-08',9600,1) ");
                                                                         //$stmt->bindParam(":item8", $this->usuario, \PDO::PARAM_STR);
                                                                         //$stmt->bindParam(":item9", $this->contrasena, \PDO::PARAM_STR);
                                                                         //$stmt->bindParam(":item10", $this->idRol, \PDO::PARAM_STR);
