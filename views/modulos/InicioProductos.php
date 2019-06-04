@@ -41,10 +41,12 @@
                     require_once "control/logica/ProductosGet.php";
                     $datoCategorias = Logica\ProductosGet::categorias();
                     
-                    foreach ($datoCategorias as $dato1) {
+                    
+                   foreach ($datoCategorias as $dato1) {
                       echo "<select name='Categorias' id='logSelect'>
-                            <option>".$dato1["idTipoProducto"]."</option>
-                            <option>".$dato1["descripcionProducto"]."</option>                                
+                            
+                            <option>".$dato1["descripcionProducto"]."</option>    
+                             
                             </select>";
                       
                       
@@ -66,7 +68,7 @@
                     $datoProductos = Logica\ProductosGet::mostrarProductos();
                     foreach ($datoProductos as $dato) {
                         echo "
-                            <div class='contenedorProductos'>
+                            <div  class='contenedorProductos'>
                             <ul>
                             <li>".$dato["nombreProducto"]."</li>
                                 <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='120px' height:'80px'></li>             

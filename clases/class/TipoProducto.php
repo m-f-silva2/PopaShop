@@ -4,14 +4,27 @@
 **/
 class TipoProducto{
 	//Atributos
-	private $nombre;
+    private $idTipoProducto;
+	private $descripcionProducto;
 
-	//Getter y setter
-	public function setNombre($nombre){
-		$this->nombre = $nombre;
-	}
-	public function getNombre(){
-		return $this->nombre;
-	}
+	
 }
+
+function getIdTipoProducto() {
+    return $this->idTipoProducto;
+}
+
+ function getDescripcionProducto() {
+    return $this->descripcionProducto;
+}
+
+ function setIdTipoProducto($idTipoProducto) {
+    $this->idTipoProducto = $idTipoProducto;
+}
+
+ function setDescripcionProducto($descripcionProducto) {
+    $this->descripcionProducto = $descripcionProducto;
+}
+
+
 ?>

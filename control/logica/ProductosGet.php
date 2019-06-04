@@ -51,8 +51,10 @@ class ProductosGet{
         public function categorias(){
               $tabla = "tipoproducto";
 			require_once "conexion.php";
+                        
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
 			$stmt->execute();
+                        
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             		$catego[] = $filas;
@@ -62,6 +64,7 @@ class ProductosGet{
 				$d = "error";
 				return $d;
 			}
+                      
         }
         }
 

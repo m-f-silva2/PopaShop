@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" id="compra">
     <div class="container" style="width: auto;">
       <div class="col-md-2"></div>
       <div class="col-md-8">
@@ -49,7 +49,7 @@
                             </ul>
                             </div>";
                     }
-                    echo "<div class='contenedorProductos2' align='center'>
+                    echo "<div  class='contenedorProductos2' align='center'>
                             <ul>
                             <li ><h3>".$dato["nombreProducto"]."</h3></li>
                                 <br> 
@@ -58,16 +58,15 @@
                             </ul>
                             </div>";
                     ?>
+                      
                   <div class="modal-footer " id="login-footerM">
                       <div align="center">
                           <button type="submit" value="enviar">Finalizar Compra</button>
+                          <button data-toggle="content-wrapper" data-target="#compra">Login</button>
                             
-                            <?php 
-                           
+                            <?php
                             require "control/logica/CompraLogica.php";
-                            $datosProducto = array(
-                              
-                                );
+                            $datosProducto = array();
                             $registro = new Logica\CompraLogica($datosProducto);
                                                        
                             ?>
@@ -90,22 +89,6 @@
 <div class="row" id="row1">
     <div class="col-md-12">
 
-
-           
-              <h4>Productos</h4>
-                  <div class="modal-body" align="center">
-               
-                <form action="" method="post" name="frmRegistroProducto" >
-                    <h3>Registrar Producto</h3>
-                   
-                    <div class="modal-footer " id="login-footerM">
-                        <div align="center">
-                            
-                         
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
         </div><br>
     </div>
