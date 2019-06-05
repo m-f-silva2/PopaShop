@@ -1,4 +1,4 @@
-<?php  namespace clase;
+<?php  namespace Clase;
 /*
  *Clase Usuario.
 **/
@@ -25,11 +25,11 @@ class Usuario{
 	public function getNombre(){
 		return $this->nombre;
 	}
-	public function setPais($pais){
-		$this->pais = $pais;
+	public function setPassword($password){
+		$this->password = $password;
 	}
-	public function getPais(){
-		return $this->pais;
+	public function getPassword(){
+		return $this->password;
 	}
 	public function setDepartamento($departamento){
 		$this->departamento = $departamento;

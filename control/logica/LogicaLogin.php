@@ -5,21 +5,28 @@
 
 
 class Login{
-
-	private $usuario;
-	private $password;
+	//Atributos
+	private $objUsuario;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($usuario,$password){
-		$this->usuario = $usuario;
-		$this->password = $password;
+
+		//Metodos de Usuario
+		//$s = $arrayName = array('' => , );
+		require_once "clases/class/Usuario.php";
+		$v_usuario = new \Clase\Usuario();
+		$v_usuario->setPassword($password);
+		$v_usuario->setNombre($usuario);
+		$this->objUsuario = array('usuario' => ($v_usuario->getNombre()),'password' => ($v_usuario->getPassword()));
+
+		//print_r($this->objUsuario);
 		//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->validarLogin();
 	}
 
 	//Validar datos enviados del formulario.
 	public function validarLogin(){
-		if($this->usuario != null && $this->password != null){
+		if($this->objUsuario['usuario'] != null && $this->objUsuario['password'] != null){
 				$respuesta = $this->validarUsuario();
     			switch ($respuesta["idRol"]) {
 	        		case 1:
@@ -44,14 +51,14 @@ class Login{
 
 	//Validar datos enviados del formulario con los de la base de datos.
 	public function validarUsuario(){
-                        if(isset($this->usuario) && isset($this->password)){
+                        if(isset($this->objUsuario['usuario']) && isset($this->objUsuario['password'])){
 			require_once "conexion.php";
 			$tabla = "persona";
                         $tabla2= "usuario";
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 u on u.idPersona = p.idPersona WHERE login = :item AND password = :item2");
 
-			$stmt->bindParam(":item", $this->usuario, \PDO::PARAM_STR);
-			$stmt->bindParam(":item2", $this->password, \PDO::PARAM_STR);
+			$stmt->bindParam(":item", $this->objUsuario['usuario'], \PDO::PARAM_STR);
+			$stmt->bindParam(":item2", $this->objUsuario['password'], \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
 				return $stmt->fetch();

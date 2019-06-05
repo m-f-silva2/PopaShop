@@ -1,0 +1,27 @@
+#prodCliente{
+    background-color: #457CB9;
+    margin-left: 5.5%;
+    margin-right: 2%;
+    margin-top: 15px;
+    box-shadow: 3px 3px 4px 0px #909090;
+    border-radius: 10px 10px 0px 0px;
+    color:#fbfbfb;
+}
+
+#prodClienteDivImagen{
+    margin-top: 10px;
+}
+#prodClienteImagen{
+    width:150px;
+    height: 130px;
+}
+#prodClienteButton{
+    background-color: #c3e2f2 !important;
+    color: #000;
+}
+#prodClienteCateg{
+	box-shadow: 2.3px 2.5px 2px 0px #a7a7a7;
+    background-color: #35bdae !important;
+    color: #000;
+    font-family: inherit;
+}
