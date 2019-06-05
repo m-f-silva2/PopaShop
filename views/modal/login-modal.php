@@ -60,17 +60,31 @@
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
-                    <!-- Campo de text: Nombres. -->
+                    <!-- Campo de text: Nombre 1. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="nombres" name="regNombre" id="regNombre">
+                            <input type="text" class="form-control" placeholder="Primer nombre" name="regNombre1" id="regNombre1">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
-                    <!-- Campo de text: Apellidos. -->
+                    <!-- Campo de text: Nombre 2. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="apellidos" name="regApellido" id="regApellido">
+                            <input type="text" class="form-control" placeholder="Segundo nombre" name="regNombre2" id="regNombre2">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- Campo de text: Apellido 1. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Primer apellido" name="regApellido1" id="regApellido1">
+                            <span class="icon-bar"></span>
+                        </div>
+                    </div>
+                    <!-- Campo de text: Apellido 2. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Segundo apellido" name="regApellido2" id="regApellido2">
                             <span class="icon-bar"></span>
                         </div>
                     </div>
@@ -106,7 +120,7 @@
                     <!-- Campo de text: Contraseña. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Contraseña" name="regContrasena" id="regContrasena">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="regContrasena" id="regContrasena">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
@@ -114,13 +128,15 @@
                         <div align="center">
                             <button type="submit" value="registrarse">REGISTRARSE</button>
                             <?php 
-                            if(@$_POST['regTipoDocumento'] != null && $_POST['regNumeroDocumento'] != null && $_POST['regNombre'] != null && $_POST['regApellido'] != null && $_POST['regCorreo'] != null && $_POST['regTelefono'] != null && $_POST['regDireccion'] != null && $_POST['regUsuario'] != null && $_POST['regContrasena'] != null){
+                            if(@$_POST['regTipoDocumento'] != null && $_POST['regNumeroDocumento'] != null && $_POST['regNombre1'] != null && $_POST['regApellido1'] != null && $_POST['regApellido2'] != null && $_POST['regCorreo'] != null && $_POST['regTelefono'] != null && $_POST['regDireccion'] != null && $_POST['regUsuario'] != null && $_POST['regContrasena'] != null){
 
                             $datosRegistro = array(
                                     'tipoDocumento' => $_POST['regTipoDocumento'],
                                     'numeroDocumento' => $_POST['regNumeroDocumento'],
-                                    'nombre' => $_POST['regNombre'],
-                                    'apellido' => $_POST['regApellido'],
+                                    'nombre1' => $_POST['regNombre1'],
+                                    'apellido1' => $_POST['regApellido1'],
+                                    'nombre2' => $_POST['regNombre2'],
+                                    'apellido2' => $_POST['regApellido2'],
                                     'correo' => $_POST['regCorreo'],
                                     'telefono' => $_POST['regTelefono'],
                                     'direccion' => $_POST['regDireccion'],

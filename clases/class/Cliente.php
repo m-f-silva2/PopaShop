@@ -1,9 +1,9 @@
-<?php  namespace clase;
+<?php  namespace Clase;
 /*
  *Clase Cliente.
 **/
-
-class Cliente{
+include "clases/class/Usuario.php";
+class Cliente extends Usuario{
 
 	//Metodos
 	//Constructor

@@ -14,7 +14,7 @@ if (!$conn) {
 }
 */
 class Conexion{
-	public function conectar(){
+	public static function conectar(){
 		$conn = new \PDO('mysql:host=localhost;dbname=popashop','root','');
 		return $conn;
 	}

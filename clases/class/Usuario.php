@@ -2,8 +2,8 @@
 /*
  *Clase Usuario.
 **/
-
-class Usuario{
+include "clases/abstract/Persona.php";
+class Usuario extends Persona{
 	//Atributos
 	private $nombre;
 	private $password;
@@ -11,6 +11,7 @@ class Usuario{
 	private $correo;
 	private $persona;
 	private $telefono;
+	private $direccion;
 
 	//Metodos
 	//Constructor
@@ -31,17 +32,23 @@ class Usuario{
 	public function getPassword(){
 		return $this->password;
 	}
-	public function setDepartamento($departamento){
-		$this->departamento = $departamento;
+	public function setRol($rol){
+		$this->rol = $rol;
 	}
-	public function getDepartamento(){
-		return $this->departamento;
+	public function getRol(){
+		return $this->rol;
 	}
-	public function setCiudad($ciudad){
-		$this->ciudad = $ciudad;
+	public function setCorreo($correo){
+		$this->correo = $correo;
 	}
-	public function getCiudad(){
-		return $this->ciudad;
+	public function getCorreo(){
+		return $this->correo;
+	}
+	public function setTelefono($telefono){
+		$this->telefono = $telefono;
+	}
+	public function getTelefono(){
+		return $this->telefono;
 	}
 	public function setDireccion($direccion){
 		$this->direccion = $direccion;

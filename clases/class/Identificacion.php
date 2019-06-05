@@ -1,4 +1,4 @@
-<?php  namespace clase;
+<?php  namespace Clase;
 /*
  *Clase Identificacion.
 **/
