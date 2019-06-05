@@ -46,7 +46,7 @@
                     case 'Cliente':
                         echo '
                             <ul class="nav navbar-nav">
-                                <li><a id="a"  href="inicio">Inicio</a></li>
+                                <li><a id="a"  href="inicio-cliente">Inicio</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
                                 <li><a id="a"  href="nosotros">Nosotros</a></li>

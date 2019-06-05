@@ -7,7 +7,9 @@ class TipoProducto{
     private $idTipoProducto;
 	private $descripcionProducto;
 
-	
+	public function __construct(){
+         
+	}
 }
 
 function getIdTipoProducto() {
@@ -25,6 +27,9 @@ function getIdTipoProducto() {
  function setDescripcionProducto($descripcionProducto) {
     $this->descripcionProducto = $descripcionProducto;
 }
+
+
+
 
 
 ?>

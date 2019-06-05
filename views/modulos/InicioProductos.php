@@ -23,10 +23,10 @@
                   <br>
                   
                   <tbody id="tblCatego">
-                  <
-                      <select name='idCatego' id='logSelect' required>
+                  
+                      <select name='descripcionProducto' id='descripcionProducto'>
                          
-                          <option id="idCatego" value=""><?php 
+                          <option id="descripcionProducto" value=""><?php 
                           require_once "control/logica/ProductosGet.php";
                           $datoCategorias = Logica\ProductosGet::categorias();
                           foreach ($datoCategorias as $dato1) {
@@ -40,17 +40,19 @@
                       <script>
                       function catego(){
                           <?php 
-                            if(@$_POST['idCatego'] != null){
+                           /* if(@$_POST['descripcionProducto'] != null){
 
-                            $datosRegistro = array(
-                                    'idCatego' => $_POST['idCatego']
+                           $datosRegistro = array(
+                               'descripcionProducto' => $_POST['descripcionProducto']
                                 );
 
                                 require "control/logica/ProductosGet.php";
                                 $registro = new Logica\ProductosGet($datosRegistro);
-                            }
+                               
+                            }*/
+                           
                             ?>
-                      
+                      alert("buscarCategoria");
                       }
                       </script>
                          

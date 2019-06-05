@@ -15,6 +15,7 @@ class Login{
 		$this->v_usuario = new \Clase\Usuario();
 		$this->v_usuario->setPassword($password);
 		$this->v_usuario->setNombre($usuario);
+                
 
 		//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->validarLogin();

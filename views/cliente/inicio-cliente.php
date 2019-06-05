@@ -69,7 +69,7 @@
                   <tbody id="tblProductos">
                     <?php 
                     require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::mostrarProductos();
+                    $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos'>
