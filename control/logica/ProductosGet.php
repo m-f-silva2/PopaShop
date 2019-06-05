@@ -4,14 +4,15 @@
 **/
 
 class ProductosGet{	
-private $nombreP;
+private $idCatego;
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
 		if (isset($datos)) {
 
-		$this->nombreP = $datos["nombreP"];
-		//Aqui si se puede acceder a esta funcion de tipo private.
-		$this->mostrarProductos();
+		$this->idCatego = $datos["idCatego"];
+                
+                $this->mostrarProductosPorCategoria();
+		
 	}
         }
 
@@ -20,7 +21,7 @@ private $nombreP;
             $tabla = "producto";
 			require_once "conexion.php";
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where nombreProducto=':item'");
-                        $stmt->bindParam(":item", $this->nombreP, \PDO::PARAM_STR);
+                       // $stmt->bindParam(":item", $this->nombreP, \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
@@ -33,9 +34,28 @@ private $nombreP;
 			}
 	}
         
-        public function mostrarProductos(){
-
-			$tabla = "producto";
+   
+        public function mostrarProductosPorCategoria(){
+            $tabla = "producto";
+            $tabla2 ="tipoproducto";
+            
+            $idCatego= "limpieza";
+            if($idCatego != null){
+                require_once "conexion.php";
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on t.idTipoProducto=p.idTipoProducto WHERE t.descripcionProducto= '$idCatego'");
+			//$stmt->bindParam(":item1", $this->idCatego, \PDO::PARAM_STR);
+                        $stmt->execute();
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$productos[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+            }else{
+                $tabla = "producto";
 			require_once "conexion.php";
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
 			$stmt->execute();
@@ -48,21 +68,8 @@ private $nombreP;
 				$d = "error";
 				return $d;
 			}
-	}
-        public function mostrarProductosPorCategoria(){
-            $tabla = "producto";
-			require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idProducto=1");
-			$stmt->execute();
-			if ($stmt) {
-				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            		$productos[] = $filas;
-        		}
-				return $productos;
-			}else{
-				$d = "error";
-				return $d;
-			}
+            }
+			
         }
 
         public function productosVendedor(){

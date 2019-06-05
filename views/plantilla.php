@@ -25,7 +25,7 @@
         $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor","Compra");
         //Si no hay una ruta en la url se le asigna inicio.
         if(!isset($_GET["ruta"])){
-            $_GET["ruta"] = "inicio-cliente";
+            $_GET["ruta"] = "inicio";
             include_once "cliente/".$_GET["ruta"].".php";
             //include_once "cliente/inicio-cliente.php";
         }
@@ -44,6 +44,7 @@
             }else{
                 //include include $_SESSION["isAdmin"]."/404.php";
                 include_once "modulos/InicioProductos.php";
+                
             }
         }else if (in_array($_GET["ruta"], $pegesArray)){
             switch ($_GET["ruta"]) {

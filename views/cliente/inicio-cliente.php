@@ -36,21 +36,27 @@
                   </thead>
                   <h4>Categorias</h4>
                   <br>
+                 <!--=====================================
+       CATEGORIAS
+        ======================================-->
+                  <h3>Tienda Online</h3>
+                  <br>
+                  
                   <tbody id="tblCatego">
-                    <?php 
-                    require_once "control/logica/ProductosGet.php";
-                    $datoCategorias = Logica\ProductosGet::categorias();
-                    
-                    foreach ($datoCategorias as $dato1) {
-                      echo "<select name='Categorias' id='logSelect'>
-                            <option>".$dato1["idTipoProducto"]."</option>
-                            <option>".$dato1["descripcionProducto"]."</option>                                
-                            </select>";
-                      
-                      
-                    }
-                      
-                    ?>               
+                  <form action="../../form-result.php" target="_blank">
+                      <select name='Categorias' id='logSelect' required>
+                          <option>Categorias<?php 
+                          require_once "control/logica/ProductosGet.php";
+                          $datoCategorias = Logica\ProductosGet::categorias();
+                          foreach ($datoCategorias as $dato1) {
+                          $descripcion=$dato1["descripcionProducto"];
+                          echo "<option>".$descripcion."</option>";
+                          }
+                          ?></option>
+                          
+                       </select>
+                      <input type="submit" value="Enviar">
+                          </form>
                   </tbody>
                   <br>
                   </table>
