@@ -1,49 +1,54 @@
-<?php namespace Abst;
-
+<?php namespace Clase;
+/*
+ *Clase Persona.
+**/
 
 class Persona{
-    private $id;
-    private $idTipoDocumento;
-    private $documento;
+    private $identificacion;
     private $nombre1;
     private $nombre2;
     private $apellido1;
     private $apellido2;
-    private $correo;
-    private $telefono;
-    private $avatar;
-    private $direccion;
 
     //Metodos
 	//Constructor
 	public function __construct(){
-
+		require_once "clases/class/Identificacion.php";
+		$this->identificacion = new Identificacion();
 	}
 
 	//Getter y setters de atributos.
-	public function setIdTipoDocumento($idTipoDocumento){
-		$this->idTipoDocumento = $idTipoDocumento;
+	public function setIdentificacion($tipo,$numero){
+		$this->identificacion->setIdentificacion($numero);
+		$this->identificacion->setTipo($tipo);
 	}
-	public function getIdTipoDocumento(){
-		return $this->idTipoDocumento;
+	public function getIdentificacion(){
+		$v_identificacion = array ('numero' => $this->identificacion->getIdentificacion(),'tipo' => $this->identificacion->getTipo()); 
+		return $v_identificacion;
 	}
-	public function setDocumentoPersona($documentoPersona){
-		$this->documentoPersona = $documentoPersona;
+	public function setNombre1($nombrePersona1){
+		$this->nombre1 = $nombrePersona1;
 	}
-	public function getDocumentoPersona(){
-		return $this->documentoPersona;
+	public function getNombre1(){
+		return $this->nombre1;
 	}
-	public function setNombrePersona($nombrePersona){
-		$this->nombrePersona = $nombrePersona;
+	public function setNombre2($nombrePersona2){
+		$this->nombre2 = $nombrePersona2;
 	}
-	public function getNombrePersona(){
-		return $this->nombrePersona;
+	public function getNombre2(){
+		return $this->nombre2;
 	}
-	public function setApellidoPersona($apellidoPersona){
-		$this->apellidoPersona = $apellidoPersona;
+	public function setApellido1($apellidoPersona){
+		$this->apellido1 = $apellidoPersona;
 	}
-	public function getApellidoPersona(){
-		return $this->apellidoPersona;
+	public function getApellido1(){
+		return $this->apellido1;
+	}
+	public function setApellido2($apellidoPersona){
+		$this->apellido2 = $apellidoPersona;
+	}
+	public function getApellido2(){
+		return $this->apellido2;
 	}
 	public function setCorreoPersona($correoPersona){
 		$this->correoPersona = $correoPersona;
