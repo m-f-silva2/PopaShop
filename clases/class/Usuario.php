@@ -5,6 +5,7 @@
 include "clases/abstract/Persona.php";
 class Usuario extends Persona{
 	//Atributos
+    private $idUsuario;
 	private $nombre;
 	private $password;
 	private $rol;
@@ -18,8 +19,15 @@ class Usuario extends Persona{
 	public function __construct(){
 
 	}
+        function getIdUsuario() {
+            return $this->idUsuario;
+        }
 
-	//Getter y setters de atributos.
+        function setIdUsuario($idUsuario) {
+            $this->idUsuario = $idUsuario;
+        }
+
+        	//Getter y setters de atributos.
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
 	}

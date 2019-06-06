@@ -5,13 +5,15 @@
         <section class="content-header">
       <h3>
           <?php 
+          
           require_once "control/logica/LogicaLogin.php";
                     $datoProductos = Logica\Login::traerDatosPorUsuario();
                     foreach ($datoProductos as $dato) {
                         echo "<div style='margin-left: 644px;'><tr><th>".$dato["nombrePersona"]."</th>
                                 <th>".$dato["apellidoPersona"]."</th></tr></div>";
                     }
-          ?>
+                    
+                    ?>
           
         Mis Productos
       </h3>

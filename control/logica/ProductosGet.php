@@ -74,7 +74,21 @@ class ProductosGet{
         }
 
         public function productosVendedor(){
-		$query="SELECT p.nombreProducto FROM `producto` p inner join `tipoproducto` t on (p.idTipoProducto = t.idTipoProducto) WHERE p.idProducto = 1" ;
+		$tabla = "producto";
+            
+			require_once "conexion.php";
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where idUsuario=3 ");
+			$stmt->execute();
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$productos[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+            
 	}
         public function categorias(){
               $tabla = "tipoproducto";

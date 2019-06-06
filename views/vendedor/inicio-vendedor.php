@@ -3,8 +3,9 @@
         <div class="content-wrapper">
         <section class="content-header">
    <!--=====================================
-        Tabla de categorias
+       
         ======================================-->
+   
               <table class="table table-responsive table-hover" id="tablaProductos">
                   <thead style="background-color: #eceff2;">
                       <!--=====================================
@@ -37,20 +38,29 @@
                   <h4>Categorias</h4>
                   <br>
                   <tbody id="tblCatego">
-                    <?php 
-                    require_once "control/logica/ProductosGet.php";
-                    $datoCategorias = Logica\ProductosGet::categorias();
-                    
-                    foreach ($datoCategorias as $dato1) {
-                      echo "<select name='Categorias' id='logSelect'>
-                            <option>".$dato1["idTipoProducto"]."</option>
-                            <option>".$dato1["descripcionProducto"]."</option>                                
-                            </select>";
+                  
+                      <select name='descripcionProducto' id='descripcionProducto'>
+                         
+                          <option id="descripcionProducto" value="">Todo<?php 
+                          require_once "control/logica/ProductosGet.php";
+                          $datoCategorias = Logica\ProductosGet::categorias();
+                          foreach ($datoCategorias as $dato1) {
+                          $descripcion=$dato1["descripcionProducto"];
+                          echo "<option>".$descripcion."</option>";
+                          }
+                          ?></option>
+                       </select>
+                      <input type="submit" onclick="return catego()"value="Enviar">
                       
-                      
-                    }
-                      
-                    ?>               
+                      <script>
+                      function catego(){
+                          <?php 
+                           
+                            ?>
+                      alert("buscarCategoria");
+                      }
+                      </script>
+                         
                   </tbody>
                   <br>
                   </table>
@@ -63,7 +73,7 @@
                   <tbody id="tblProductos">
                     <?php 
                     require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::mostrarProductos();
+                    $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos'>

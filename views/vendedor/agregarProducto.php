@@ -11,54 +11,11 @@
         <li class="active">Productos</li>
       </ol>
     </section>
-
-    <!-- Main content -->
-    <section class="content" align="center">
-        <div class="box box-primary">
-            <div class="box-body">
-            <table class="table table-responsive table-hover" id="tablaProductos">
-                  <thead style="background-color: #eceff2;">
-                    <th id="tablaProdTh">#</th>
-                    <th id="tablaProdTh">Tipo de producto</th>
-                    <th id="tablaProdTh">NombreProducto</th>
-                    <th id="tablaProdTh">PrecioProducto</th>
-                    <th id="tablaProdTh">Cantidad de producto</th>
-                    <th id="tablaProdTh">Foto de Producto</th>
-                  </thead>
-                  <tbody id="tblProductos">
-                    <?php 
-                    require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::MostrarProductos();
-                    foreach ($datoProductos as $dato) {
-                        echo "
-                            <tr>
-                                <th>".@++$con."</th>
-                                <th>".$dato["idTipoProducto"]."</th>
-                                <th>".$dato["nombreProducto"]."</th>
-                                <th>".$dato["precioProducto"]."</th>
-                                <th>".$dato["cantidadProducto"]."</th>
-                                <th>".$dato["fotoProducto"]."</th>
-                            </tr>";
-                    }
-                    ?>
-                  </tbody>
-              </table>
-            
-            <!-- /.box-header -->
-            </div>
-            <!-- /.box-body -->
-          </div>
-      </div>
-
-    </section>
-      </div>
+</div>
   </div>
 <div class="row" id="row1">
     <div class="col-md-12">
 
-
-           
-              <h4>Productos</h4>
                   <div class="modal-body" align="center">
                
                 <form action="" method="post" name="frmRegistroProducto" >
@@ -102,10 +59,15 @@
 
                     <div class="modal-footer " id="login-footerM">
                         <div align="center">
-                            <button type="submit" value="enviar">Guardar</button>
-                            <?php 
-                            if(@$_POST['tipoProducto'] != null && $_POST['nombreProducto'] != null && $_POST['precioProducto'] != null && $_POST['cantidadProducto'] != null){
-                            require "control/logica/ProductoRegistrer.php";
+                            <button onclick="return registrar()">Guardar</button>
+                            <script>
+                              
+                            function registrar(){
+                               
+                                    <?php 
+                                    
+                            if(@$_POST['tipoProducto'] != null && $_POST['nombreProducto'] != null && $_POST['precioProducto'] != null && $_POST['cantidadProducto'] != null && $_POST['fotoProducto'] != null){
+                            
                             $datosProducto = array(
                                     'tipoProducto' => $_POST['tipoProducto'],
                                     'nombreProducto' => $_POST['nombreProducto'],
@@ -113,11 +75,21 @@
                                     'cantidadProducto' => $_POST['cantidadProducto'],
                                     'fotoProducto' => $_POST['fotoProducto']
                                 );
+                            require "control/logica/ProductoRegistrer.php";
                             $registro = new Logica\RegistroProducto($datosProducto);
-                            }                            
+                            }  
+                            
                             ?>
+                                     
+                          <ul class="nav navbar-nav">
+                          <li><a id="a"  href="agregarProducto">Agregar Producto</a></li>
+                          </ul>
+                            }
+                            </script>
                         </div>
                     </div>
+                    <h3>Mis Productos</h3>
+                    
                 </form>
             </div>
         </div>

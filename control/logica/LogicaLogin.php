@@ -25,6 +25,8 @@ class Login{
 	public function validarLogin(){
 		if(($this->v_usuario->getNombre()) != null && ($this->v_usuario->getPassword()) != null){
 			$respuesta = $this->validarUsuario();
+                        $this->v_usuario->setRol($respuesta["idRol"]);
+                        $this->v_usuario->setIdUsuario($respuesta["idUsuario"]);
 			switch ($respuesta["idRol"]) {
         		case 1:
         			$_SESSION["rol"] = "Administrador";

@@ -5,10 +5,13 @@
 
 class Producto{
 	//Atributos
-	private $descripcion;
-	private $precio;
-	private $tipo;
-	private $cantidad;
+	private $idProducto;
+	private $idTipoProducto;
+	private $nombreProducto;
+	private $precioProducto;
+        private $cantidadProducto;
+	private $fotoProducto;
+	
 
 
 	//Metodos
@@ -34,29 +37,54 @@ class Producto{
 	}
 
 	//Getter y setter
-	public function setDescripcion($descripcion){
-		$this->descripcion = $descripcion;
-	}
-	public function getDescripcion(){
-		return $this->descripcion;
-	}
-	public function setPrecio($precio){
-		$this->precio = $precio;
-	}
-	public function getPrecio(){
-		return $this->precio;
-	}
-	public function setTipo($tipo){
-		$this->tipo = $tipo;
-	}
-	public function getTipo(){
-		return $this->tipo;
-	}
-	public function setCantidad($cantidad){
-		$this->cantidad = $cantidad;
-	}
-	public function getCantidad(){
-		return $this->cantidad;
-	}
+	function getIdProducto() {
+            return $this->idProducto;
+        }
+
+        function getIdTipoProducto() {
+            return $this->idTipoProducto;
+        }
+
+        function getNombreProducto() {
+            return $this->nombreProducto;
+        }
+
+        function getPrecioProducto() {
+            return $this->precioProducto;
+        }
+
+        function getCantidadProducto() {
+            return $this->cantidadProducto;
+        }
+
+        function getFotoProducto() {
+            return $this->fotoProducto;
+        }
+
+        function setIdProducto($idProducto) {
+            $this->idProducto = $idProducto;
+        }
+
+        function setIdTipoProducto($idTipoProducto) {
+            $this->idTipoProducto = $idTipoProducto;
+        }
+
+        function setNombreProducto($nombreProducto) {
+            $this->nombreProducto = $nombreProducto;
+        }
+
+        function setPrecioProducto($precioProducto) {
+            $this->precioProducto = $precioProducto;
+        }
+
+        function setCantidadProducto($cantidadProducto) {
+            $this->cantidadProducto = $cantidadProducto;
+        }
+
+        function setFotoProducto($fotoProducto) {
+            $this->fotoProducto = $fotoProducto;
+        }
+
+
 }
 ?>

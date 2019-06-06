@@ -10,17 +10,30 @@ class RegistroProducto{
 	private $precioProducto;
 	private $cantidadProducto;
 	private $fotoProducto;
-	
+	private $Class_Producto;
+        private $Class_Usuario;
+        
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
-	
-		$this->nombreProducto = $datos["nombreProducto"];
-		$this->idTipoProducto = $datos["tipoProducto"];
-		$this->precioProducto = $datos["precioProducto"];
-		$this->cantidadProducto = $datos["cantidadProducto"];
-		$this->fotoProducto = $datos["fotoProducto"];
-		//Aqui si se puede acceder a esta funcion de tipo private.
+	 include_once  'clases/class/Usuario.php';
+               
+               $this->Class_Usuario = new \Clase\Usuario();
+               $this->Class_Usuario->getIdUsuario();
+		//$this->nombreProducto = $datos["nombreProducto"];
+		//$this->idTipoProducto = $datos["tipoProducto"];
+		//$this->precioProducto = $datos["precioProducto"];
+		//$this->cantidadProducto = $datos["cantidadProducto"];
+		//$this->fotoProducto = $datos["fotoProducto"];
+                include_once  'clases/class/Producto.php';
+                $this->Class_Producto= new \clase\Producto();
+                $this->Class_Producto->setIdTipoProducto($datos["tipoProducto"]);
+                $this->Class_Producto->setNombreProducto($datos["nombreProducto"]);
+                $this->Class_Producto->setPrecioProducto($datos["precioProducto"]);
+                $this->Class_Producto->setCantidadProducto($datos["cantidadProducto"]);
+               $this->Class_Producto->setFotoProducto($datos["fotoProducto"]);
+                //$this->Class_Usuario->
+//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->validarRegistro();
 	}
 
@@ -35,13 +48,14 @@ class RegistroProducto{
 				nombreProducto,
 				precioProducto,
 				cantidadProducto,
-				fotoProducto) VALUES(NULL,:item1,:item2,:item3,:item4,'NULL')");
+				fotoProducto, idUsuario) VALUES(NULL,:item1,:item2,:item3,:item4,:item5,3)");
 
-			$stmt->bindParam(":item1", $this->idTipoProducto, \PDO::PARAM_INT);
-			$stmt->bindParam(":item2", $this->nombreProducto, \PDO::PARAM_STR);
-			$stmt->bindParam(":item3", $this->precioProducto, \PDO::PARAM_INT);
-			$stmt->bindParam(":item4", $this->cantidadProducto, \PDO::PARAM_INT);
-			//$stmt->bindParam(":item5", $this->fotoProducto, \PDO::PARAM_INT);
+			$stmt->bindParam(":item1", $this->Class_Producto->getIdTipoProducto(), \PDO::PARAM_INT);
+			$stmt->bindParam(":item2", $this->Class_Producto->getNombreProducto(), \PDO::PARAM_STR);
+			$stmt->bindParam(":item3", $this->Class_Producto->getPrecioProducto(), \PDO::PARAM_INT);
+			$stmt->bindParam(":item4", $this->Class_Producto->getCantidadProducto(), \PDO::PARAM_INT);
+                       $stmt->bindParam(":item5", $this->Class_Producto->getFotoProducto(), \PDO::PARAM_STR);
+                       //$stmt->bindParam(":item6", $this->Class_Usuario->getIdUsuario(), \PDO::PARAM_INT);
 			
 			$stmt->execute();
 			if ($stmt) {
