@@ -23,7 +23,19 @@
                     <!-- Campo de text: Tipo Producto. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="Tipo Producto" name="tipoProducto" id="tipoProducto">
+                            <select type="number" class="form-control" placeholder="Tipo Producto" name="tipoProducto" id="tipoProducto" >
+                         
+                          <option id="descripcionProducto" value="null">Elija una opción<?php 
+                          require_once "control/logica/ProductosGet.php";
+                          $datoCategorias = Logica\ProductosGet::categorias();
+                          foreach ($datoCategorias as $dato1) {
+                          $descripcion=$dato1["descripcionProducto"];
+                          $idTipo=$dato1["idTipoProducto"];
+                          echo "<option value='$idTipo'>".$descripcion."</option>";
+                          }
+                          ?></option>
+                       </select>
+                            
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
@@ -37,7 +49,7 @@
                     <!-- Campo de text: Precio. -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="decimal" class="form-control" placeholder="Precio Producto" name="precioProducto" id="precioProducto">
+                            <input type="number" class="form-control" placeholder="Precio Producto" name="precioProducto" id="precioProducto">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
@@ -77,14 +89,15 @@
                                 );
                             require "control/logica/ProductoRegistrer.php";
                             $registro = new Logica\RegistroProducto($datosProducto);
-                            }  
+                            }
                             
                             ?>
-                                     
+                                   
                           <ul class="nav navbar-nav">
                           <li><a id="a"  href="agregarProducto">Agregar Producto</a></li>
-                          </ul>
+                          </ul> 
                             }
+                            
                             </script>
                         </div>
                     </div>

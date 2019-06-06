@@ -1,7 +1,7 @@
 <div class="row" id="row1" align="center">
-    <div class="col-md-12">
-        <div class="content-wrapper">
-        <section class="content-header">
+    <div class="col-md-12" style="background-color: #eceff2" align="center">
+        <div class="content-wrapper"align="center">
+        <section class="content-header" >
    
               <table class="table table-responsive table-hover" id="tablaProductos">
                   <thead style="background-color: #eceff2;">
@@ -9,9 +9,10 @@
         estilo de cajon productos
         ======================================-->
                      <style>
-                .contenedorProductos{margin: auto;width:250px;height: 250px;float: left;margin-right: 50px;margin-bottom: 20px;border: 1px solid #000;}
-                ul{list-style: none;margin: 0px; padding: 0px;}
+                .contenedorProductos{ margin: auto;width:220px;height: 220px;float: left;margin-right: 50px;margin-bottom: 20px;border: 1px solid #000; background-color: #FFFFFF}
+                ul{list-style: none;margin: 0px; padding: 0px; }
                 ul li{width: 150px; }
+                .botonDetalle{background-color: #4CAF50; /* Green */border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none; display: inline-block;font-size: 16px;}
             </style>
             
                   
@@ -24,36 +25,41 @@
                   
                   <tbody id="tblCatego">
                   
-                      <select name='descripcionProducto' id='descripcionProducto'>
+                      <select style="width: 205px;" type="number" class="form-control" placeholder="Tipo Producto" name="tipoProducto" id="tipoProducto" >
                          
-                          <option id="descripcionProducto" value=""><?php 
+                          <option id="descripcionProducto" value="null">Filtrar:<?php 
                           require_once "control/logica/ProductosGet.php";
                           $datoCategorias = Logica\ProductosGet::categorias();
                           foreach ($datoCategorias as $dato1) {
                           $descripcion=$dato1["descripcionProducto"];
-                          echo "<option>".$descripcion."</option>";
+                           $idTipo=$dato1["idTipoProducto"];
+                          echo "<option value='$idTipo'>".$descripcion."</option>";
                           }
                           ?></option>
                        </select>
-                      <input type="submit" onclick="return catego()"value="Enviar">
+                      <input class="boton peque aceptar" type="submit" onclick="return catego()"value="Enviar">
                       
                       <script>
                       function catego(){
                           <?php 
-                           /* if(@$_POST['descripcionProducto'] != null){
+                            if(@$_POST['tipoProducto'] != null){
 
                            $datosRegistro = array(
-                               'descripcionProducto' => $_POST['descripcionProducto']
+                               'tipoProducto' => $_POST['tipoProducto']
                                 );
 
                                 require "control/logica/ProductosGet.php";
                                 $registro = new Logica\ProductosGet($datosRegistro);
                                
-                            }*/
+                            }
                            
                             ?>
                       alert("buscarCategoria");
+                       <ul class="nav navbar-nav">
+                          <li><a id="a"  href="InicioProductos">InicioProductos</a></li>
+                          </ul>
                       }
+                     
                       </script>
                          
                   </tbody>
@@ -72,8 +78,8 @@
                       <!--=====================================
         tabla de productos
         ======================================-->
-                     
-                  <tbody id="tblProductos">
+                      <form action="" name="productos" method="post">
+                  <tbody id="tblProductos" >
                     <?php 
                     require_once "control/logica/ProductosGet.php";
                     $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
@@ -82,25 +88,25 @@
                             <div  class='contenedorProductos'>
                             <ul>
                             <li>".$dato["nombreProducto"]."</li>
-                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='120px' height:'80px'></li>             
+                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='110px' height:'70px'></li>             
                                 <li> $ ".$dato["precioProducto"]."</li>
                                     
                                  
                             </ul>
-                            <button type='submit'  value='enviar' onclick='return enviar()'>DETALLE</button>
                             
+                             <li id='buttonLi'><a id='buttonA'><button class='botonDetalle'data-toggle='modal' data-target='#modalAgregarSucursal'>Dellate</button></a>
                           <script>
                           function enviar(){
                      
                           alert('Detalle');
                           
                       }</script>
-                            </div>"; }
+                          </div>  "; }
                     ?>
                   
                   
                   </tbody>
-                  
+                  </form>
                   </table>
                   
               

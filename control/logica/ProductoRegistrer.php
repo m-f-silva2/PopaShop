@@ -20,13 +20,14 @@ class RegistroProducto{
                
                $this->Class_Usuario = new \Clase\Usuario();
                $this->Class_Usuario->getIdUsuario();
-		//$this->nombreProducto = $datos["nombreProducto"];
+	       
 		//$this->idTipoProducto = $datos["tipoProducto"];
 		//$this->precioProducto = $datos["precioProducto"];
 		//$this->cantidadProducto = $datos["cantidadProducto"];
 		//$this->fotoProducto = $datos["fotoProducto"];
                 include_once  'clases/class/Producto.php';
                 $this->Class_Producto= new \clase\Producto();
+                
                 $this->Class_Producto->setIdTipoProducto($datos["tipoProducto"]);
                 $this->Class_Producto->setNombreProducto($datos["nombreProducto"]);
                 $this->Class_Producto->setPrecioProducto($datos["precioProducto"]);
@@ -65,6 +66,26 @@ class RegistroProducto{
 				$d = false;
 				return $d;
 			}
+                        
 	}
+        public function Verificarcategorias(){
+              $tabla = "tipoproducto";
+			require_once "conexion.php";
+                        
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where descripcionProducto=:item1");
+			
+                        $stmt->execute();
+                        
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$catego[] = $filas;
+        		}
+				return $catego;
+			}else{
+				$d = "error";
+				return $d;
+			}
+                      
+        }
 }
 ?>

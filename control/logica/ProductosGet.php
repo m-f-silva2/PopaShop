@@ -4,13 +4,17 @@
 **/
 
 class ProductosGet{	
-    private $descripcionProducto;
+    private $idtipoProducto;
+    private $Class_Catego;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
 		if (isset($datos)) {
-                  
-		$this->descripcionProducto = $datos["descripcionProducto"];
+                
+                    
+                    
+		$this->idtipoProducto = $datos["tipoProducto"];
+                
                 
                 $this->mostrarProductosPorCategoria();
 		
@@ -43,8 +47,8 @@ class ProductosGet{
             $nombreCatego= "true";
             if($nombreCatego == "tru"){
                 require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on t.idTipoProducto=p.idTipoProducto WHERE t.descripcionProducto = 'reposteria'");
-			//$stmt->bindParam(":item", $this->descripcionProducto, \PDO::PARAM_STR);
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on t.idTipoProducto=p.idTipoProducto WHERE t.descripcionProducto = :item");
+			$stmt->bindParam(":item", $this->idtipoProducto, \PDO::PARAM_STR);
                         $stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {

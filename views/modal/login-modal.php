@@ -46,17 +46,30 @@
                 </form>
                 <form action="" method="post" name="frmRegistro" id="frmRegistro">
                     <h3>Registrarse</h3>
+                    
+                    <!-- Campo de text: Tipo Documento. -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select type="number" class="form-control" placeholder="Tipo de documento" name="regTipoDocumento" id="regTipoDocumento" >
+                         
+                          <option id="descripcionProducto" value="null">Tipo De Documento<?php 
+                          require_once "control/logica/TipoDocumentoGET.php";
+                          $datoCategorias = Logica\TipoDocumentoGET::TraerTipo();
+                          foreach ($datoCategorias as $dato1) {
+                          $descripcion=$dato1["tipoDeDocumento"];
+                          $idTipo=$dato1["idTipoDocumento"];
+                          echo "<option value='$idTipo'>".$descripcion."</option>";
+                          }
+                          ?></option>
+                       </select>
+                            
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                    </div>
                     <!-- Campo de text: Numero Documento. -->
                     <div class="form-group">
                         <div class="input-group">
                             <input type="number" class="form-control" placeholder="Numero de documento" name="regNumeroDocumento" id="regNumeroDocumento">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        </div>
-                    </div>
-                    <!-- Campo de text: Tipo Documento. -->
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="number" class="form-control" placeholder="Tipo de documento" name="regTipoDocumento" id="regTipoDocumento">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
