@@ -41,14 +41,13 @@
                   <tbody id="tblProductos">
                     <?php 
                     require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::MostrarProductosPorCategoria();
+                    $datoProductos = Logica\ProductosGet::productoDetalle();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos'>
                             <ul>
                              <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='250px' height:'150px'></li>  
-                           
-                            </ul>
+                           </ul>
                             </div>";
                     }
                     echo "<div  class='contenedorProductos2' align='center'>
@@ -63,7 +62,7 @@
                       
                   <div class="modal-footer " id="login-footerM">
                       <div align="center">
-                          <button  type="submit" value="enviar" onclick="return cancelar()">Cancelar</button>
+                          <button  type="submit" value="enviar" onclick="return FinalizarCompra()">Cancelar</button>
                           <script>
                           function cancelar(){
                              alert("Cancelado");
