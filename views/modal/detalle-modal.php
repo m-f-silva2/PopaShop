@@ -29,7 +29,6 @@
                     <?php 
                     require_once "control/logica/ProductosGet.php";
                     $datoProductos = Logica\ProductosGet::productoDetalle();
-                    
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos1' >
@@ -49,7 +48,7 @@
                          
                         "; }
                     ?>
-                    <h4>Debe iniciar sesión para comprar</h4>
+                    
                     </tbody>
                      </form>
                 </div>
