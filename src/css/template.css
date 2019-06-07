@@ -26,6 +26,12 @@ header{
     /*background-color: #113e3f; Color verde oscuro*/
     background-color: #163a71;/*Color Azul oscuro*/
 }
+
+/** CORRECCIÓN FORZADA DEL TAMAÑO DE LOS MENUS **/
+.navbar ul li {
+    width: 165px;
+}
+
 #rowHeader{
     width: 100%;
     margin-bottom: 50px;
