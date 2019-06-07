@@ -30,14 +30,17 @@ class Login{
 			switch ($respuesta["idRol"]) {
         		case 1:
         			$_SESSION["rol"] = "Administrador";
+        			$_SESSION["idUsuario"] = $respuesta["idUsuario"];
         			echo "<script>window.location.replace('inicio-admin');</script>";
         			break;
     			case 2:
         			$_SESSION["rol"] = "Cliente";
+        			$_SESSION["idUsuario"] = $respuesta["idUsuario"];
         			echo "<script>window.location.replace('inicio-cliente');</script>";
         			break;
     			case 3:
         			$_SESSION["rol"] = "Vendedor";
+        			$_SESSION["idUsuario"] = $respuesta["idUsuario"];
         			echo "<script>window.location.replace('inicio-vendedor');</script>";
         			break;
 			}

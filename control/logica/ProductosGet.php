@@ -5,6 +5,7 @@
 
 class ProductosGet{	
     private $idtipoProducto;
+    private $idProducto;
     private $Class_Catego;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
@@ -14,6 +15,7 @@ class ProductosGet{
                     
                     
 		$this->idtipoProducto = $datos["tipoProducto"];
+                $this->idProducto = $datos["idProducto"];
                 
                 
                 $this->mostrarProductosPorCategoria();
@@ -112,6 +114,42 @@ class ProductosGet{
 			}
                       
         }
-        }
+       public function  productoPorVendedor(){
+           $tabla = "producto";
+			require_once "conexion.php";
+                        
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where idUsuario=item");
+                        $stmt->bindParam(":item", $this->idProducto, \PDO::PARAM_INT);
+			$stmt->execute();
+                        
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$productos[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+       }
+       public function  productoDetalle(){
+           $tabla = "producto";
+			require_once "conexion.php";
+                        
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where idProducto=3");
+			$stmt->execute();
+                        
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$productos[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+       }
+       }
+        
 
 ?>

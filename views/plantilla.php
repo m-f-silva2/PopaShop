@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="src/css/normalize.css"/>
     <link type="text/css" rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="src/css/template.css"/>
-    
+    <link type="text/css" rel="stylesheet" href="src/css/admin.css"/>
     <script src="src/bootstrap/js/jquery.min.js" type="text/javascript"></script>
     <script src="src/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     <title>PopaShop</title>
@@ -60,6 +60,7 @@
             include_once "modulos/InicioProductos.php";
         }
         include_once "modal/login-modal.php";
+        include_once "modal/detalle-modal.php";
         ?>
     </section>
 
