@@ -12,7 +12,7 @@
                 .contenedorProductos{ margin: auto;width:220px;height: 220px;float: left;margin-right: 50px;margin-bottom: 20px;border: 1px solid #000; background-color: #FFFFFF}
                 ul{list-style: none;margin: 0px; padding: 0px; }
                 ul li{width: 150px; }
-                
+               .botonDetalle{background-color: #4CAF50; /* Green */border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none; display: inline-block;font-size: 16px;}
             </style>
             
                   
@@ -37,7 +37,7 @@
                           }
                           ?></option>
                        </select>
-                      <input class="boton peque aceptar" type="submit" onclick="return catego()"value="Enviar">
+                      <input  type="submit" onclick="return catego()"value="Enviar">
                       
                       <script>
                       function catego(){
@@ -78,7 +78,7 @@
                       <!--=====================================
         tabla de productos
         ======================================-->
-                      <form action="" name="productos" method="post">
+                   
                   <tbody id="tblProductos" >
                     <?php 
                     require_once "control/logica/ProductosGet.php";
@@ -90,20 +90,17 @@
                             <li>".$dato["nombreProducto"]."</li>
                                 <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='110px' height:'70px'></li>             
                                 <li> $ ".$dato["precioProducto"]."</li>
+                                    <button class='botonDetalle' data-toggle='modal' data-target='#detalle-modal'>Dellate</button>
+                             
+                        
                           </ul>
-                             <button class='botonDetalle'data-toggle='modal' data-target='#detalle-modal'>Dellate</button>
-                          <script>
-                          function enviar(){
-                     
-                          alert('Detalle');
-                          
-                      }</script>
+                             
                           </div>  "; }
                     ?>
                   
                   
                   </tbody>
-                  </form>
+                  
                   </table>
                   
               
