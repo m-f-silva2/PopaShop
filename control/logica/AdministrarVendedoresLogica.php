@@ -15,27 +15,11 @@ private $nombreP;
 	}
         }
 
-	public function mostrarEmpresas(){
-
-			$tabla = "empresa";
-			require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
-			$stmt->execute();
-			if ($stmt) {
-				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            		$productos[] = $filas;
-        		}
-				return $productos;
-			}else{
-				$d = "error";
-				return $d;
-			}
-	}
         public function mostrarVendedores(){
             $tabla = "persona";
             $tabla2= "usuario";
 			require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 u on p.idPersona=u.idPersona  WHERE u.idRol=2");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 u on p.idPersona=u.idPersona  WHERE u.idRol=3");
 			$stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {

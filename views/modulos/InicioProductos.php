@@ -90,7 +90,7 @@
                             <li>".$dato["nombreProducto"]."</li>
                                 <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='110px' height:'70px'></li>             
                                 <li> $ ".$dato["precioProducto"]."</li>
-                                    <button class='botonDetalle' data-toggle='modal' data-target='#detalle-modal'>Dellate</button>
+                                    <button class='botonDetalle' data-toggle='modal' data-target='#detalle-modal' value='return enviar()'>Dellate</button>
                              
                         
                           </ul>
