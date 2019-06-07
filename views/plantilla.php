@@ -22,7 +22,7 @@
     <section>
         <?php
 
-        $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor","Compra","Perfil");
+        $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor","Compra");
         //Si no hay una ruta en la url se le asigna inicio.
         if(!isset($_GET["ruta"])){
             $_GET["ruta"] = "inicioProductos";
@@ -58,10 +58,11 @@
         }else{
             include_once "modulos/InicioProductos.php";
         }
-        
+        include_once "modal/perfil-modal.php";
         include_once "modal/login-modal.php";
         include_once "modal/detalle-modal.php";
         include_once "modal/detalle-modal-cliente.php";
+         include_once "modal/editar-perfil-modal.php";
         ?>
     </section>
 

@@ -2,12 +2,12 @@
 
 
 class PerfilLogica{
-   private $Class_Usuario;
+   private $Class_Usuari;
     //Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
              include_once  'clases/class/Usuario.php';
-             $this->Class_Usuario= new \Clase\Usuario();
-               $this->Class_Usuario->setIdUsuario($_SESSION["idUsuario"]);
+             $this->Class_Usuari= new \Clase\Usuario();
+               $this->Class_Usuari->setIdUsuario($_SESSION["idUsuario"]);
                $this->getDato();
     }
     public function getDato() {
@@ -17,7 +17,7 @@ class PerfilLogica{
                         
 			//$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla u inner join $tabla2 p on u.idPersona=p.idPersona where u.idUsuario=:item");
                         $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla u inner join $tabla2 p on u.idPersona=p.idPersona where u.idUsuario=1 ");
-                        $stmt->bindParam(":item", ($this->Class_Usuario->getIdUsuario()), \PDO::PARAM_STR);
+                       // $stmt->bindParam(":item", ($this->Class_Usuari->getIdUsuario()), \PDO::PARAM_STR);
 			$stmt->execute();
 			
                         

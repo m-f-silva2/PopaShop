@@ -1,8 +1,12 @@
 <?php namespace Logica;
 class CompraLogica{
+    private $Class_Usuario;
     //Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct(){
-		
+		include_once  'clases/class/Usuario.php';
+               
+               $this->Class_Usuario = new \Clase\Usuario();
+               $this->Class_Usuario->setIdUsuario($_SESSION["idUsuario"]);
 		//Aqui si se puede acceder a esta funcion de tipo private.
 		$this->registrarUsuario();
 	}
@@ -18,7 +22,8 @@ class CompraLogica{
                                                                         vendedorIdUsuario,
                                                                         fechaFactura,
                                                                         totalFactura,
-                                                                        idCiudad) values(NULL,NUL1,3,'2019-04-08',9600,1) ");
+                                                                        idCiudad) values(NULL,:item,3,'2019-04-08',9600,1) ");
+                                            $stmt->bindParam(":item", $this->Class_Usuario->getIdUsuario(), \PDO::PARAM_INT);
                                                                         //$stmt->bindParam(":item8", $this->usuario, \PDO::PARAM_STR);
                                                                         //$stmt->bindParam(":item9", $this->contrasena, \PDO::PARAM_STR);
                                                                         //$stmt->bindParam(":item10", $this->idRol, \PDO::PARAM_STR);

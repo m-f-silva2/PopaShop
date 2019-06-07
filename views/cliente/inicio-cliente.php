@@ -82,11 +82,7 @@
                                         </div>
                                     </div>";
                             }
-                            echo "<!--<script>
-                                    function enviar(){
-                                    alert('Detalle');
-                                    }
-                                </script> -->"
+                           
                             ?>
                         </div>
                     

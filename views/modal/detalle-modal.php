@@ -21,7 +21,7 @@
                     <h4 class="modal-title">Detalle</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    
                     <!--=====================================
        Imagen detalle
         ======================================-->
@@ -34,7 +34,7 @@
                             <div class='contenedorProductos1' >
                             <ul>
                            
-                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='210px' height:'70px'></li>             
+                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' ></li>             
                                 
                           </ul>
                           </div>
@@ -48,9 +48,9 @@
                          
                         "; }
                     ?>
-                    
+                    <br><h4>Debe iniciar sesión para realiza la compra</h4>
                     </tbody>
-                     </form>
+                     
                 </div>
                 
             </div>

@@ -40,7 +40,7 @@
                                 <li><a id="a"  href="agregarProducto">Agregar Producto</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a id="a" href="Perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                                <li id="buttonLi"><a id="buttonA"><button data-toggle="modal" data-target="#perfil-modal" id="buttonLogin"><span class="glyphicon glyphicon-user"></span>Perfil</button></a>
                                 <li><a id="a" href="salir"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                             </ul>
                         ';
@@ -56,12 +56,10 @@
                             <ul class="nav navbar-nav">
                                 <li><a id="a"  href="contactenos">Contactenos</a></li>
                             </ul>
-                             <ul class="nav navbar-nav">
-                                <li><a id="a"  href="Compra">Compra</a></li>
-                            </ul>
+                            
                             <ul class="nav navbar-nav navbar-right">
                            
-                                <li><a id="a" href="Perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                                <li id="buttonLi"><a id="buttonA"><button data-toggle="modal" data-target="#perfil-modal" id="buttonLogin"><span class="glyphicon glyphicon-user"></span>Perfil</button></a>
                                 <li><a id="a" href="salir"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                             </ul>
                         ';
