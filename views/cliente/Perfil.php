@@ -1,7 +1,7 @@
 <br><br><br>
-<div  id="" align="center" id="Perfil">
-    <div class="col-md-12" style="background-color: #eceff2" align="center">
-        <div class="content-wrapper"align="center">
+<div   align="center" id="Perfil">
+    <div  style="background-color: #eceff2" align="center">
+        <div align="center">
 <?php               require_once "control/logica/PerfilLogica.php";
                     $datoProductos = Logica\PerfilLogica::getDato();
                     foreach ($datoProductos as $dato) {
