@@ -91,7 +91,7 @@
                                 <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='110px' height:'70px'></li>             
                                 <li> $ ".$dato["precioProducto"]."</li>
                           </ul>
-                             <li id='buttonLi'><a id='buttonA'><button class='botonDetalle'data-toggle='modal' data-target='#modalAgregarSucursal'>Dellate</button></a>
+                             <button class='botonDetalle'data-toggle='modal' data-target='#detalle-modal'>Dellate</button>
                           <script>
                           function enviar(){
                      
