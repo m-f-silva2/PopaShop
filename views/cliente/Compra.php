@@ -53,35 +53,42 @@
                     echo "<div  class='contenedorProductos2' align='center'>
                             <ul>
                             <li ><h3>".$dato["nombreProducto"]."</h3></li>
-                                <br> 
-                                <li><h4> $ ".$dato["precioProducto"]."</h4></li>
+                                <br><li> Categoria: ".$dato["descripcionProducto"]."</li>
+                                <br><li><h4> $ ".$dato["precioProducto"]."</h4></li>
+                                    
+                            
+                            </ul>
+                            </div>";
+                   
+                    echo "<div  class='contenedorProductos2' align='center'>
+                            <ul><li><h4>Datos del vendedor</h4></li>
+                            <br><li ><h4>".$dato["nombrePersona"]." ".$dato["apellidoPersona"]."</h4></li>
+                                <br><li> Categoria: ".$dato["correoPersona"]."</li>
+                                <br><li> ".$dato["telefonoPersona"]."</li>
+                                    
                             
                             </ul>
                             </div>";
                     ?>
-                      
+                      <!--- botones cancelar, finalizar compra-->
                   <div class="modal-footer " id="login-footerM">
                       <div align="center">
-                          <button  type="submit" value="enviar" onclick="return FinalizarCompra()">Cancelar</button>
+                          <a href='inicio-cliente'><button>Cancelar</button></a></script>
+                      <a><button data-toggle="modal" data-target="#cargando"  class='botonDetalle' type="submit" value="enviar" onclick="return FinalizarCompra()">Finalizar Compra</button></a>
                           <script>
-                          function cancelar(){
-                             alert("Cancelado");
-                              <?php 
-                               
-                          ?>
-                          }
-                          </script>
-                          
-                          <button  type="submit" value="enviar" onclick="return FinalizarCompra()">Finalizar Compra</button>
-                          <script>
+                             
                              function FinalizarCompra(){
-                            <?php
+                            
+                                <?php
                             require "control/logica/CompraLogica.php";
                             $datosProducto = array();
                             $registro = new Logica\CompraLogica($datosProducto);
                             ?>
+                            
+                            
                                      alert("Compra Exitosa");
-                             }</script>
+                             }
+                                                       </script>
                           
                       </div></div>
                          

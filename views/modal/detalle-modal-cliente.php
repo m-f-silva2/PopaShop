@@ -34,7 +34,7 @@
                             <div class='contenedorProductos1' >
                             <ul>
                            
-                                <li><img src='src/assets/productos/".$dato["fotoProducto"]."' ></li>             
+                                <li><img style='height: 208px;width: 217px;' src='src/assets/productos/".$dato["fotoProducto"]."' ></li>             
                                 
                           </ul>
                           </div>
@@ -42,13 +42,16 @@
                           <!--=====================================
                           Texto detalle
                           ======================================-->
-                          <ul> <li>".$dato["nombreProducto"]."</li>
-                              <li> $ ".$dato["precioProducto"]."</li></ul>
+                          <ul> <li ><h3>".$dato["nombreProducto"]."</h3></li>
+                              <li> $ ".$dato["precioProducto"]."</li> 
+                             <br><li> Categoria: ".$dato["descripcionProducto"]."</li> 
+                                 <br><li><h4> $ ".$dato["precioProducto"]."</h4>
+                             </ul>
                          </div>  
                          
                         "; }
                     ?>
-                    <li><a id='a'  href='Compra'><button>Comprar</button></a></li>
+                    <li><a   href='Compra'><button class='botonDetalle'>Comprar</button></a></li>
                     
                     </tbody>
                     

@@ -41,6 +41,10 @@ public function registrarDetalle(){
     $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla2 (idDetalleFactura, idFactura,idProducto,cantidad) values(NULL,$idFactura,3,5)");
                                                                         $stmt->execute();
                                                                         }
+                                                                        
+public function stock(){
+ 
+    }
 
 public function traerIdFactura(){
     require_once 'conexion.php';

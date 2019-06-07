@@ -63,6 +63,7 @@
         include_once "modal/detalle-modal.php";
         include_once "modal/detalle-modal-cliente.php";
          include_once "modal/editar-perfil-modal.php";
+         include_once "modal/Cargando.php";
         ?>
     </section>
 
