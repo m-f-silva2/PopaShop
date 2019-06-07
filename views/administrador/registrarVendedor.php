@@ -13,10 +13,11 @@
     </div>
     <div class="row" id="row1">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="modal-body" align="center">
                 <form action="" method="post" name="frmRegistroVendedor" id="frmRegistroVendedor">
 
+                    <div class="col-md-3">
                         <!-- Campo de text: Tipo Documento. -->
                         <div class="form-group">
                             <div class="input-group">
@@ -92,6 +93,8 @@
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-3">
                         <!-- Campo de text: Usuario. -->
                         <div class="form-group">
                             <div class="input-group">
@@ -126,12 +129,13 @@
                                         'contrasena' => $_POST['regContrasena']
                                     );
 
-                                    //require "control/logica/registrarVendedor.php";
-                                    //$registro = new Logica\RegistrarVendedor($datosRegistro);
+                                    require "control/logica/registrarVendedor.php";
+                                    $registro = new Logica\RegistrarVendedor($datosRegistro);
                                 }
                                 ?>
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
