@@ -112,6 +112,23 @@ class ProductosGet{
 			}
                       
         }
+       public function  productoPorVendedor(){
+           $tabla = "producto";
+			require_once "conexion.php";
+                        
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where idUsuario=3");
+			$stmt->execute();
+                        
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$productos[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+       }
         }
 
 ?>

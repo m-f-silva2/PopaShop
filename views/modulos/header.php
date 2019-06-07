@@ -31,7 +31,7 @@
                     case 'Vendedor':
                         echo '
                             <ul class="nav navbar-nav">
-                                <li><a id="a"  href="inicio-vendedor">Inicio</a></li>
+                                <li><a id="a"  href="inicio-vendedor">Mis Productos</a></li>
                             </ul>
                             <ul class="nav navbar-nav">
                                 <li><a id="a"  href="ventas">Mis ventas</a></li>
