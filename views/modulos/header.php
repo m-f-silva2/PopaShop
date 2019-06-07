@@ -40,7 +40,7 @@
                                 <li><a id="a"  href="agregarProducto">Agregar Producto</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a id="a" href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                                <li><a id="a" href="Perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
                                 <li><a id="a" href="salir"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
                             </ul>
                         ';

@@ -62,7 +62,7 @@
                             tabla de productos
                 ======================================-->
                 <div class="contenedorProductos">
-                    <form  class="formProductos" action="" name="productos" method="post">
+                  
                         <div class="tablaProductos">
                             <?php
                             require_once "control/logica/ProductosGet.php";
@@ -89,7 +89,7 @@
                                 </script> -->"
                             ?>
                         </div>
-                    </form>
+                    
                 </div>
 
 
