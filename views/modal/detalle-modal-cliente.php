@@ -48,7 +48,7 @@
                          
                         "; }
                     ?>
-                    
+                    <li><a id='a'  href='Compra'><button>Comprar</button></a></li>
                     </tbody>
                      </form>
                 </div>
