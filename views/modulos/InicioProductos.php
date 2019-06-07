@@ -12,7 +12,7 @@
                 .contenedorProductos{ margin: auto;width:220px;height: 220px;float: left;margin-right: 50px;margin-bottom: 20px;border: 1px solid #000; background-color: #FFFFFF}
                 ul{list-style: none;margin: 0px; padding: 0px; }
                 ul li{width: 150px; }
-                .botonDetalle{background-color: #4CAF50; /* Green */border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none; display: inline-block;font-size: 16px;}
+                
             </style>
             
                   
