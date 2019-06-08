@@ -2,10 +2,8 @@
 /*
  *Clase Vendedor.
 **/
-
-class Vendedor{
-	//Atributos
-	private $empresa;
+include "clases/abstract/Persona.php";
+class Vendedor extends Persona{
 
 	//Metodos
 	//Constructor
@@ -26,14 +24,6 @@ class Vendedor{
 	}
 	public function actualizar(){
 		
-	}
-
-	//Getter y setters de atributos.
-	public function setEmpresa($empresa){
-		$this->empresa = $empresa;
-	}
-	public function getEmpresa(){
-		return $this->empresa;
 	}
 }
 ?>

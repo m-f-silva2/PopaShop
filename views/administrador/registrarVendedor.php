@@ -129,8 +129,8 @@
                                         'contrasena' => $_POST['regContrasena']
                                     );
 
-                                    require "control/logica/registrarVendedor.php";
-                                    $registro = new Logica\RegistrarVendedor($datosRegistro);
+                                    require "clases/class/Administrador.php";
+                                    $registro = new Clase\Administrador($datosRegistro);
                                 }
                                 ?>
                             </div>
