@@ -32,7 +32,7 @@
                         echo "
                             <div  class='contenedorProductos'>
                             <ul>
-                            <li><img src='src/assets/productos/".$dato["avatarPersona"]."' ></li>     
+                            <li><img style=' width: 100px; height: 100px;' src='src/assets/monigotes/".$dato["avatarPersona"]."' ></li>     
                             <br><li>Nombre: ".$dato["nombrePersona"]." ".$dato["apellidoPersona"]."</li>
                                 <br><li>Correo: ".$dato["correoPersona"]."</li>
                                 <br><li> Telefono ".$dato["telefonoPersona"]."</li>

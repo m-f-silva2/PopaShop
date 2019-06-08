@@ -1,4 +1,4 @@
-<div class="content-wrapper" id="compra">
+<div class="compra" id="compra">
     <div class="container" style="width: auto;">
       <div class="col-md-2"></div>
       <div class="col-md-8">
@@ -18,10 +18,12 @@
         Mis Productos
       </h3>
       <ol class="breadcrumb">
-        <li><a href="inicio-vendedor"><i class="fa fa-home"></i> Inicio</a></li>
+        <li><a href="inicio-cliente"><i class="fa fa-home"></i> Inicio</a></li>
         <li class="active">Productos</li>
+        
       </ol>
     </section>
+          <div class="compraDeta"></div>
 
     <!-- Main content -->
     <section class="content" align="center">
@@ -41,7 +43,7 @@
                   <tbody id="tblProductos">
                     <?php 
                     require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::productoDetalle();
+                    $datoProductos = Logica\ProductosGet::productoDetalle1();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div class='contenedorProductos'>
@@ -74,21 +76,30 @@
                   <div class="modal-footer " id="login-footerM">
                       <div align="center">
                           <a href='inicio-cliente'><button>Cancelar</button></a></script>
-                      <a><button data-toggle="modal" data-target="#cargando"  class='botonDetalle' type="submit" value="enviar" onclick="return FinalizarCompra()">Finalizar Compra</button></a>
+                      <button   class='botonCompra' id="botonCompra" name="botonCompra" type="submit" value="enviar" >Finalizar Compra</button>
                           <script>
+                              botonCompra.addEventListener("click", FinalizarCompra());
                              
                              function FinalizarCompra(){
                             
                                 <?php
-                            require "control/logica/CompraLogica.php";
-                            $datosProducto = array();
+                                require_once "control/logica/ProductosGet.php";
+                                require "control/logica/CompraLogica.php";
+                                $datoProductos = Logica\ProductosGet::productoDetalle1();
+                                foreach ($datoProductos as $dato) {
+                            
+                            $datosProducto = array(
+                                'vendedorIdUsuario' => $dato['idUsuario'],
+                                    'idProducto' => $dato['idProducto']
+                            );
+                            
+                            }
+                            
                             $registro = new Logica\CompraLogica($datosProducto);
                             ?>
                             
-                            
-                                     alert("Compra Exitosa");
                              }
-                                                       </script>
+                             </script>
                           
                       </div></div>
                          

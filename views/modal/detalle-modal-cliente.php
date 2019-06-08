@@ -27,8 +27,10 @@
         ======================================-->
                     <tbody id="tblProductos">
                       <div id="contDetalleProducto1">
-                      </div>
-                    <a id="a"  href="Compra"><button>Comprar</button></a>
+                      </div><a id="a"  href="Compra"><button>Comprar</button></a>
+                          
+                    
+                    
                     </tbody>
                      
                 </div>

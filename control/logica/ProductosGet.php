@@ -150,6 +150,27 @@ class ProductosGet{
 				return $d;
 			}
        }
+       public function  productoDetalle1(){
+           $tabla = "producto";
+           $tabla2 = "tipoproducto";
+           $tabla3="usuario";
+           $tabla4="persona";
+			require_once "conexion.php";
+                        
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on p.idTipoProducto=t.idTipoProducto inner join $tabla3 u on u.idUsuario=p.idUsuario INNER join $tabla4 pe on pe.idPersona=u.idPersona where idProducto=3");
+			//$stmt->bindParam(":item1", $v_idProducto, \PDO::PARAM_INT);
+			$stmt->execute();
+                        
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$productos[] = $filas;
+        		}
+				return $productos;
+			}else{
+				$d = "error";
+				return $d;
+			}
+       }
        }
         
 
