@@ -7,8 +7,11 @@
     <link type="text/css" rel="stylesheet" href="src/css/normalize.css"/>
     <link type="text/css" rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="src/css/template.css"/>
+    <link type="text/css" rel="stylesheet" href="src/datatables.net-bs/dataTables.bootstrap.min.css"/>
     <script src="src/bootstrap/js/jquery.min.js" type="text/javascript"></script>
     <script src="src/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="src/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="src/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <title>PopaShop</title>
 </head>
 <body>

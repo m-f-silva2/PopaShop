@@ -3,9 +3,10 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <section class="content-header">
-            <h3>Registrar vendedor</h3>
+            
             <ol class="breadcrumb">
-                <li><a href="inicio-admin"><i class="fa fa-home"></i> Inicio</a></li>
+                <li><h3>Registrar vendedor</h3></li>
+                <li><a href="./"><i class="fa fa-home"></i> Inicio</a></li>
                 <li class="active">Registrar vendedor</li>
             </ol>
             </section>
@@ -13,11 +14,11 @@
     </div>
     <div class="row" id="row1">
         <div class="col-md-2"></div>
-        <div class="col-md-7">
+        <div class="col-md-7" style="background-color: #e0e3e7;margin-bottom: 15px;">
             <div class="modal-body" align="center">
                 <form action="" method="post" name="frmRegistroVendedor" id="frmRegistroVendedor">
-
-                    <div class="col-md-3">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
                         <!-- Campo de text: Tipo Documento. -->
                         <div class="form-group">
                             <div class="input-group">
@@ -72,6 +73,8 @@
                                 <span class="icon-bar"></span>
                             </div>
                         </div>
+                        </div>
+                    <div class="col-md-5">
                         <!-- Campo de text: Correo. -->
                         <div class="form-group">
                             <div class="input-group">
@@ -93,8 +96,7 @@
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
+                    
                         <!-- Campo de text: Usuario. -->
                         <div class="form-group">
                             <div class="input-group">
@@ -109,7 +111,9 @@
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             </div>
                         </div>
-                        <div class="modal-footer " id="login-footerM">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="modal-footer " id="login-footerM">
                             <div align="center">
                                 <button type="submit" value="registrarse">REGISTRARSE</button>
                                 <?php 
@@ -135,9 +139,9 @@
                                 ?>
                             </div>
                         </div>
-                    </div>
+                        </div>
                 </form>
             </div>
-        </div>
+        </div><br>
     </div>
 </div>

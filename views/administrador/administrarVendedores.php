@@ -1,43 +1,71 @@
-<div align="center">  <h1 >Administrar vendedores</h1>  </div>
-<table class="table table-responsive table-hover" id="tablaProductos" style="width: 500px; margin: auto; border: 1px solid #000; padding: 0px; height: 250px;" align="center" >
-                  <thead style="background-color: #eceff2;">
-                    <th id="tablaProdTh">Empresa</th>
-                    <th id="tablaProdTh">Numero de Contacto</th>
-                    
-                 
-                 
-                  </thead>
-<?php 
+<div class="content-wrapper">
+    <div class="container" style="width: auto;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <section class="content-header">            
+            <ol class="breadcrumb">
+                <li><h3>Administrar vendedores</h3></li>
+                <li><a href="./"><i class="fa fa-home"></i> Inicio</a></li>
+                <li class="active">Administrar vendedores</li>
+            </ol>
+            </section>
+        </div>
+    </div>
+    <div class="row" id="row1" align="center">
+        <div class="col-md-2"></div>
+<div class="col-md-8">
+<table id="example1" class="table table-bordered table-striped" id="tablaVendedores" align="center" >
+                <thead>
+                <tr>
+                  <th>Documento</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>
+                  <th>Direccion</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                    <?php 
                     require_once "control/logica/AdministrarVendedoresLogica.php";
                     $datoProductos = Logica\AdminVendedor::mostrarVendedores();
                     foreach ($datoProductos as $dato) {
                         echo "
-                            <div>
-                            <tr><th>".$dato["nombrePersona"]."</th>
-                                <th>".$dato["correoPersona"]."</th></tr>
-                            
-                            </div>"; }
+                            <tr>
+                                <td>".$dato["documentoPersona"]."</td>
+                                <td>".$dato["nombrePersona"]."</td>
+                                <td>".$dato["apellidoPersona"]."</td>
+                                <td>".$dato["correoPersona"]."</td>
+                                <td>".$dato["telefonoPersona"]."</td>
+                                <td>".$dato["direccionPersona"]."</td>
+                            </tr>
+                            "; }
                     ?>
-                  </table>
-<div align="center">  <h1 >Administrar Empresas</h1>  </div>
-<table class="table table-responsive table-hover" id="tablaProductos" style="width: 500px; margin: auto; border: 1px solid #000; padding: 0px; height: 250px;" align="center">
-                  <thead style="background-color: #eceff2;">
-                    <th id="tablaProdTh">Empresa</th>
-                    <th id="tablaProdTh">Numero de Contacto</th>
-                    
-                  </thead>
-  
-
-
-                        <?php 
-                    require_once "control/logica/AdministrarVendedoresLogica.php";
-                    $datoProductos = Logica\AdminVendedor::mostrarEmpresas();
-                    foreach ($datoProductos as $dato) {
-                        echo "
-                            <div  class='contenedorProductos'>
-                            <tr><th>".$dato["nombreEmpresa"]."</th>
-                                <th>".$dato["contactoEmpresa"]."</th></tr>
-                            
-                            </div>"; }
-                    ?>
-</table>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Documento</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>
+                  <th>Direccion</th>
+                </tr>
+                </tfoot>
+              </table>
+          </div>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+</div>
