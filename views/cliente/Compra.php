@@ -12,7 +12,6 @@
                         echo "<div style='margin-left: 644px;'><tr><th>".$dato["nombrePersona"]."</th>
                                 <th>".$dato["apellidoPersona"]."</th></tr></div>";
                     }
-                    
                     ?>
           
         Mis Productos
@@ -42,35 +41,35 @@
             </style>
                   <tbody id="tblProductos">
                     <?php 
-                    require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::productoDetalle1();
-                    foreach ($datoProductos as $dato) {
-                        echo "
-                            <div class='contenedorProductos'>
-                            <ul>
-                             <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='250px' height:'150px'></li>  
-                           </ul>
-                            </div>";
+                    if ($_POST["idCompraProducto"] != null) {
+                      require_once "control/logica/ProductosGet.php";
+                      $datoProductos = Logica\ProductosGet::productoDetalle($_POST["idCompraProducto"]);
+                      foreach ($datoProductos as $dato) {
+                          echo "
+                              <div class='contenedorProductos'>
+                              <ul>
+                               <li><img src='src/assets/productos/".$dato["fotoProducto"]."' width='250px' height:'150px'></li>  
+                             </ul>
+                              </div>";
+                      }
+                      echo "<div  class='contenedorProductos2' align='center'>
+                              <ul>
+                              <li ><h3>".$dato["nombreProducto"]."</h3></li>
+                                  <br><li> Categoria: ".$dato["descripcionProducto"]."</li>
+                                  <br><li><h4> $ ".$dato["precioProducto"]."</h4></li>
+                              </ul>
+                              </div>";
+                     
+                      echo "<div  class='contenedorProductos2' align='center'>
+                              <ul><li><h4>Datos del vendedor</h4></li>
+                              <br><li ><h4>".$dato["nombrePersona"]." ".$dato["apellidoPersona"]."</h4></li>
+                                  <br><li> Categoria: ".$dato["correoPersona"]."</li>
+                                  <br><li> ".$dato["telefonoPersona"]."</li>
+                                      
+                              
+                              </ul>
+                              </div>";
                     }
-                    echo "<div  class='contenedorProductos2' align='center'>
-                            <ul>
-                            <li ><h3>".$dato["nombreProducto"]."</h3></li>
-                                <br><li> Categoria: ".$dato["descripcionProducto"]."</li>
-                                <br><li><h4> $ ".$dato["precioProducto"]."</h4></li>
-                                    
-                            
-                            </ul>
-                            </div>";
-                   
-                    echo "<div  class='contenedorProductos2' align='center'>
-                            <ul><li><h4>Datos del vendedor</h4></li>
-                            <br><li ><h4>".$dato["nombrePersona"]." ".$dato["apellidoPersona"]."</h4></li>
-                                <br><li> Categoria: ".$dato["correoPersona"]."</li>
-                                <br><li> ".$dato["telefonoPersona"]."</li>
-                                    
-                            
-                            </ul>
-                            </div>";
                     ?>
                       <!--- botones cancelar, finalizar compra-->
                   <div class="modal-footer " id="login-footerM">

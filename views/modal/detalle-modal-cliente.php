@@ -21,18 +21,11 @@
                     <h4 class="modal-title" id="tituloDetalle">Detalle</h4>
                 </div>
                 <div class="modal-body">
-                    
-                    <!--=====================================
-       Imagen detalle
-        ======================================-->
                     <tbody id="tblProductos">
                       <div id="contDetalleProducto1">
-                      </div><a id="a"  href="Compra"><button>Comprar</button></a>
-                          
-                    
-                    
+                        <!-- Aqui se carga el id del producto y se oculta-->
+                      </div>
                     </tbody>
-                     
                 </div>
                 
             </div>
