@@ -129,14 +129,15 @@ class ProductosGet{
 				return $d;
 			}
        }
-       public function  productoDetalle(){
+       public function  productoDetalle($v_idProducto){
            $tabla = "producto";
            $tabla2 = "tipoproducto";
            $tabla3="usuario";
            $tabla4="persona";
 			require_once "conexion.php";
                         
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on p.idTipoProducto=t.idTipoProducto inner join $tabla3 u on u.idUsuario=p.idUsuario INNER join $tabla4 pe on pe.idPersona=u.idPersona where idProducto=3");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on p.idTipoProducto=t.idTipoProducto inner join $tabla3 u on u.idUsuario=p.idUsuario INNER join $tabla4 pe on pe.idPersona=u.idPersona where idProducto=:item1");
+			$stmt->bindParam(":item1", $v_idProducto, \PDO::PARAM_INT);
 			$stmt->execute();
                         
 			if ($stmt) {

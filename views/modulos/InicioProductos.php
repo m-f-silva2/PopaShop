@@ -75,19 +75,28 @@
                                         <div class='li' class='dinerito'> $ " . $dato["precioProducto"] . "</div>
                                         <div class='li' id='buttonLi'>
                                             <a id='buttonA'>
-                                                <button class='botonDetalle'data-toggle='modal' data-target='#detalle-modal'>
+                                                <button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$dato["idProducto"]."'>
                                                     Dellate
                                                 </button>
                                             </a>
                                         </div>
                                     </div>";
                             }
-                           
+                            echo '<script>
+                                $(document).ready(function(){
+                                        $(document).on("click", "#detail", function(){       
+                                var id=$(this).val();
+                                
+                                  $.post("views/modal/detalleProducto.php?idProducto="+id, function(respuesta){
+                                    $("#contDetalleProducto").html(respuesta);
+                                });
+                                
+                              });
+                              });</script>';
                             ?>
                         </div>
                     
                 </div>
-
 
             </section>
 
