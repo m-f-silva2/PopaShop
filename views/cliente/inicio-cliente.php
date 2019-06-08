@@ -61,7 +61,9 @@
                         foreach ($datoProductos as $dato) {
                             echo "
                                 <div class='ul'>
+                                
                                     <div class='li'>" . $dato["nombreProducto"] . "</div>
+                                        <div class='li'><img src='src/assets/productos/" . $dato["fotoProducto"] . "'></div>
                                     <div class='li' class='dinerito'> $ " . $dato["precioProducto"] . "</div>
                                     <div class='li' id='buttonLi'>
                                         <a id='buttonA'>

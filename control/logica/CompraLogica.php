@@ -2,10 +2,17 @@
 class CompraLogica{
     private $Class_Usuario;
     private $vendedorIdUsuario;
+    private $precioProducto;
+    private $cantidad;
+   
     //Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
            
-	    $this->vendedorIdUsuario=$datos["vendedorIdUsuario"];	
+	    $this->vendedorIdUsuario=$datos["vendedorIdUsuario"];
+             $this->idProducto=$datos["idProducto"];
+              $this->precioProducto=$datos["precioProducto"];
+              $this->cantidad=$datos["count"];
+           
             
             include_once  'clases/class/Usuario.php';
                
@@ -18,7 +25,7 @@ class CompraLogica{
   
     
     public function registrarUsuario(){
- 
+     $fechaFactura=date("y-m-d");
     
     require_once "conexion.php";
     $tabla = "factura";
@@ -27,10 +34,10 @@ class CompraLogica{
                                                                         vendedorIdUsuario,
                                                                         fechaFactura,
                                                                         totalFactura,
-                                                                        idCiudad) values(NULL,:item,3,'2019-04-08',9600,1) ");
+                                                                        idCiudad) values(NULL,:item,:item8,'$fechaFactura',:item1,1) ");
                                             $stmt->bindParam(":item", $this->Class_Usuario->getIdUsuario(), \PDO::PARAM_INT);
-                                                                       // $stmt->bindParam(":item8", $this->vendedorIdUsuario, \PDO::PARAM_INT);
-                                                                        //$stmt->bindParam(":item9", $this->contrasena, \PDO::PARAM_STR);
+                                            $stmt->bindParam(":item8", $this->vendedorIdUsuario, \PDO::PARAM_INT);
+                                             $stmt->bindParam(":item1", $this->precioProducto, \PDO::PARAM_INT);
                                                                         //$stmt->bindParam(":item10", $this->idRol, \PDO::PARAM_STR);
                                                                         //$stmt->bindParam(":item4", $this->idPersona, \PDO::PARAM_STR);
                                                                         $stmt->execute();
@@ -43,8 +50,10 @@ public function registrarDetalle(){
         $respuesta= $this->traerIdFactura();
         $idFactura = $respuesta["idFactura"];
     $tabla2 ="detallefactura";
-    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla2 (idDetalleFactura, idFactura,idProducto,cantidad) values(NULL,$idFactura,3,5)");
-                                                                        $stmt->execute();
+    $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla2 (idDetalleFactura, idFactura,idProducto,cantidad) values(NULL,$idFactura,:item9,8)");
+    $stmt->bindParam(":item9", $this->idProducto, \PDO::PARAM_INT);   
+    //$stmt->bindParam(":item3", $this->cantidad, \PDO::PARAM_INT);   
+    $stmt->execute();
                                                                         }
                                                                         
 public function stock(){
