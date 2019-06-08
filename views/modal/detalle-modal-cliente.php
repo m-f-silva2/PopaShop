@@ -18,43 +18,19 @@
                 ul{list-style: none;margin: 0px; padding: 0px; }
                 ul li{width: 210px; }  
             </style>
-                    <h4 class="modal-title">Detalle</h4>
+                    <h4 class="modal-title" id="tituloDetalle">Detalle</h4>
                 </div>
                 <div class="modal-body">
-                   
+                    
                     <!--=====================================
        Imagen detalle
         ======================================-->
-                    <tbody id="tblProductos" >
-                    <?php 
-                    require_once "control/logica/ProductosGet.php";
-                    $datoProductos = Logica\ProductosGet::productoDetalle();
-                    foreach ($datoProductos as $dato) {
-                        echo "
-                            <div class='contenedorProductos1' >
-                            <ul>
-                           
-                                <li><img style='height: 208px;width: 217px;' src='src/assets/productos/".$dato["fotoProducto"]."' ></li>             
-                                
-                          </ul>
-                          </div>
-                          <div class='contenedorProductos2'>
-                          <!--=====================================
-                          Texto detalle
-                          ======================================-->
-                          <ul> <li ><h3>".$dato["nombreProducto"]."</h3></li>
-                              <li> $ ".$dato["precioProducto"]."</li> 
-                             <br><li> Categoria: ".$dato["descripcionProducto"]."</li> 
-                                 <br><li><h4> $ ".$dato["precioProducto"]."</h4>
-                             </ul>
-                         </div>  
-                         
-                        "; }
-                    ?>
-                    <li><a   href='Compra'><button class='botonDetalle'>Comprar</button></a></li>
-                    
+                    <tbody id="tblProductos">
+                      <div id="contDetalleProducto1">
+                      </div>
+                    <a id="a"  href="Compra"><button>Comprar</button></a>
                     </tbody>
-                    
+                     
                 </div>
                 
             </div>
