@@ -28,9 +28,25 @@
         $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor","Compra");
         //Si no hay una ruta en la url se le asigna inicio.
         if(!isset($_GET["ruta"])){
-            $_GET["ruta"] = "InicioProductos";
-            include_once "views/modulos/".$_GET["ruta"].".php";
-            //include_once "cliente/inicio-cliente.php";
+            switch ($_SESSION["rol"]) {
+                case 'Administrador':
+                    $ruta = 'administrador';
+                    $_GET["ruta"] = 'inicio-admin';
+                    break;
+                case 'Vendedor':
+                    $ruta = 'vendedor';
+                    $_GET["ruta"] = 'inicio-vendedor';
+                    break;
+                case 'Cliente':
+                    $ruta = 'cliente';
+                    $_GET["ruta"] = 'inicio-cliente';
+                    break;
+                default:
+                    $ruta = 'modulos';
+                    $_GET["ruta"] = 'InicioProductos';
+                    break;
+            }
+            //include_once "views/".$ruta."/".$_GET["ruta"].".php";
         }
         
         //Al dar click en un enlace, obtener validar get

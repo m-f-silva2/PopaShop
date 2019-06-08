@@ -87,7 +87,7 @@ class Administrador extends Usuario{
             }
 	}
 	public function editarVendedor(){
-
+		
 	}
 	public function eliminarVendedor(){
 		
