@@ -25,8 +25,8 @@
         $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor","Compra");
         //Si no hay una ruta en la url se le asigna inicio.
         if(!isset($_GET["ruta"])){
-            $_GET["ruta"] = "inicioProductos";
-            include_once "/".$_GET["ruta"].".php";
+            $_GET["ruta"] = "InicioProductos";
+            include_once "views/modulos/".$_GET["ruta"].".php";
             //include_once "cliente/inicio-cliente.php";
         }
         
