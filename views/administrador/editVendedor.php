@@ -24,27 +24,26 @@ if ($_POST["idVerVendedor"]) {
     <div class="row" id="row1">
         <div class="col-md-2">
         </div>
-        <div class="col-md-7" style="background-color: #e0e3e7;margin-bottom: 15px;">
+        <div class="col-md-8" style="background-color: #e0e3e7;margin-bottom: 15px;">
             <div class="modal-body" align="center">
                 <form action="" method="post" name="frmRegistroVendedor" id="frmRegistroVendedor" enctype="multipart/form-data">
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <!-- Profile Image -->
                           <div class="box box-primary">
                             <div class="box-body box-profile">
-                                <img class="profile-user-img img-responsive img-circle" src="src/assets/monigotes/<?php echo $reg[0]["avatarPersona"];?>" alt="avatar vendedor">
-                                <h3 class="profile-username text-center"><?php echo $reg[0]["nombrePersona"]." ".$reg[0]["apellidoPersona"];?></h3>
-                                <p class="text-muted text-center">Vendedor</p>
+                                <img class="profile-user-img img-responsive img-circle" src="src/assets/monigotes/<?php echo $reg[0]["avatarPersona"];?>" alt="avatar vendedor"><br>
                                 <div align="left">
                                     <p class="col-sm-4">Cambiar: </p>
-                                    <input type="file" name="regImgArchivo"/>
+                                    <input type="file" class="col-sm-6" name="regImgArchivo"/>
                                 </div>
                             </div>
                             <!-- /.box-body -->
                           </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4" align="left">
                         <!-- Campo de text: Tipo Documento. -->
                         <div class="form-group">
+                            <label for="regTipoDocumento">Tipo de documento:</label>
                             <div class="input-group">
                                 <select type="number" class="form-control" placeholder="Tipo de documento" name="regTipoDocumento" id="regTipoDocumento" >
                               <option id="descripcionProducto" value="<?php echo $reg[0]["idTipoDocumento"];?>"><?php echo $reg[0]["tipoDeDocumento"];?> <?php
@@ -59,19 +58,21 @@ if ($_POST["idVerVendedor"]) {
                         </div>
                         <!-- Campo de text: Numero Documento. -->
                         <div class="form-group">
+                            <label for="regNumeroDocumento">Numero de documento:</label>
                             <div class="input-group">
-
                                 <input type="number" class="form-control" placeholder="Numero de documento" name="regNumeroDocumento" id="regNumeroDocumento" value="<?php echo $reg[0]["documentoPersona"];?>">
                             </div>
                         </div>
                         <!-- Campo de text: Nombre. -->
                         <div class="form-group">
+                            <label for="regNombre">Nombre:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Nombres" name="regNombre" id="regNombre" value="<?php echo $reg[0]["nombrePersona"];?>">
                             </div>
                         </div>
                         <!-- Campo de text: Apellido. -->
                         <div class="form-group">
+                            <label for="regApellido">Apellido:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Apellidos" name="regApellido" id="regApellido" value="<?php echo $reg[0]["apellidoPersona"];?>">
                                 
@@ -79,20 +80,23 @@ if ($_POST["idVerVendedor"]) {
                         </div>
                         <!-- Campo de text: Correo. -->
                         <div class="form-group">
+                            <label for="regCorreo">Correo:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="correo" name="regCorreo" id="regCorreo" value="<?php echo $reg[0]["correoPersona"];?>">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4" align="left">
                         <!-- Campo de text: Numero Telefono. -->
                         <div class="form-group">
+                            <label for="regTelefono">Telefono:</label>
                             <div class="input-group">
                                 <input type="number" class="form-control" placeholder="Numero de telefono" name="regTelefono" id="regTelefono" value="<?php echo $reg[0]["telefonoPersona"];?>">
                             </div>
                         </div>
                         <!-- Campo de text: Direccion. -->
                         <div class="form-group">
+                            <label for="regDireccion">Direccion:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Direccion" name="regDireccion" id="regDireccion" value="<?php echo $reg[0]["direccionPersona"];?>">
                             </div>
@@ -100,6 +104,7 @@ if ($_POST["idVerVendedor"]) {
                     
                         <!-- Campo de text: Usuario. -->
                         <div class="form-group">
+                            <label for="regUsuario">Usuario:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Usuario" name="regUsuario" id="regUsuario" value="<?php echo $reg[0]["login"];?>">
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -107,6 +112,7 @@ if ($_POST["idVerVendedor"]) {
                         </div>
                         <!-- Campo de text: Contraseña. -->
                         <div class="form-group">
+                            <label for="regContrasena">Contraseña:</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" placeholder="Contraseña" name="regContrasena" id="regContrasena">
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
