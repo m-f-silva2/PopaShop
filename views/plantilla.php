@@ -29,7 +29,7 @@
     <section>
         <?php
 
-        $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","editVendedor","administrarVendedores","registrarVendedor","Compra");
+        $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","misProductos","ventas","login","agregarProducto","nosotros","contactenos","editVendedor","administrarVendedores","registrarVendedor","Compra");
         //Si no hay una ruta en la url se le asigna inicio.
         if(!isset($_GET["ruta"])){
             switch (@$_SESSION["rol"]) {
@@ -85,8 +85,8 @@
         include_once "modal/login-modal.php";
         include_once "modal/detalle-modal.php";
         include_once "modal/detalle-modal-cliente.php";
-         include_once "modal/editar-perfil-modal.php";
-         include_once "modal/Cargando.php";
+        include_once "modal/editar-perfil-modal.php";
+        include_once "modal/Cargando.php";
         ?>
     </section>
 
