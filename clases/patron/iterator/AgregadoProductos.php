@@ -3,15 +3,16 @@
  *Patron Iterator.
  *Clase AgregadoProductos.
  **/
+require_once './IAgregado.php';
 class AgregadoProductos implements IAgregado{
 
-	private $listProductos;
+	private $listProductos = array();
 
 	public function AgregadoProductos(){
 
 	}
 	
-	public static function agregar ($producto){
+	public function agregar ($producto){
 	    array_push($this->listProductos, $producto);
 	}
 

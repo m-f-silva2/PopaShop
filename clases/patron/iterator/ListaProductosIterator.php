@@ -4,6 +4,7 @@
  *Iterator Concreto
  *Clase ListaProductosIterator.
  **/
+require_once './IIterator.php';
 class ListaProductosIterator implements IIterator{
     
     private $listProductos = array();
