@@ -16,8 +16,9 @@
     height: 130px;
 }
 #prodClienteButton{
-    background-color: #c3e2f2 !important;
     color: #000;
+    background-color: #fff;
+    border-color: #cfcfcf;
 }
 #prodClienteCateg{
 	box-shadow: 2.3px 2.5px 2px 0px #a7a7a7;

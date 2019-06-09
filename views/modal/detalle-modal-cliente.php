@@ -22,7 +22,7 @@
                 </div>
                 <div class="modal-body">
                     <tbody id="tblProductos">
-                      <div id="contDetalleProducto1">
+                      <div id="cliDetalleProducto">
                         <!-- Aqui se carga el id del producto y se oculta-->
                       </div>
                     </tbody>

@@ -67,7 +67,7 @@
                                     <div class='li' class='dinerito'> $ " . $dato["precioProducto"] . "</div>
                                     <div class='li' id='buttonLi'>
                                         <a id='buttonA'>
-                                            <button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal-cliente' value='".$dato["idProducto"]."'>
+                                            <button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$dato["idProducto"]."'>
                                                 Detalle
                                             </button>
                                         </a>
