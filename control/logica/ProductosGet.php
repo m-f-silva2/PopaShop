@@ -10,16 +10,11 @@ class ProductosGet{
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
 		if (isset($datos)) {
-                
-                    
-                    
-		$this->idtipoProducto = $datos["tipoProducto"];
-                
-                
+        
+		$this->idtipoProducto = $datos["tipoProducto"];       
                 $this->mostrarProductosPorCategoria();
-		
-	}
-        }
+		}
+    }
 
 	//Validar datos enviados del formulario con los de la base de datos.
         public function buscador(){
