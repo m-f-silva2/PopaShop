@@ -73,11 +73,9 @@ class Administrador extends Usuario{
 		//-------------------------------------------
 
 		//Validar imagen.
-		
-
-		if($this->v_imagen > 0){
-		    //echo "no viene una imagen";
-		    $nombre_file = 'monigote.png';
+		$imagen = $this->v_imagen["error"];
+		if($imagen > 0){
+		    $nombre_file = 'monigote-hombre-n.png';
 		}else{
 		    $titulo = "avatar-";
 		    $titulo = $titulo.$this->v_classUsuario->getNombre();
@@ -98,7 +96,7 @@ class Administrador extends Usuario{
 				correoPersona,
 				telefonoPersona,
 				avatarPersona,
-				direccionPersona) VALUES(NULL,:item1,:item2,:item3,:item4,:item5,:item6,'NULL',:item7)");
+				direccionPersona) VALUES(NULL,:item1,:item2,:item3,:item4,:item5,:item6,:item7,:item8)");
 
 			$stmt->bindParam(":item1", ($this->v_classPersona->getIdentificacion()['tipo']), \PDO::PARAM_INT);
 			$stmt->bindParam(":item2", ($this->v_classPersona->getIdentificacion()['numero']), \PDO::PARAM_INT);
@@ -107,7 +105,8 @@ class Administrador extends Usuario{
 
 			$stmt->bindParam(":item5", $correo, \PDO::PARAM_STR);
 			$stmt->bindParam(":item6", $telefono, \PDO::PARAM_INT);
-			$stmt->bindParam(":item7", $direccion, \PDO::PARAM_STR);
+			$stmt->bindParam(":item7", $nombre_file, \PDO::PARAM_STR);
+			$stmt->bindParam(":item8", $direccion, \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
 			//Agregar Usuario.
@@ -123,9 +122,7 @@ class Administrador extends Usuario{
                 $stmt2->bindParam(":item3", ($this->v_classPersona->getIdentificacion()['numero']), \PDO::PARAM_INT);
                 $stmt2->execute();
 
-            //Agregar imagen a la carpeta src/assets/monigotes/
-			    $tituloArchivo = utf8_decode($titulo);
-			    $nombre_file = $tituloArchivo.'.jpg';
+            	//Agregar imagen a la carpeta src/assets/monigotes/
 			    $imagen = $this->v_imagen["error"];
 			    //Si $imagen es igual a 0 no tiene errores y se puede subir la imagen.
 				if($imagen == 0){
@@ -133,6 +130,7 @@ class Administrador extends Usuario{
 				    $destino = "src/assets/monigotes/$nombre_file";
 				    move_uploaded_file ($origen, $destino);
 				}
+				echo "<script>window.location.replace('administrarVendedores');</script>";
             }
 	}
 
@@ -161,7 +159,7 @@ class Administrador extends Usuario{
 		$imagen = $this->v_imagen["error"];
 
 		if($imagen > 0){
-		    $nombre_file = 'monigote.png';
+		    $nombre_file = 'monigote-hombre-n.png';
 		}else{
 		    $titulo = "avatar-";
 		    $titulo = $titulo.$this->v_classUsuario->getNombre();
@@ -212,7 +210,7 @@ class Administrador extends Usuario{
 				}
                 $stmt2->execute();
 
-            //Agregar imagen a la carpeta src/assets/monigotes/
+            	//Agregar imagen a la carpeta src/assets/monigotes/
 			    $imagen = $this->v_imagen["error"];
 			    //Si $imagen es igual a 0 no tiene errores y se puede subir la imagen.
 				if($imagen == 0){
@@ -220,12 +218,27 @@ class Administrador extends Usuario{
 				    $destino = "src/assets/monigotes/$nombre_file";
 				    move_uploaded_file ($origen, $destino);
 				}
-				header("Location: http://localhost/PopaShop/administrarVendedores");
+				echo "<script>window.location.replace('administrarVendedores');</script>";
             }
 	}
 
 	public function eliminarVendedor(){
-		
+		$tabla = "persona";
+        $tabla2= "usuario";
+		require_once "control/logica/conexion.php";
+		$stmt = \Logica\Conexion::conectar()->prepare("DELETE FROM $tabla2 where idPersona = :item1;");
+		$stmt->bindParam(":item1", $this->datos["idDeletVendedor"], \PDO::PARAM_INT);
+		$stmt->execute();
+		if($stmt){
+			$stmt2 = \Logica\Conexion::conectar()->prepare("DELETE FROM $tabla where idPersona = :item1;");
+			$stmt2->bindParam(":item1", $this->datos["idDeletVendedor"], \PDO::PARAM_INT);
+			$stmt2->execute();
+			$nombre_file2 = $this->datos["imgDeletVendedor"];
+			$destino2 = "$nombre_file2";
+			$origen2 = "src/assets/monigotes/";
+			unlink($origen2.$destino2);
+			echo "<script>window.location.replace('administrarVendedores');</script>";
+		}
 	}
 	public function mostrarVendedores(){
             $tabla = "persona";
@@ -243,7 +256,7 @@ class Administrador extends Usuario{
 				return $d;
 			}
     }
-    
+
     public function getVendedor($v_idVendedor){
             $tabla = "persona";
             $tabla2= "usuario";

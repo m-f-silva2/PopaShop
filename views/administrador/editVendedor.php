@@ -1,6 +1,6 @@
 <?php  
+require_once "clases/class/Administrador.php";
 if ($_POST["idVerVendedor"]) {
-    require_once "clases/class/Administrador.php";
     $metodo = 'getVendedor';
     $reg = Clase\Administrador::getVendedor($_POST["idVerVendedor"],$metodo);
 }
@@ -122,9 +122,10 @@ if ($_POST["idVerVendedor"]) {
                         <div class="col-md-12">
                             <div class="modal-footer " id="login-footerM">
                             <div align="center">
-                                <button type="submit" class="btn btn-primary btn-block" value="guardarEditarVendedor">Guardar</button>
+                                <button type="submit" class="btn btn-primary btn-block" value="guardarEditarVendedor" id="editGuardar" name="editGuardar">Guardar</button>
                                 <?php 
-                                if ($_POST) {
+                                //echo $_POST["editGuardar"];
+                                if (@$_POST["editGuardar"] != null) {
                                     @$datosRegistro = array(
                                         'tipoDocumento' => $_POST['regTipoDocumento'],
                                         'numeroDocumento' => $_POST['regNumeroDocumento'],
@@ -138,7 +139,7 @@ if ($_POST["idVerVendedor"]) {
                                         'regImgArchivo' => $_FILES['regImgArchivo']
                                     );
                                     $metodo = 'editarVendedor';
-                                    @$registro = new Clase\Administrador($datosRegistro,$metodo);
+                                    $registro = new Clase\Administrador($datosRegistro,$metodo);
                                 }
                                 ?>
                             </div>

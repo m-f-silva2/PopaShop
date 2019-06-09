@@ -24,13 +24,14 @@
           <th>Correo</th>
           <th>Telefono</th>
           <th>Direccion</th>
-          <th>Accion</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
         <?php 
-        require_once "control/logica/AdministrarVendedoresLogica.php";
-        $datoProductos = Logica\AdminVendedor::mostrarVendedores();
+        require_once "clases/class/Administrador.php";
+        $datoProductos = Clase\Administrador::mostrarVendedores();
         foreach ($datoProductos as $dato) {
           echo '
             <tr>
@@ -48,6 +49,23 @@
                   </div>
                 </form>
               </td>
+              <td>
+                <form action="" method="post" name="frmDelVendedor" id="frmDelVendedor">
+                  <div class="form-group" id="divFrmDelVendedo">
+                    <input type="number" id="idDeletVendedor" name="idDeletVendedor" class="idDeletVendedor" value="'.$dato["idPersona"].'">
+                    <input type="text" id="imgDeletVendedor" name="imgDeletVendedor" class="imgDeletVendedor" value="'.$dato["avatarPersona"].'">
+                    <button type="submit" value="deleteVendedor" id="deleteVendedor" name="deleteVendedor" class="btn btn-app"><i class="fa fa-remove"></i></button>';
+                    if (@$_POST["deleteVendedor"]) {
+                      @$datosRegistro = array(
+                        'idDeletVendedor' => $_POST['idDeletVendedor'],
+                        'imgDeletVendedor' => $_POST['imgDeletVendedor']);
+                      $metodo = 'eliminarVendedor';
+                      //var_dump($datosRegistro);
+                      $registro = new Clase\Administrador($datosRegistro,$metodo);
+                    }
+                    echo '</div>
+                </form>
+              </td>
             </tr>
               '; 
         }
@@ -61,7 +79,8 @@
           <th>Correo</th>
           <th>Telefono</th>
           <th>Direccion</th>
-          <th>Accion</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </tfoot>
     </table>
@@ -69,6 +88,8 @@
   <script>
     $(function () {
       $('.idVerVendedor').hide()
+      $('.imgDeletVendedor').hide()
+      $('.idDeletVendedor').hide()
       //Se llama al id de la tabla
       $('#tablaVendedores').DataTable()
       //Carga las funciones de buscar y filtro con el id tablaVendedores2 que cambio para que lo reconozcan por ese id esas funciones.
