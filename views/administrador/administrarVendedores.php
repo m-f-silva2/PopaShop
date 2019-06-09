@@ -11,10 +11,11 @@
             </section>
         </div>
     </div>
+
 <div class="row" id="row1" align="center">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <table id="example1" class="table table-bordered table-striped" id="tablaVendedores" align="center" >
+    <table class="table table-bordered table-striped" id="tablaVendedores">
       <thead>
         <tr>
           <th>Documento</th>
@@ -67,8 +68,11 @@
   </div>
   <script>
     $(function () {
-      $('.idVerVendedor').hide();
-      $('#example2').DataTable({
+      $('.idVerVendedor').hide()
+      //Se llama al id de la tabla
+      $('#tablaVendedores').DataTable()
+      //Carga las funciones de buscar y filtro con el id tablaVendedores2 que cambio para que lo reconozcan por ese id esas funciones.
+      $('#tablaVendedores2').DataTable({
         'paging'      : true,
         'lengthChange': false,
         'searching'   : false,

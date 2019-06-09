@@ -11,11 +11,11 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="src/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="src/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="src/Ionicons/css/ionicons.min.css">
     <script src="src/bootstrap/js/jquery.min.js" type="text/javascript"></script>
     <script src="src/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     <script src="src/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="src/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="src/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <title>PopaShop</title>
 </head>
 <body>

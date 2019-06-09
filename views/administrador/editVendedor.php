@@ -1,5 +1,4 @@
 <?php  
-            //error_reporting(E_ALL);
 if ($_POST["idVerVendedor"]) {
     require_once "clases/class/Administrador.php";
     $metodo = 'getVendedor';
@@ -16,32 +15,34 @@ if ($_POST["idVerVendedor"]) {
             <ol class="breadcrumb">
                 <li><h3>Editar vendedor</h3></li>
                 <li><a href="./"><i class="fa fa-home"></i> Inicio</a></li>
+                <li><a href="administrarVendedores">Administrar Vendedores</a></li>
                 <li class="active">Editar vendedor</li>
             </ol>
             </section>
         </div>
     </div>
     <div class="row" id="row1">
-
         <div class="col-md-2">
-            
         </div>
         <div class="col-md-7" style="background-color: #e0e3e7;margin-bottom: 15px;">
             <div class="modal-body" align="center">
-                <form action="" method="post" name="frmRegistroVendedor" id="frmRegistroVendedor">
-                    <div class="col-md-3">
+                <form action="" method="post" name="frmRegistroVendedor" id="frmRegistroVendedor" enctype="multipart/form-data">
+                    <div class="col-md-4">
                         <!-- Profile Image -->
                           <div class="box box-primary">
                             <div class="box-body box-profile">
                                 <img class="profile-user-img img-responsive img-circle" src="src/assets/monigotes/<?php echo $reg[0]["avatarPersona"];?>" alt="avatar vendedor">
-                              <h3 class="profile-username text-center"><?php echo $reg[0]["nombrePersona"]." ".$reg[0]["apellidoPersona"];?></h3>
-                              <p class="text-muted text-center">Vendedor</p>
+                                <h3 class="profile-username text-center"><?php echo $reg[0]["nombrePersona"]." ".$reg[0]["apellidoPersona"];?></h3>
+                                <p class="text-muted text-center">Vendedor</p>
+                                <div align="left">
+                                    <p class="col-sm-4">Cambiar: </p>
+                                    <input type="file" name="regImgArchivo"/>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                           </div>
-
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <!-- Campo de text: Tipo Documento. -->
                         <div class="form-group">
                             <div class="input-group">
@@ -66,13 +67,13 @@ if ($_POST["idVerVendedor"]) {
                         <!-- Campo de text: Nombre. -->
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Primer nombre" name="regNombre1" id="regNombre1" value="<?php echo $reg[0]["nombrePersona"];?>">
+                                <input type="text" class="form-control" placeholder="Nombres" name="regNombre" id="regNombre" value="<?php echo $reg[0]["nombrePersona"];?>">
                             </div>
                         </div>
                         <!-- Campo de text: Apellido. -->
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Primer apellido" name="regApellido1" id="regApellido1" value="<?php echo $reg[0]["apellidoPersona"];?>">
+                                <input type="text" class="form-control" placeholder="Apellidos" name="regApellido" id="regApellido" value="<?php echo $reg[0]["apellidoPersona"];?>">
                                 
                             </div>
                         </div>
@@ -117,25 +118,22 @@ if ($_POST["idVerVendedor"]) {
                             <div align="center">
                                 <button type="submit" class="btn btn-primary btn-block" value="guardarEditarVendedor">Guardar</button>
                                 <?php 
-                                /*if(@$_POST['regTipoDocumento'] != null && $_POST['regNumeroDocumento'] != null && $_POST['regNombre1'] != null && $_POST['regApellido1'] != null && $_POST['regApellido2'] != null && $_POST['regCorreo'] != null && $_POST['regTelefono'] != null && $_POST['regDireccion'] != null && $_POST['regUsuario'] != null && $_POST['regContrasena'] != null){
-
-                                $datosRegistro = array(
+                                if ($_POST) {
+                                    @$datosRegistro = array(
                                         'tipoDocumento' => $_POST['regTipoDocumento'],
                                         'numeroDocumento' => $_POST['regNumeroDocumento'],
-                                        'nombre1' => $_POST['regNombre1'],
-                                        'apellido1' => $_POST['regApellido1'],
-                                        'nombre2' => $_POST['regNombre2'],
-                                        'apellido2' => $_POST['regApellido2'],
+                                        'apellido' => $_POST['regApellido'],
+                                        'nombre' => $_POST['regNombre'],
                                         'correo' => $_POST['regCorreo'],
                                         'telefono' => $_POST['regTelefono'],
                                         'direccion' => $_POST['regDireccion'],
                                         'usuario' => $_POST['regUsuario'],
-                                        'contrasena' => $_POST['regContrasena']
+                                        'contrasena' => $_POST['regContrasena'],
+                                        'regImgArchivo' => $_FILES['regImgArchivo']
                                     );
-
-                                    require "clases/class/Administrador.php";
-                                    $registro = new Clase\Administrador($datosRegistro);
-                                }*/
+                                    $metodo = 'editarVendedor';
+                                    @$registro = new Clase\Administrador($datosRegistro,$metodo);
+                                }
                                 ?>
                             </div>
                         </div>
