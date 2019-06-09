@@ -4,11 +4,13 @@
  *Clase AgregadoProductos.
  **/
 require_once './IAgregado.php';
+require_once './ListaProductosIterator.php';
+
 class AgregadoProductos implements IAgregado{
 
 	private $listProductos = array();
 
-	public function AgregadoProductos(){
+	public function __construct(){
 
 	}
 	
@@ -18,7 +20,8 @@ class AgregadoProductos implements IAgregado{
 
 	//@Override
 	public function crearIterator(){
-		return new ListaPersonasIterator(personas);
+	    return new \Iterator\ListaProductosIterator($this->listProductos); 
+	    //ListaProductosIterator($this->listProductos);
 	}
 }
 ?>

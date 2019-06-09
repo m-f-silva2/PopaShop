@@ -11,9 +11,8 @@ class ListaProductosIterator implements IIterator{
     private $posicion = 0;
 
     
-    public function ListaProductosIterator($listProductos){
+    public function __construct($listProductos){
 	$this->listProductos = $listProductos;
-        $this->posicion=0;
     }
     
     //@override
@@ -22,11 +21,11 @@ class ListaProductosIterator implements IIterator{
     }
     //@override
 	public function siguiente(){
-	    return $this->personas[$this->posicion++];
+	    return $this->listProductos[$this->posicion++];
     }
     //@override
     public function hayMas(){
-	if($this->posicion< $this->personas.length && $this->personas.length !=0){
+	if($this->posicion < count($this->listProductos) && count($this->listProductos) !=0){
 	    return true;
 	}else{
 	    return false;
@@ -34,7 +33,7 @@ class ListaProductosIterator implements IIterator{
     }
     //@override
     public function elementoActual(){
-	return $this->personas[$this->posicion];
+	return $this->listProductos[$this->posicion];
     }
     //@override
     public function ordenar(){

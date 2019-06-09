@@ -2,31 +2,32 @@
 /**
  *Test Iterartor
  **/
-include_once 'AgregadoProductos.php';
-include_once 'IIterator.php';
+include_once './AgregadoProductos.php';
+//include_once './IIterator.php';
 class TestIterator {
 
     private $agregadoProductos = array();
-    private $iterator;
+    private  $iterator;
+    public function __construct(){
+	$this->agregadoProductos = new \Iterator\AgregadoProductos();
 
-    public function TestIterator(){
-		$this->agregadoProductos = Iterator\AgregadoProductos();
-    
-		$this->agregadoProductos->agregar("Juan");
-		$this->agregadoProductos->agregar("Pedro");
-		$this->agregadoProductos->agregar("Carlos");
-		$this->agregadoProductos->agregar("Roberto");
+	$this->agregadoProductos->agregar("Juan");
+	$this->agregadoProductos->agregar("Pedro");
+	$this->agregadoProductos->agregar("Carlos");
+	$this->agregadoProductos->agregar("Roberto");
 
-		//Obtiene iterador Concreto
-		$this->iterator = $this->agregadoProductos->crearIterator();
-		while($this->iterator->hayMas()){
-			//Accede al elemento (retorna objeto y se parcea)
-			echo $this->iterator->siguiente();
-		}
+	//Obtiene iterador Concreto
+	$this->iterator = $this->agregadoProductos->crearIterator();
+	while($this->iterator->hayMas() ){
+		//Accede al elemento (retorna objeto y se parcea)
+		echo "<Strong>". $this->iterator->siguiente() . "<Strong><br><br>";
 	}
+    }
+
+
 	
 }
 
-
+$ver = new \Iterator\TestIterator()
 
 ?>
