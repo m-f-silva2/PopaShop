@@ -12,6 +12,8 @@ class Registro{
 	private $v_idPersona;
 	private $v_cliente;
 	private $v_nombre;
+	private $v_imagen;
+	private $v_nombre_file;
 	private $v_apellido;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
@@ -36,6 +38,15 @@ class Registro{
 			$this->v_usuario->setDireccion($datos["direccion"]);
 			$this->v_usuario->setNombre($datos["usuario"]);
 			$this->v_usuario->setPassword($datos["contrasena"]);
+			$this->v_imagen = $_FILES['logRegImgArchivo'];
+			$imagen = $this->v_imagen["error"];
+			if($imagen > 0){
+				$this->v_nombre_file = 'monigote-hombre-n.png';
+			}else{
+				$titulo = "avatar-";
+			    $titulo = $titulo.$this->v_usuario->getNombre();
+			    $this->v_nombre_file = $titulo .'.jpg';
+			}
 
 			//Aqui si se puede acceder a esta funcion de tipo private.
 	        $this->validarRegistro();
@@ -44,6 +55,15 @@ class Registro{
 	        
 	        if($this->v_idPersona != null){
 	        	$this->registrarUsuario();
+
+	        	//Validar imagen.
+	        	//Agregar imagen a la carpeta src/assets/monigotes/
+			    //Si $imagen es igual a 0 no tiene errores y se puede subir la imagen.
+				if($imagen == 0){
+				    $origen = $this->v_imagen["tmp_name"];
+				    $destino = "src/assets/monigotes/".$this->v_nombre_file;
+				    move_uploaded_file ($origen, $destino);
+				}
 			}
 		}
 
@@ -87,6 +107,7 @@ public function registrarUsuario(){
 		$correo = $this->v_usuario->getCorreo();
 		$telefono = $this->v_usuario->getTelefono();
 		$direccion = $this->v_usuario->getDireccion();
+
 		require_once "conexion.php";
 			$tabla = "persona";
 			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(
@@ -98,7 +119,7 @@ public function registrarUsuario(){
 				correoPersona,
 				telefonoPersona,
 				avatarPersona,
-				direccionPersona) VALUES(NULL,:item1,:item2,:item3,:item4,:item5,:item6,'NULL',:item7)");
+				direccionPersona) VALUES(NULL,:item1,:item2,:item3,:item4,:item5,:item6,:item7,:item8)");
 
 			$stmt->bindParam(":item1", ($this->v_persona->getIdentificacion()['tipo']), \PDO::PARAM_INT);
 			$stmt->bindParam(":item2", ($this->v_persona->getIdentificacion()['numero']), \PDO::PARAM_INT);
@@ -107,7 +128,8 @@ public function registrarUsuario(){
 
 			$stmt->bindParam(":item5", $correo, \PDO::PARAM_STR);
 			$stmt->bindParam(":item6", $telefono, \PDO::PARAM_INT);
-			$stmt->bindParam(":item7", $direccion, \PDO::PARAM_STR);
+			$stmt->bindParam(":item7", $this->v_nombre_file, \PDO::PARAM_STR);
+			$stmt->bindParam(":item8", $direccion, \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
 				$d = true;

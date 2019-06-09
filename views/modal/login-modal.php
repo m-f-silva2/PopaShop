@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </form>
-                <form action="" method="post" name="frmRegistro" id="frmRegistro">
+                <form action="" method="post" name="frmRegistro" id="frmRegistro" enctype="multipart/form-data">
                     <h3>Registrarse</h3>
                     
                     <!-- Campo de text: Tipo Documento. -->
@@ -122,6 +122,14 @@
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
+                    <!-- Campo: Imagen. -->
+                    <div class="col-dm-1">
+                        <div class="form-group">
+                            <div class="input-group" align="center">
+                                <input type="file" name="logRegImgArchivo" />
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Campo de text: Usuario. -->
                     <div class="form-group">
@@ -153,11 +161,13 @@
                                     'correo' => $_POST['regCorreo'],
                                     'telefono' => $_POST['regTelefono'],
                                     'direccion' => $_POST['regDireccion'],
+                                    'logRegImgArchivo' => $_FILES['logRegImgArchivo'],
                                     'usuario' => $_POST['regUsuario'],
                                     'contrasena' => $_POST['regContrasena']
                                 );
 
                                 require "control/logica/LogicaRegistro.php";
+                                //var_dump($datosRegistro);
                                 $registro = new Logica\Registro($datosRegistro);
                             }
                             ?>

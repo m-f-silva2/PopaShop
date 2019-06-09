@@ -60,7 +60,6 @@
                         'idDeletVendedor' => $_POST['idDeletVendedor'],
                         'imgDeletVendedor' => $_POST['imgDeletVendedor']);
                       $metodo = 'eliminarVendedor';
-                      //var_dump($datosRegistro);
                       $registro = new Clase\Administrador($datosRegistro,$metodo);
                     }
                     echo '</div>
