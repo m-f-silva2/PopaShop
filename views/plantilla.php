@@ -29,10 +29,10 @@
     <section>
         <?php
 
-        $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","administrarVendedores","registrarVendedor","Compra");
+        $pegesArray = array("inicio-admin","inicio-cliente","inicio-vendedor","ventas","login","agregarProducto","nosotros","contactenos","editVendedor","administrarVendedores","registrarVendedor","Compra");
         //Si no hay una ruta en la url se le asigna inicio.
         if(!isset($_GET["ruta"])){
-            switch ($_SESSION["rol"]) {
+            switch (@$_SESSION["rol"]) {
                 case 'Administrador':
                     $ruta = 'administrador';
                     $_GET["ruta"] = 'inicio-admin';

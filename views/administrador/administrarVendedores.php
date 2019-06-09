@@ -40,9 +40,9 @@
               <td>'.$dato["telefonoPersona"].'</td>
               <td>'.$dato["direccionPersona"].'</td>
               <td>
-                <form action="Compra" method="post" name="frmVerVendedor" id="frmVerVendedor">
+                <form action="editVendedor" method="post" name="frmVerVendedor" id="frmVerVendedor">
                   <div class="form-group" id="divFrmVerVendedo">
-                    <input type="number" id="idVerVendedor" class="idVerVendedor" value="'.$dato["idPersona"].'">
+                    <input type="number" id="idVerVendedor" name="idVerVendedor" class="idVerVendedor" value="'.$dato["idPersona"].'">
                     <button type="submit" value="editarVendedor" class="btn btn-app"><i class="fa fa-edit"></i></button>
                   </div>
                 </form>

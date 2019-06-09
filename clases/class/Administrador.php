@@ -10,15 +10,31 @@ class Administrador extends Usuario{
 	private $v_classUsuario;
 	private $v_nombre;
 	private $v_apellido;
-	private $v_datos;
+	private $datos;
 
 	//Metodos
 	//Constructor
-	public function __construct($datos){
-		if (isset($datos)) {
+	public function __construct($datos,$metodo){
+		if (isset($datos) && isset($metodo)) {
 			$this->datos = $datos;
 			//Validar registro de Persona.
-	        $this->agregarVendedor();
+			switch ($metodo) {
+				case 'agregarVendedor':
+					$this->agregarVendedor();
+					break;
+				case 'editarVendedor':
+					$this->editarVendedor();
+					break;
+				case 'eliminarVendedor':
+					$this->eliminarVendedor();
+					break;
+				case 'mostrarVendedores':
+					$this->mostrarVendedores();
+					break;
+				case 'getVendedor':
+					$this->getVendedor($this->datos);
+					break;
+			}
 		}
 	}
 	public function agregarVendedor(){
@@ -95,8 +111,39 @@ class Administrador extends Usuario{
 	public function mostrarVendedores(){
             $tabla = "persona";
             $tabla2= "usuario";
-			require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 u on p.idPersona=u.idPersona  WHERE u.idRol=2");
+			require_once "control/logica/conexion.php";
+			$stmt = \Logica\Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 u on p.idPersona=u.idPersona  WHERE u.idRol=2");
+			$stmt->execute();
+			if ($stmt) {
+				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            		$vendedores[] = $filas;
+        		}
+				return $vendedores;
+			}else{
+				$d = "error";
+				return $d;
+			}
+    }
+    public function getVendedor($v_idVendedor){
+            $tabla = "persona";
+            $tabla2= "usuario";
+            $tabla3= "tipodocumento";
+			require_once "control/logica/conexion.php";
+			$stmt = \Logica\Conexion::conectar()->prepare("
+				SELECT  
+				p.idPersona,
+				p.idTipoDocumento,
+				t.tipoDeDocumento,
+				p.documentoPersona,
+				p.nombrePersona,
+				p.apellidoPersona,
+				p.correoPersona,
+				p.telefonoPersona,
+				p.avatarPersona,
+				p.direccionPersona,
+				u.login
+				FROM $tabla p inner join $tabla2 u on p.idPersona=u.idPersona inner join $tabla3 t on t.idTipoDocumento=p.idTipoDocumento  WHERE p.idPersona=:item1");
+			$stmt->bindParam(":item1", $v_idVendedor, \PDO::PARAM_INT);
 			$stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
