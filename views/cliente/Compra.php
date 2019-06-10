@@ -50,7 +50,7 @@
 			
 		      
 			require_once 'clases/class/Producto.php';
-			require_once 'clases/class/patron/builder/ProductoConcLimpieza.php';
+			require_once 'clases/patron/builder/ProductoConcLimpieza.php';
 			$builderLimpieza = new Builder\ProductoConcLimpieza();
 			$productos = new clase\Producto();
 			
