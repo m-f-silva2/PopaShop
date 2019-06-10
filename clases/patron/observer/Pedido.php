@@ -2,62 +2,43 @@
 /*
  *Patron observer
  *Clase Pedido.
+ *Se implementa con una de las librerias de php
 **/
-class Pedido{
+class Pedido implements \SplSubject{
 	//Atributos
-	private $descripcion;
-	private $fecha;
-	private $total;
-	private $cantidad;
 	private $estado;
+	private $observers = array();
+
+	public function __construct($estado)
+    {
+        $this->estado = $estado;
+    }
 	
-	//Metodos
-	public function añadir(){
-
-	}
-	public function eliminar(){
-
-	}
-	public function notificar(){
-
-	}
+	/**
+     * La interface SplSubject nos obliga
+     * a implementar los siguientes métodos
+     */
+    public function attach(\SplObserver $observer)
+    {
+        $id = spl_object_hash($observer);
+        $this->observers[$id] = $observer;
+    }
+    public function detach(\SplObserver $observer)
+    {
+        $id = spl_object_hash($observer);
+        if (isset($this->observers[$id]))
+            unset($this->observers[$id]);
+    }
+    public function notify()
+    {
+        foreach ($this->observers as $observer)
+            $observer->update($this);
+    }
 	public function setEstado(){
 		
 	}
 	public function getEstado(){
 		
-	}
-
-	//Getter y setters de atributos.
-	public function setDescripcion($descripcion){
-		$this->descripcion = $descripcion;
-	}
-	public function getDescripcion(){
-		return $this->descripcion;
-	}
-	public function setFecha($fecha){
-		$this->fecha = $fecha;
-	}
-	public function getFecha(){
-		return $this->fecha;
-	}
-	public function setTotal($total){
-		$this->total = $total;
-	}
-	public function getTotal(){
-		return $this->total;
-	}
-	public function setCantidad($cantidad){
-		$this->cantidad = $cantidad;
-	}
-	public function getCantidad(){
-		return $this->cantidad;
-	}
-	public function setEstado($estado){
-		$this->estado = $estado;
-	}
-	public function getEstado(){
-		return $this->estado;
 	}
 }
 ?>
