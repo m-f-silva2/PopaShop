@@ -4,7 +4,6 @@
  **/
 include_once './AgregadoProductos.php';
 include_once '../../class/Producto.php';
-include_once './ProductosGet.php';
 //include_once './../../IIterator.php';
 
                                 
@@ -15,8 +14,8 @@ class TestIterator {
     private $productos;
     
     public function __construct(){
-        require_once './ProductosGet.php';
-       $datoCategorias = \Iterator\ProductosGet::mostrarProductosPorCategoria();
+        require_once '../../../control/logica/ProductosGet.php';
+       $datoCategorias = \Logica\ProductosGet::mostrarProductosPorCategoria();
        $this->productos= new \clase\Producto();
        $this->agregadoProductos = new \Iterator\AgregadoProductos();
         foreach ($datoCategorias as $dato1) {
