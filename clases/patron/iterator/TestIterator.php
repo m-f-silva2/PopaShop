@@ -18,9 +18,8 @@ class TestIterator {
         require_once './ProductosGet.php';
        $datoCategorias = \Iterator\ProductosGet::mostrarProductosPorCategoria();
        $this->productos= new \clase\Producto();
+       $this->agregadoProductos = new \Iterator\AgregadoProductos();
         foreach ($datoCategorias as $dato1) {
-        
-        $this->agregadoProductos = new \Iterator\AgregadoProductos();
         $this->productos->setIdProducto($dato1["idProducto"]);
         $this->productos->setIdTipoProducto($dato1["idTipoProducto"]);
         $this->productos->setNombreProducto($dato1["nombreProducto"]);
@@ -28,21 +27,14 @@ class TestIterator {
         $this->productos->setCantidadProducto($dato1["cantidadProducto"]);
 	$this->productos->setFotoProducto($dato1["fotoProducto"]);
         $this->productos->setIdUsuario($dato1["idUsuario"]);
-	
-	
-                                }
-        
-        
-       
-        
-        
-        $this->agregadoProductos->agregar($this->productos->getIdProducto());
-	$this->agregadoProductos->agregar($this->productos->getIdTipoProducto());
+	$this->agregadoProductos->agregar($this->productos->getIdProducto());
+    $this->agregadoProductos->agregar($this->productos->getIdTipoProducto());
         $this->agregadoProductos->agregar($this->productos->getNombreProducto());
         $this->agregadoProductos->agregar($this->productos->getPrecioProducto());
         $this->agregadoProductos->agregar($this->productos->getCantidadProducto());
         $this->agregadoProductos->agregar($this->productos->getFotoProducto());
         $this->agregadoProductos->agregar($this->productos->getIdUsuario());
+        }
 
 	//Obtiene iterador Concreto
 	$this->iterator = $this->agregadoProductos->crearIterator();
