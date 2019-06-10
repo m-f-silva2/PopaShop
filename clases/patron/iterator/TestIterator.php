@@ -4,7 +4,7 @@
  **/
 include_once './AgregadoProductos.php';
 include_once '../../class/Producto.php';
-include_once '../../../control/logica/ProductosGet.php';
+include_once './ProductosGet.php';
 //include_once './../../IIterator.php';
 
                                 
@@ -15,9 +15,13 @@ class TestIterator {
     private $productos;
     
     public function __construct(){
-        
-        $datoCategorias = Logica\ProductosGet::categorias();
-        
+        require_once './ProductosGet.php';
+       $datoCategorias = \Iterator\ProductosGet::mostrarProductosPorCategoria();
+        foreach ($datoCategorias as $dato1) {
+                                    $descripcion = $dato1["descripcionProducto"];
+                                    $idTipo = $dato1["idTipoProducto"];
+                                    echo "<option value='$idTipo'>" . $descripcion . "</option>";
+                                }
         $this->productos= new \clase\Producto();
         $this->agregadoProductos = new \Iterator\AgregadoProductos();
         $this->agregadoProductos2 = new \Iterator\AgregadoProductos();
@@ -41,7 +45,7 @@ class TestIterator {
 	$this->iterator = $this->agregadoProductos->crearIterator();
 	while($this->iterator->hayMas() ){
 		//Accede al elemento (retorna objeto y se parcea)
-		echo "<Strong>". $this->iterator->siguiente() . "<Strong><br><br>";
+		echo "<Strong>". $this->iterator->siguiente() . "<Strong><br>";
 	}
 	
 	
