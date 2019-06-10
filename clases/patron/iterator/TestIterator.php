@@ -27,6 +27,7 @@ class TestIterator {
 	$this->productos->setPrecioProducto($dato1["precioProducto"]);
         $this->productos->setCantidadProducto($dato1["cantidadProducto"]);
 	$this->productos->setFotoProducto($dato1["fotoProducto"]);
+        $this->productos->setIdUsuario($dato1["idUsuario"]);
 	
 	
                                 }
@@ -41,6 +42,7 @@ class TestIterator {
         $this->agregadoProductos->agregar($this->productos->getPrecioProducto());
         $this->agregadoProductos->agregar($this->productos->getCantidadProducto());
         $this->agregadoProductos->agregar($this->productos->getFotoProducto());
+        $this->agregadoProductos->agregar($this->productos->getIdUsuario());
 
 	//Obtiene iterador Concreto
 	$this->iterator = $this->agregadoProductos->crearIterator();

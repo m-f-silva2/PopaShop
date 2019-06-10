@@ -11,6 +11,7 @@ class Producto{
 	private $precioProducto;
         private $cantidadProducto;
 	private $fotoProducto;
+        private $idUsuario;
 	
 
 
@@ -35,8 +36,15 @@ class Producto{
 	public function ordenar(){
 		
 	}
+        function getIdUsuario() {
+            return $this->idUsuario;
+        }
 
-	//Getter y setter
+        function setIdUsuario($idUsuario) {
+            $this->idUsuario = $idUsuario;
+        }
+
+        	//Getter y setter
 	function getIdProducto() {
             return $this->idProducto;
         }
