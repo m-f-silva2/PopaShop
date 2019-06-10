@@ -15,13 +15,14 @@ private $nombreP;
 	}
         }
 
-	public function facturaGet(){
+	public function facturaGetVendedor(){
 
 			$tabla = "detalleFactura";
-                        $tabla2 = "factura";
-                        $tabla3 = "producto";
+            $tabla2 = "factura";
+            $tabla3 = "producto";
+            $v_idUsuario = $_SESSION['idUsuario'];
 			require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT p.nombreProducto,p.precioProducto,f.totalFactura,f.fechaFactura,d.cantidad  FROM $tabla d inner join $tabla2 f on f.idFactura=d.idFactura INNER join $tabla3 p on p.idProducto=d.idProducto WHERE f.usuarioIdUsuario=4");
+			$stmt = Conexion::conectar()->prepare("SELECT p.nombreProducto,p.precioProducto,f.totalFactura,f.fechaFactura,d.cantidad  FROM $tabla d inner join $tabla2 f on f.idFactura=d.idFactura INNER join $tabla3 p on p.idProducto=d.idProducto WHERE f.vendedorIdUsuario=$v_idUsuario");
 			$stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {

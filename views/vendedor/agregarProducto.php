@@ -36,8 +36,6 @@
                           }
                           ?></option>
                        </select>
-                            
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de text: Nombre Producto. -->
@@ -45,7 +43,6 @@
                       <label>Nombre:</label>
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Nombre Producto" name="nombreProducto" id="nombreProducto">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de text: Precio. -->
@@ -53,7 +50,6 @@
                       <label>Precio</label>
                         <div class="input-group">
                             <input type="number" class="form-control" placeholder="Precio Producto" name="precioProducto" id="precioProducto">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <!-- Campo de number: cantidad. -->
@@ -61,7 +57,6 @@
                       <label>Cantidad</label>
                         <div class="input-group">
                             <input type="number" class="form-control" placeholder="Cantidad" name="cantidadProducto" id="cantidadProducto">
-                            <span class="icon-bar"></span>
                         </div>
                     </div>
                     <!-- Campo de text: Foto. -->

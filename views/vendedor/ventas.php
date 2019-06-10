@@ -18,7 +18,7 @@
                   </thead>
 <?php 
                     require_once "control/logica/FacturaLogica.php";
-                    $datoFacturas = Logica\FacturaLogica::facturaGet();
+                    $datoFacturas = Logica\FacturaLogica::facturaGetVendedor();
                     foreach ($datoFacturas as $dato) {
                         echo "
                             <div>
