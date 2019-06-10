@@ -37,51 +37,51 @@ class Producto{
 	}
 
 	//Getter y setter
-	function getIdProducto() {
+	public function getIdProducto() {
             return $this->idProducto;
         }
 
-        function getIdTipoProducto() {
+        public function getIdTipoProducto() {
             return $this->idTipoProducto;
         }
 
-        function getNombreProducto() {
+        public function getNombreProducto() {
             return $this->nombreProducto;
         }
 
-        function getPrecioProducto() {
+        public function getPrecioProducto() {
             return $this->precioProducto;
         }
 
-        function getCantidadProducto() {
+        public function getCantidadProducto() {
             return $this->cantidadProducto;
         }
 
-        function getFotoProducto() {
+        public function getFotoProducto() {
             return $this->fotoProducto;
         }
 
-        function setIdProducto($idProducto) {
+        public function setIdProducto($idProducto) {
             $this->idProducto = $idProducto;
         }
 
-        function setIdTipoProducto($idTipoProducto) {
+        public function setIdTipoProducto($idTipoProducto) {
             $this->idTipoProducto = $idTipoProducto;
         }
 
-        function setNombreProducto($nombreProducto) {
+        public function setNombreProducto($nombreProducto) {
             $this->nombreProducto = $nombreProducto;
         }
 
-        function setPrecioProducto($precioProducto) {
+        public function setPrecioProducto($precioProducto) {
             $this->precioProducto = $precioProducto;
         }
 
-        function setCantidadProducto($cantidadProducto) {
+        public function setCantidadProducto($cantidadProducto) {
             $this->cantidadProducto = $cantidadProducto;
         }
 
-        function setFotoProducto($fotoProducto) {
+        public function setFotoProducto($fotoProducto) {
             $this->fotoProducto = $fotoProducto;
         }
 
