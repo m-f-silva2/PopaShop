@@ -28,7 +28,7 @@
                     <tbody id="tblProductos">
                       <div id="contDetalleProducto1">
                       </div>
-                    <br><h4>Debe iniciar sesión para realiza la compra</h4>
+                    
                     </tbody>
                      
                 </div>

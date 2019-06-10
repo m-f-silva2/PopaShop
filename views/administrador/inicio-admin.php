@@ -4,6 +4,8 @@
     	<div class="col-md-8" align="left">
     		<h1>Inicio</h1>
         	<h3>Bienvenido Administrador</h3>
+                <div>
+    </div>
     	</div>
     </div>
 </div>

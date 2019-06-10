@@ -121,7 +121,7 @@
                             $datosProducto = array(
                                 'vendedorIdUsuario' => $dato['idUsuario'],
                                  'idProducto' => $dato['idProducto'],
-                                 'count' => $_POST['count'],
+                                 //'count' => $_POST['count'],
                                 'precioProducto' => $dato['precioProducto']
                                     
                             );

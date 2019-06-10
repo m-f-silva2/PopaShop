@@ -16,9 +16,10 @@ class TestIterator {
     public function __construct(){
         require_once '../../../control/logica/ProductosGet.php';
        $datoCategorias = \Logica\ProductosGet::mostrarProductosPorCategoria();
-       $this->productos= new \clase\Producto();
+       
        $this->agregadoProductos = new \Iterator\AgregadoProductos();
         foreach ($datoCategorias as $dato1) {
+            $this->productos= new \clase\Producto();
         $this->productos->setIdProducto($dato1["idProducto"]);
         $this->productos->setIdTipoProducto($dato1["idTipoProducto"]);
         $this->productos->setNombreProducto($dato1["nombreProducto"]);
@@ -39,7 +40,7 @@ class TestIterator {
 	$this->iterator = $this->agregadoProductos->crearIterator();
 	while($this->iterator->hayMas() ){
 		//Accede al elemento (retorna objeto y se parcea)
-		echo "<Strong>". $this->iterator->siguiente() . "<Strong><br>";
+		echo "<Strong>". $this->iterator->siguiente($this->productos) . "<Strong><br><br>";
 	}
 	
 	
