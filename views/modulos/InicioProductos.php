@@ -22,10 +22,66 @@
       </thead>
       <tbody>
         <?php 
-        require_once "control/logica/ProductosGet.php";
-       
-        $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
-        $cont = 0;
+        include_once 'clases/patron/iterator/AgregadoProductos.php';
+        include_once 'clases/class/Producto.php';
+          $agregadoProductos = array();
+          $iterator;
+          $productos;
+                require_once 'control/logica/ProductosGet.php';
+               $datoCategorias = \Logica\ProductosGet::mostrarProductosPorCategoria();
+               $agregadoProductos = new \Iterator\AgregadoProductos();
+                foreach ($datoCategorias as $dato1) {
+                  $productos= new \clase\Producto();
+                  $productos->setIdProducto($dato1["idProducto"]);
+                  $productos->setIdTipoProducto($dato1["idTipoProducto"]);
+                  $productos->setNombreProducto($dato1["nombreProducto"]);
+                  $productos->setPrecioProducto($dato1["precioProducto"]);
+                  $productos->setCantidadProducto($dato1["cantidadProducto"]);
+                  $productos->setFotoProducto($dato1["fotoProducto"]);
+                  $productos->setIdUsuario($dato1["idUsuario"]);
+                  $agregadoProductos->agregar($productos->getNombreProducto());
+                  $agregadoProductos->agregar($productos->getFotoProducto());
+                  $agregadoProductos->agregar($productos->getPrecioProducto());
+                  $agregadoProductos->agregar($productos->getIdProducto());
+                }
+
+
+          
+          //Obtiene iterador Concreto
+          $iterator = $agregadoProductos->crearIterator();
+          $fila = count($iterator);
+          echo $fila;
+          //var_dump($fila);
+
+          for ($i=0; $iterator->hayMas() == true; $i++) {
+            echo "<tr>";
+
+            for ($j=0; $j < 3; $j++) { 
+            echo '
+              <td style="border: 0px solid transparent;" align="center">
+              <ul id="prodCliente">
+              <li>';
+              print $iterator->siguiente();
+              echo '</li>
+              <li><img src="src/assets/productos/';
+              print $iterator->siguiente();
+              echo '" width="110px" class="profile-user-img img-responsive img-circle"></li>
+              <li>';
+              print $iterator->siguiente();
+              echo '</li>
+              <li><button class="botonDetalle" id="detailProducto" data-toggle="modal" data-target="#detalle-modal-cliente" value="';
+              print $iterator->siguiente();
+              echo '">Detalle</button></li><br>
+              <li></li>              
+              </ul>
+              </td>';
+              //var_dump($iterator->siguiente());
+            }
+            echo "</tr>";
+          }
+          
+          
+        /*$cont = 0;
         for ($i=0; $cont < count($datoProductos) ; $i++) { 
             
           echo "<tr>";
@@ -45,7 +101,7 @@
           }
           echo "</tr>";
               
-        }
+        }*/
         echo '<script>
         $(document).ready(function(){
           $(document).on("click", "#detailProducto", function(){       

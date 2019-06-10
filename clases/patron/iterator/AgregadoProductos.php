@@ -3,8 +3,8 @@
  *Patron Iterator.
  *Clase AgregadoProductos.
  **/
-require_once './IAgregado.php';
-require_once './ListaProductosIterator.php';
+require_once 'clases/patron/iterator/IAgregado.php';
+require_once 'clases/patron/iterator/ListaProductosIterator.php';
 
 class AgregadoProductos implements IAgregado{
 
