@@ -1,35 +1,37 @@
 <?php namespace Builder;
- include_once 'BuilderProducto.php';
+ include_once 'clases/patron/BuilderProducto.php';
 
  //producto concreto por categoría, por ejemplo, Aseo, 
 
 class ProductoConcLimpieza extends BuilderProducto {
-    public function __construct() {
+    private $datos;
+    public function __construct($datos) {
 	$this->producto = new \clase\Producto(); 
+	$this->datos = $datos;
     } 
 
     public function buildCantidadProducto() {
-	$this->producto->setCantidadProducto(1);
+	$this->producto->setCantidadProducto($this->datos->getCantidadProducto());
     }
 
     public function buildFotoProducto() {
-	$this->producto->setFotoProducto("no se");
+	$this->producto->setFotoProducto($this->datos->getFotoProducto());
     }
 
     public function buildIdProducto() {
-	$this->producto->setIdProducto(3);
+	$this->producto->setIdProducto($this->datos->getIdProducto());
     }
 
     public function buildIdTipoProducto() {
-	$this->producto->setIdTipoProducto(4);
+	$this->producto->setIdTipoProducto($this->datos->getIdTipoProducto());
     }
 
     public function buildNombreProducto() {
-	$this->producto->setNombreProducto("nombre");
+	$this->producto->setNombreProducto($this->datos->getNombreProducto());
     }
 
     public function buildPrecioProducto() {
-	$this->producto->setPrecioProducto(6);
+	$this->producto->setPrecioProducto($this->datos->getPrecioProducto());
     }
 
 }

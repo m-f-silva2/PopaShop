@@ -1,13 +1,13 @@
 <?php namespace Builder;
 
- require_once './ProductoConcLimpieza.php';
- require_once 'BuilderProducto.php';
-class TestBuilder {
+ require_once 'clases/patron/ProductoConcLimpieza.php';
+ require_once 'clases/patron/BuilderProducto.php';
+class DirecProductoLimpieza {
     private $ProductoConcreto;
     private $ProductoConcretoResultante;
     
-    public function __construct() {
-	$this->ProductoConcreto = new \Builder\ProductoConcLimpieza();
+    public function __construct($datos) {
+	$this->ProductoConcreto = new \Builder\ProductoConcLimpieza($datos);
 	$this->ProductoConcreto->crear();
 	$this->ProductoConcreto->buildCantidadProducto();
 	$this->ProductoConcreto->buildFotoProducto();
@@ -15,10 +15,6 @@ class TestBuilder {
 	$this->ProductoConcreto->buildIdTipoProducto();
 	$this->ProductoConcreto->buildNombreProducto();
 	$this->ProductoConcreto->buildPrecioProducto();
-	$this->ProductoConcretoResultante = $this->ProductoConcreto->getProducto();
-	print_r($this->ProductoConcretoResultante);
-	
+	return $this->ProductoConcreto->getProducto();
     }
 }
-
-$ver = new \Builder\TestBuilder();
