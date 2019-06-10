@@ -50,15 +50,29 @@
 			
 		      
 			require_once 'clases/class/Producto.php';
+			require_once 'clases/class/patron/builder/ProductoConcLimpieza.php';
+			$builderLimpieza = new Builder\ProductoConcLimpieza();
 			$productos = new clase\Producto();
 			
 
 			foreach ($datoProductos as $dato){
+			    $productos->setIdProducto($dato["idProducto"]);
+			    $productos->setIdTipoProducto($dato["idTipoProducto"]);
 			    $productos->setNombreProducto($dato["nombreProducto"]);
+			    $productos->setPrecioProducto($dato["precioProducto"]);
+			    $productos->setCantidadProducto($dato["cantidadProducto"]);
+			    $productos->setFotoProducto($dato["fotoProducto"]);
+			    $productos->setIdUsuario($dato["idUsuario"]);
 			}
 			
 			echo '<script>';
-			echo 'console.log('. json_encode( $productos->getNombreProducto() ) .')';
+			echo 'console.log('. json_encode( $productos->getIdProducto() ) .');';
+			echo 'console.log('. json_encode( $productos->getIdTipoProducto() ) .');';
+			echo 'console.log('. json_encode( $productos->getNombreProducto() ) .');';
+			echo 'console.log('. json_encode( $productos->getPrecioProducto() ) .');';
+			echo 'console.log('. json_encode( $productos->getCantidadProducto() ) .');';
+			echo 'console.log('. json_encode( $productos->getFotoProducto() ) .');';
+			echo 'console.log('. json_encode( $productos->getIdUsuario() ) .');';
 			echo '</script>';
 
 			
@@ -73,7 +87,7 @@
                       }
                       //Descripcion Producto
                       echo "<div  class='contenedorProductos2' align='center'>
-                              <ul>
+                              <ul>  
                               <li ><h3>".$dato["nombreProducto"]."</h3></li>
                                   <br><li> Categoria: ".$dato["descripcionProducto"]."</li>
                                   <br><li><h4> $ ".$dato["precioProducto"]."</h4></li>

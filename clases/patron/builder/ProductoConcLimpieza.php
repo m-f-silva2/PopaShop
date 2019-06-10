@@ -3,7 +3,7 @@
 
  //producto concreto por categoría, por ejemplo, Aseo, 
 
-class ProductoConcreto extends BuilderProducto {
+class ProductoConcLimpieza extends BuilderProducto {
     public function __construct() {
 	$this->producto = new \clase\Producto(); 
     } 
