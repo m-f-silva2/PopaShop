@@ -17,7 +17,6 @@
           <th style="border: 0px solid transparent;"></th>
           <th style="border: 0px solid transparent;"></th>
           <th style="border: 0px solid transparent;"></th>
-          <th style="border: 0px solid transparent;"></th>
         </tr>
       </thead>
       <tbody>
@@ -49,59 +48,23 @@
           
           //Obtiene iterador Concreto
           $iterator = $agregadoProductos->crearIterator();
-          $fila = count($iterator);
-          echo $fila;
-          //var_dump($fila);
-
-          for ($i=0; $iterator->hayMas() == true; $i++) {
+          while ($iterator->hayMas() == true) {
             echo "<tr>";
-
-            for ($j=0; $j < 3; $j++) { 
-            echo '
-              <td style="border: 0px solid transparent;" align="center">
-              <ul id="prodCliente">
-              <li>';
-              print $iterator->siguiente();
-              echo '</li>
-              <li><img src="src/assets/productos/';
-              print $iterator->siguiente();
-              echo '" width="110px" class="profile-user-img img-responsive img-circle"></li>
-              <li>';
-              print $iterator->siguiente();
-              echo '</li>
-              <li><button class="botonDetalle" id="detailProducto" data-toggle="modal" data-target="#detalle-modal-cliente" value="';
-              print $iterator->siguiente();
-              echo '">Detalle</button></li><br>
+            for ($j=0; $j < 3; $j++) {
+              echo "
+              <td style='border: 0px solid transparent;' align='center'>
+              <ul id='prodCliente'>
+              <li>".@$iterator->siguiente()."
+              </li>
+              <li><img src='src/assets/productos/".@$iterator->siguiente()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
+              <li>".@$iterator->siguiente()."</li>
+              <li><button class='botonDetalle' id='detailProducto' data-toggle='modal' data-target='#detalle-modal-cliente' value='".@$iterator->siguiente()."'>Detalle</button></li><br>
               <li></li>              
               </ul>
-              </td>';
-              //var_dump($iterator->siguiente());
+              </td>";
             }
             echo "</tr>";
           }
-          
-          
-        /*$cont = 0;
-        for ($i=0; $cont < count($datoProductos) ; $i++) { 
-            
-          echo "<tr>";
-          for ($j=0; $j < 4 && $cont < count($datoProductos); $j++) { 
-            
-            echo '
-              <td style="border: 0px solid transparent;" align="center">
-              <ul id="prodCliente">
-              <li>'.$datoProductos[$cont]["nombreProducto"].'</li>
-              <li><img src="src/assets/productos/'.$datoProductos[$cont]["fotoProducto"].'" width="110px" class="profile-user-img img-responsive img-circle"></li>
-              <li>'.$datoProductos[$cont]["precioProducto"].'</li>
-              <li><button class="botonDetalle" id="detailProducto" data-toggle="modal" data-target="#detalle-modal-cliente" value="'.$datoProductos[$cont]["idProducto"].'">Detalle</button></li><br>
-              <li></li>              
-</ul>
-              </td>';
-              $cont++;
-          }
-          echo "</tr>";
-              
-        }*/
         echo '<script>
         $(document).ready(function(){
           $(document).on("click", "#detailProducto", function(){       
@@ -116,7 +79,6 @@
       </tbody>
       <tfoot>
         <tr>
-          <th style="border: 0px solid transparent;"></th>
           <th style="border: 0px solid transparent;"></th>
           <th style="border: 0px solid transparent;"></th>
           <th style="border: 0px solid transparent;"></th>
