@@ -17,20 +17,21 @@ class TestIterator {
     public function __construct(){
         require_once './ProductosGet.php';
        $datoCategorias = \Iterator\ProductosGet::mostrarProductosPorCategoria();
+       $this->productos= new \clase\Producto();
         foreach ($datoCategorias as $dato1) {
-                                    $descripcion = $dato1["descripcionProducto"];
-                                    $idTipo = $dato1["idTipoProducto"];
-                                    echo "<option value='$idTipo'>" . $descripcion . "</option>";
-                                }
-        $this->productos= new \clase\Producto();
+        
         $this->agregadoProductos = new \Iterator\AgregadoProductos();
-        $this->agregadoProductos2 = new \Iterator\AgregadoProductos();
-        $this->productos->setIdProducto("1");
-        $this->productos->setCantidadProducto(12);
-	$this->productos->setFotoProducto("Fto.png");
-	$this->productos->setIdTipoProducto(4);
-	$this->productos->setNombreProducto("nombre");
-	$this->productos->setPrecioProducto(6);
+        $this->productos->setIdProducto($dato1["idProducto"]);
+        $this->productos->setIdTipoProducto($dato1["idTipoProducto"]);
+        $this->productos->setNombreProducto($dato1["nombreProducto"]);
+	$this->productos->setPrecioProducto($dato1["precioProducto"]);
+        $this->productos->setCantidadProducto($dato1["cantidadProducto"]);
+	$this->productos->setFotoProducto($dato1["fotoProducto"]);
+	
+	
+                                }
+        
+        
        
         
         
