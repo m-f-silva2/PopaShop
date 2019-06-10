@@ -23,11 +23,14 @@
       <tbody>
         <?php 
         require_once "control/logica/ProductosGet.php";
+       
         $datoProductos = Logica\ProductosGet::mostrarProductosPorCategoria();
         $cont = 0;
         for ($i=0; $cont < count($datoProductos) ; $i++) { 
+            
           echo "<tr>";
           for ($j=0; $j < 4 && $cont < count($datoProductos); $j++) { 
+            
             echo '
               <td style="border: 0px solid transparent;" align="center">
               <ul id="prodCliente">
@@ -35,7 +38,8 @@
               <li><img src="src/assets/productos/'.$datoProductos[$cont]["fotoProducto"].'" width="110px" class="profile-user-img img-responsive img-circle"></li>
               <li>'.$datoProductos[$cont]["precioProducto"].'</li>
               <li><button class="botonDetalle" id="detailProducto" data-toggle="modal" data-target="#detalle-modal-cliente" value="'.$datoProductos[$cont]["idProducto"].'">Detalle</button></li><br>
-              </ul>
+              <li></li>              
+</ul>
               </td>';
               $cont++;
           }
