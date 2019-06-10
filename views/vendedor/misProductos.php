@@ -26,7 +26,7 @@
       <tbody>
         <?php 
         require_once "control/logica/ProductosGet.php";
-        $datoProductos = Logica\ProductosGet::productoPorVendedor();
+        $datoProductos = Logica\ProductosGet::productoPorVendedor(3);
         $cont = 0;
         for ($i=0; $cont < count($datoProductos) ; $i++) { 
           echo "<tr>";

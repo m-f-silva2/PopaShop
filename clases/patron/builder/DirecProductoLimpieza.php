@@ -1,7 +1,7 @@
 <?php namespace Builder;
 
- require_once 'clases/patron/ProductoConcLimpieza.php';
- require_once 'clases/patron/BuilderProducto.php';
+ require_once 'clases/patron/builder/ProductoConcLimpieza.php';
+ require_once 'clases/patron/builder/BuilderProducto.php';
 class DirecProductoLimpieza {
     private $ProductoConcreto;
     private $ProductoConcretoResultante;
