@@ -3,14 +3,18 @@
  *Test Iterartor
  **/
 include_once './AgregadoProductos.php';
+include_once '../../class/Producto.php';
 //include_once './IIterator.php';
 class TestIterator {
 
     private $agregadoProductos = array();
     private  $iterator;
+    private $productos;
     public function __construct(){
+        $this->productos= new \clase\Producto();
+        $this->productos->setIdProducto("1");
 	$this->agregadoProductos = new \Iterator\AgregadoProductos();
-
+        $this->agregadoProductos->agregar($this->productos->getIdProducto());
 	$this->agregadoProductos->agregar("Juan");
 	$this->agregadoProductos->agregar("Pedro");
 	$this->agregadoProductos->agregar("Carlos");
