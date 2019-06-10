@@ -5,6 +5,7 @@
         <section class="content-header">
       <h3>
           <?php 
+	  
           
           require_once "control/logica/LogicaLogin.php";
                     $datoProductos = Logica\Login::traerDatosPorUsuario();
@@ -45,6 +46,20 @@
                     if ($_POST["idCompraProducto"] != null) {
                       require_once "control/logica/ProductosGet.php";
                       $datoProductos = Logica\ProductosGet::productoDetalle($_POST["idCompraProducto"]);
+		      
+			
+		      
+			require_once 'clases/class/Producto.php';
+			$productos = new clase/prodcuto();
+			
+
+			foreach ($datoProductos as $dato){
+			    $this->productos->setNombreProducto($dato["nombreProducto"]);
+			}
+			echo $this->productos->getNombreProducto();
+		      
+		      
+		      
                       foreach ($datoProductos as $dato) {
                           //Imagen Producto
                           echo "

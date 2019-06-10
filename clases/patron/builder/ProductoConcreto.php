@@ -1,5 +1,5 @@
 <?php namespace Builder;
- include_once './BuilderProducto.php';
+ include_once 'clases/patron/BuilderProducto.php';
 
  //producto concreto por categoría, por ejemplo, Aseo, 
 
