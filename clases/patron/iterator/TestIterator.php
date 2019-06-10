@@ -5,7 +5,9 @@
 include_once './AgregadoProductos.php';
 include_once '../../class/Producto.php';
 include_once '../../../control/logica/ProductosGet.php';
-//include_once './IIterator.php';
+//include_once './../../IIterator.php';
+
+                                
 class TestIterator {
 
     private $agregadoProductos = array();
@@ -14,8 +16,11 @@ class TestIterator {
     
     public function __construct(){
         
+        $datoCategorias = Logica\ProductosGet::categorias();
+        
         $this->productos= new \clase\Producto();
         $this->agregadoProductos = new \Iterator\AgregadoProductos();
+        $this->agregadoProductos2 = new \Iterator\AgregadoProductos();
         $this->productos->setIdProducto("1");
         $this->productos->setCantidadProducto(12);
 	$this->productos->setFotoProducto("Fto.png");
