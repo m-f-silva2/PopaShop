@@ -15,23 +15,42 @@ class TestIterator {
         $this->productos->setIdProducto("1");
 	$this->agregadoProductos = new \Iterator\AgregadoProductos();
         $this->agregadoProductos->agregar($this->productos->getIdProducto());
-	$this->agregadoProductos->agregar("Juan");
-	$this->agregadoProductos->agregar("Pedro");
-	$this->agregadoProductos->agregar("Carlos");
-	$this->agregadoProductos->agregar("Roberto");
+	
+	
+	$this->productos = new \clase\Producto();
+	$this->productos->setCantidadProducto(12);
+	$this->productos->setFotoProducto(23);
+	$this->productos->setIdProducto(3);
+	$this->productos->setIdTipoProducto(4);
+	$this->productos->setNombreProducto("nombre");
+	$this->productos->setPrecioProducto(6);
+	
+	$this->agregadoProductos->agregar($this->productos);
+	
+	$this->productos = new \clase\Producto();
+	$this->productos->setCantidadProducto(12);
+	$this->productos->setFotoProducto(23);
+	$this->productos->setIdProducto(3);
+	$this->productos->setIdTipoProducto(4);
+	$this->productos->setNombreProducto("nombre");
+	$this->productos->setPrecioProducto(6);
+	
+	$this->agregadoProductos->agregar($this->productos);
 
 	//Obtiene iterador Concreto
 	$this->iterator = $this->agregadoProductos->crearIterator();
 	while($this->iterator->hayMas() ){
 		//Accede al elemento (retorna objeto y se parcea)
-		echo "<Strong>". $this->iterator->siguiente() . "<Strong><br><br>";
+		echo "<Strong>". $this->iterator->siguiente()->getNombreProducto() . "<Strong><br><br>";
 	}
+	
+	
     }
 
 
 	
 }
 
-$ver = new \Iterator\TestIterator()
+$ver = new \Iterator\TestIterator();
 
 ?>
