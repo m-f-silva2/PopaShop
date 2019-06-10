@@ -6,6 +6,7 @@
 class ProductosGet{	
     private $idtipoProducto;
     private $Class_Catego;
+    private $productosall;
 
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
@@ -20,12 +21,14 @@ class ProductosGet{
         public function buscador(){
             $tabla = "producto";
 			require_once "conexion.php";
+                       
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where nombreProducto=':item'");
                        // $stmt->bindParam(":item", $this->nombreP, \PDO::PARAM_STR);
 			$stmt->execute();
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             		$productos[] = $filas;
+                        
         		}
 				return $productos;
 			}else{
@@ -38,23 +41,8 @@ class ProductosGet{
         public function mostrarProductosPorCategoria(){
             $tabla = "producto";
             $tabla2 ="tipoproducto";
-           
-            $nombreCatego= "true";
-            if($nombreCatego == "tru"){
-                require_once "conexion.php";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla p inner join $tabla2 t on t.idTipoProducto=p.idTipoProducto WHERE t.descripcionProducto = :item");
-			$stmt->bindParam(":item", $this->idtipoProducto, \PDO::PARAM_STR);
-                        $stmt->execute();
-			if ($stmt) {
-				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            		$productos[] = $filas;
-        		}
-				return $productos;
-			}else{
-				$d = "error";
-				return $d;
-			}
-            }else{
+            require_once "clases/class/Producto.php";
+            
                 $tabla = "producto";
 			require_once "conexion.php";
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
@@ -62,6 +50,8 @@ class ProductosGet{
 			if ($stmt) {
 				while ($filas = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             		$productos[] = $filas;
+                        //$this->productosall= new \clase\Producto();
+                        //$this->productosall->setIdProducto($productos["idProducto"]);
         		}
 				return $productos;
 			}else{
@@ -70,7 +60,7 @@ class ProductosGet{
 			}
             }
 			
-        }
+        
 
         public function productosVendedor(){
 		$tabla = "producto";
