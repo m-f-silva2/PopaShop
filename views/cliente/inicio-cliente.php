@@ -45,34 +45,38 @@
           
           //Obtiene iterador Concreto
           $iterator = $agregadoProductos->crearIterator();
+          $fila = count($datoCategorias);
           $cont = 0;
           while ($iterator->hayMas() == true) {
-	      $siguiente = @$iterator->siguiente();
+	          $siguiente = @$iterator->siguiente();
             if ($cont == 0) {
                 echo "<tr>";
               }
+              $cont++;
+              if($fila > 0){
+                $fila = $fila-1;
             echo "
             <td style='border: 0px solid transparent;' align='center'>
             <ul id='prodCliente'>";
-	    
               echo "
-              
-              <div class='col-md-2'>
               <li>".$siguiente->getNombreProducto()."
               </li>
               <li><img src='src/assets/productos/".$siguiente->getFotoProducto()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
               <li>".$siguiente->getPrecioProducto()."</li>
               <li><button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$siguiente->getIdProducto()."'>Detalle</button></li><br>
               <li></li>
-              </div>
               ";
-              echo "</ul></td>";
-              $cont++;
+              echo "</ul>
+              </td>";
+              
+            }
+            if($iterator->hayMas() == false){
+              echo "<td></td><td></td>";
+            }
               if ($cont == 3) {
                 $cont = 0;
                 echo "</tr>";
               }
-            
           }
         echo '<script>
         $(document).ready(function(){
