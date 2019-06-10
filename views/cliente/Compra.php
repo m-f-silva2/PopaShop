@@ -50,13 +50,13 @@
 			
 		      
 			require_once 'clases/class/Producto.php';
-			$productos = new clase/prodcuto();
+			$productos = new clase\Producto();
 			
 
 			foreach ($datoProductos as $dato){
-			    $this->productos->setNombreProducto($dato["nombreProducto"]);
+			    $productos->setNombreProducto($dato["nombreProducto"]);
 			}
-			echo $this->productos->getNombreProducto();
+			echo $productos->getNombreProducto();
 		      
 		      
 		      

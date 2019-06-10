@@ -58,7 +58,7 @@
               </li>
               <li><img src='src/assets/productos/".@$iterator->siguiente()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
               <li>".@$iterator->siguiente()."</li>
-              <li><button class='botonDetalle' id='detailProducto' data-toggle='modal' data-target='#detalle-modal-cliente' value='".@$iterator->siguiente()."'>Detalle</button></li><br>
+              <li><button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".@$iterator->siguiente()."'>Detalle</button></li><br>
               <li></li>              
               </ul>
               </td>";
@@ -67,11 +67,12 @@
           }
         echo '<script>
         $(document).ready(function(){
-          $(document).on("click", "#detailProducto", function(){       
-            var id=$(this).val();
-            $.post("views/modal/detalleProducto.php?idProducto="+id, function(respuesta){
-              $("#cliDetalleProducto").html(respuesta);
-            });
+          $(document).on("click", "#detail", function(){
+          var id=$(this).val();
+            $.post("views/modal/detalleProducto.php?v_idProductoCompra="+id, function(respuesta){
+              $("#contDetalleProducto1").html(respuesta);
+              $("#idCompraProducto").hide();
+            });   
           });
         });
         </script>';

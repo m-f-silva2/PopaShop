@@ -112,3 +112,27 @@
     });*/
   </script>
 </div>
+
+ <div class='li' id='buttonLi'>
+                                        <a id='buttonA'>
+                                            <button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$siguiente->getIdProducto()."'>
+                                                Detalle
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>";
+                        }
+                        echo '<script>
+                            $(document).ready(function(){
+                                    $(document).on("click", "#detail", function(){       
+                            var id=$(this).val();
+                            
+                              $.post("views/modal/detalleProducto.php?v_idProductoCompra="+id, function(respuesta){
+                                $("#contDetalleProducto1").html(respuesta);
+                                $("#idCompraProducto").hide();
+                            });
+                            
+                            
+                          });
+                          });</script>';
+      ?>
