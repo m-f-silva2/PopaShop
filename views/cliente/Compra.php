@@ -46,30 +46,37 @@
                     if ($_POST["idCompraProducto"] != null) {
                       require_once "control/logica/ProductosGet.php";
                       $datoProductos = Logica\ProductosGet::productoDetalle($_POST["idCompraProducto"]);
+		      $datoProductos2 = Logica\ProductosGet::productoDetalle($_POST["idCompraProducto"]);
 		      
 			
 		      
 			require_once 'clases/class/Producto.php';
 			require_once 'clases/patron/builder/DirecProductoLimpieza.php';
-			$productos = new clase\Producto();
+			$productos;
 			
-			foreach ($datoProductos as $dato){
-			    $productos->setIdProducto($dato["idProducto"]);
-			    $productos->setIdTipoProducto($dato["idTipoProducto"]);
-			    $productos->setNombreProducto($dato["nombreProducto"]);
-			    $productos->setPrecioProducto($dato["precioProducto"]);
-			    $productos->setCantidadProducto($dato["cantidadProducto"]);
-			    $productos->setFotoProducto($dato["fotoProducto"]);
-			    $productos->setIdUsuario($dato["idUsuario"]);
+			foreach ($datoProductos2 as $dato2){
+			    $productos = new clase\Producto();
+			    $productos->setIdProducto($dato2["idProducto"]);
+			    $productos->setIdTipoProducto($dato2["idTipoProducto"]);
+			    $productos->setNombreProducto($dato2["nombreProducto"]);
+			    $productos->setPrecioProducto($dato2["precioProducto"]);
+			    $productos->setCantidadProducto($dato2["cantidadProducto"]);
+			    $productos->setFotoProducto($dato2["fotoProducto"]);
+			    $productos->setIdUsuario($dato2["idUsuario"]);
 			}
 			
-			$builderLimpieza = new Builder\DirecProductoLimpieza($productos);
+			$builderLimpieza = new Builder\DirecProductoLimpieza();
+			$datosProducto = $builderLimpieza->getProductoLimpiza($productos);			
+			//print_r($datosProducto);
+			echo $datosProducto->getNombreProducto();
+			echo "<br>";
+			echo $datosProducto->getPrecioProducto();
+			echo "<br>";
+			echo $datosProducto->getFotoProducto();
+			echo "<br>";
+			echo $datosProducto->getIdProducto();
 			
 			
-			echo '<script>';
-			echo 'console.log('. json_encode( $builderLimpieza  ) .');';
-			echo '</script>';
-
 			
                       foreach ($datoProductos as $dato) {
                           //Imagen Producto
