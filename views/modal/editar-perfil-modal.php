@@ -26,13 +26,13 @@
        Imagen detalle
         ======================================-->
                     <tbody id="tblProductos" >
-                    <?php               require_once "control/logica/PerfilLogica.php";
+                    <?php require_once "control/logica/PerfilLogica.php";
                     $datoProductos = Logica\PerfilLogica::getDato();
                     foreach ($datoProductos as $dato) {
                         echo "
                             <div  class='contenedorProductos'>
                             <ul>
-                            <li><img src='src/assets/productos/".$dato["avatarPersona"]."' ></li>     
+                            <li><img src='src/assets/monigotes/".$dato["avatarPersona"]."' class='profile-user-img img-responsive img-circle' width='100px'></li>     
                             <br><li>Nombre: ".$dato["nombrePersona"]." ".$dato["apellidoPersona"]."</li>
                                 <br><li> Usuario: ".$dato["login"]."</li>
                                        <br>"; }?>
