@@ -101,5 +101,14 @@
         'autoWidth'   : false
       })
     });
+
+    $(function () {
+      //valor = document.getElementById("#detailProducto").value;
+      if ($('.botonDetalle').val() != null) {
+        alert($('#detailProducto').val());
+      }else{
+        $('.botonDetalle').hide();
+      }
+    });
   </script>
 </div>
