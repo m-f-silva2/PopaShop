@@ -6,28 +6,23 @@
 
 Imaginemos que tenemos una aplicación que nos da el marcador de un partido de fútbol. Nosotros queremos que cada vez que haya un gol, nos envíe un email con el marcador y que adicionalmente lo escriba en un archivo local.
  */
-class Partido implements \SplSubject
+class Pedido implements \SplSubject
 {
-    protected $teams = array();
+    protected $estado;
     protected $observers = array();
-    public function __construct($team1, $team2)
+    public function __construct()
     {
-        $this->teams = array(
-            $team1 => 0,
-            $team2 => 0
-        );
     }
-    public function gol($team)
+    public function setEstado($estado)
     {
-        $this->teams[$team]++;
-        $this->notify();
+        if ($estado != null) {
+            $this->estado = $estado;
+            $this->notify();
+        }
     }
-    public function getScore()
+    public function getEstado()
     {
-        $return = '';
-        foreach ($this->teams as $name => $score)
-            $return .= $name . ': ' . $score . ' | ';
-        return trim($return, ' | ');
+        return $this->estado;
     }
     /**
      * La interface SplSubject nos obliga

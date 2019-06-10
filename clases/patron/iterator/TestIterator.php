@@ -4,8 +4,10 @@
  **/
 include_once './AgregadoProductos.php';
 include_once '../../class/Producto.php';
-include_once '../../../control/logica/ProductosGet.php';
-//include_once './IIterator.php';
+include_once './ProductosGet.php';
+//include_once './../../IIterator.php';
+
+                                
 class TestIterator {
 
     private $agregadoProductos = array();
@@ -13,53 +15,40 @@ class TestIterator {
     private $productos;
     
     public function __construct(){
+        require_once './ProductosGet.php';
+       $datoCategorias = \Iterator\ProductosGet::mostrarProductosPorCategoria();
+       $this->productos= new \clase\Producto();
+        foreach ($datoCategorias as $dato1) {
         
-        $this->productos= new \clase\Producto();
-        $this->productos->setIdProducto("1");
+        $this->agregadoProductos = new \Iterator\AgregadoProductos();
+        $this->productos->setIdProducto($dato1["idProducto"]);
+        $this->productos->setIdTipoProducto($dato1["idTipoProducto"]);
+        $this->productos->setNombreProducto($dato1["nombreProducto"]);
+	$this->productos->setPrecioProducto($dato1["precioProducto"]);
+        $this->productos->setCantidadProducto($dato1["cantidadProducto"]);
+	$this->productos->setFotoProducto($dato1["fotoProducto"]);
+        $this->productos->setIdUsuario($dato1["idUsuario"]);
+	
+	
+                                }
+        
         
        
-      /*  require_once '../../../control/logica/ProductosGet.php';
-    $datoProductos =  Logica\ProductosGet::mostrarProductosPorCategoria();
-        $cont = 0;
-        for ($i=0; $cont < count($datoProductos) ; $i++) { 
-         
-          for ($j=0; $j < 4 && $cont < count($datoProductos); $j++) { 
-              $this->productos->setIdProducto($datoProductos["idProducto"]);
-            
-              $cont++;
-          }
         
-              
-        }*/
-        $this->agregadoProductos = new \Iterator\AgregadoProductos();
+        
         $this->agregadoProductos->agregar($this->productos->getIdProducto());
-	
-	
-	$this->productos = new \clase\Producto();
-	$this->productos->setCantidadProducto(12);
-	$this->productos->setFotoProducto(23);
-	$this->productos->setIdProducto(3);
-	$this->productos->setIdTipoProducto(4);
-	$this->productos->setNombreProducto("nombre");
-	$this->productos->setPrecioProducto(6);
-	
-	$this->agregadoProductos->agregar($this->productos);
-	
-	$this->productos = new \clase\Producto();
-	$this->productos->setCantidadProducto(12);
-	$this->productos->setFotoProducto(23);
-	$this->productos->setIdProducto(3);
-	$this->productos->setIdTipoProducto(4);
-	$this->productos->setNombreProducto("nombre");
-	$this->productos->setPrecioProducto(6);
-	
-	$this->agregadoProductos->agregar($this->productos);
+	$this->agregadoProductos->agregar($this->productos->getIdTipoProducto());
+        $this->agregadoProductos->agregar($this->productos->getNombreProducto());
+        $this->agregadoProductos->agregar($this->productos->getPrecioProducto());
+        $this->agregadoProductos->agregar($this->productos->getCantidadProducto());
+        $this->agregadoProductos->agregar($this->productos->getFotoProducto());
+        $this->agregadoProductos->agregar($this->productos->getIdUsuario());
 
 	//Obtiene iterador Concreto
 	$this->iterator = $this->agregadoProductos->crearIterator();
 	while($this->iterator->hayMas() ){
 		//Accede al elemento (retorna objeto y se parcea)
-		echo "<Strong>". $this->iterator->siguiente()->getNombreProducto() . "<Strong><br><br>";
+		echo "<Strong>". $this->iterator->siguiente() . "<Strong><br>";
 	}
 	
 	
