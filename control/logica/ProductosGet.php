@@ -11,9 +11,13 @@ class ProductosGet{
 	//Constructor donde recibe los datos del formulario como el usuario y la contraseña
 	public function __construct($datos){
 		if (isset($datos)) {
-        
+         require_once "clases/class/Producto.php";
+           $this->productosall= new \clase\Producto();
+                        //$this->productosall->setIdProducto($productos["idProducto"]);
 		$this->idtipoProducto = $datos["tipoProducto"];       
                 $this->mostrarProductosPorCategoria();
+                $respuesta= $this->mostrarProductosPorCategoria();
+                $this->productosall->setIdProducto($respuesta["idProducto"]);
 		}
     }
 
@@ -41,7 +45,6 @@ class ProductosGet{
         public function mostrarProductosPorCategoria(){
             $tabla = "producto";
             $tabla2 ="tipoproducto";
-            require_once "clases/class/Producto.php";
            
 			require_once "conexion.php";
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");

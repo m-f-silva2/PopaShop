@@ -2,6 +2,9 @@
 /**
  * Clase Partido
  * En este caso este es nuestro sujeto
+ *Ejemplo: Fútbol
+
+Imaginemos que tenemos una aplicación que nos da el marcador de un partido de fútbol. Nosotros queremos que cada vez que haya un gol, nos envíe un email con el marcador y que adicionalmente lo escriba en un archivo local.
  */
 class Partido implements \SplSubject
 {
@@ -47,45 +50,4 @@ class Partido implements \SplSubject
             $observer->update($this);
     }
 }
-/**
- * Primer Observador Envia Email
- */
-class Mail implements \SplObserver
-{
-    public function update(\SplSubject $subject)
-    {
-        echo 'Enviando Email con marcador ' . $subject->getScore() . PHP_EOL;
-        mail('email@test.com', 'Hubo un gol', $subject->getScore());
-    }
-}
-/**
- * Segundo Observador, guarda en un archivo
- */
-class Log implements \SplObserver
-{
-    public function update(\SplSubject $subject)
-    {
-        echo 'Guardando archivo con marcador ' . $subject->getScore() . PHP_EOL;
-        file_put_contents('partido.log', $subject->getScore(), FILE_APPEND);
-    }
-}
-$partido = new Partido('Colombia', 'Peru');
-$partido->attach(new Mail());
-$partido->attach(new Log());
-$partido->gol('Colombia');
-$partido->gol('Colombia');
-$partido->gol('Peru');
-echo $partido->getScore();
-/**
- * Resultado:
- * Enviando Email con marcador Colombia: 1 | Peru: 0
- * Guardando archivo con marcador Colombia: 1 | Peru: 0
- *
- * Enviando Email con marcador Colombia: 2 | Peru: 0
- * Guardando archivo con marcador Colombia: 2 | Peru: 0
- *
- * Enviando Email con marcador Colombia: 2 | Peru: 1
- * Guardando archivo con marcador Colombia: 2 | Peru: 1
- * Colombia: 2 | Peru: 1
- **/
 ?>
