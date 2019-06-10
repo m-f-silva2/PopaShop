@@ -40,7 +40,7 @@ if (isset($_REQUEST["v_idProductoCompra"])) {
             </div>
             <div class='modal-footer' id='login-footerM'>
                 <div align='center'>
-                    <button  type='submit' value='iniciar'>Comprar</button>
+                    <button style='background-color: #000'  type='submit' value='iniciar'>Comprar</button>
                 </div>
             </div>
           </form>";

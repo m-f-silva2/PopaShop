@@ -56,100 +56,75 @@
                 <div class="contenedorProductos">
                     <div class="tablaProductos">
                          <?php 
-        include_once 'clases/patron/iterator/AgregadoProductos.php';
-        include_once 'clases/class/Producto.php';
-          $agregadoProductos = array();
-          $iterator;
-          $productos;
-                require_once 'control/logica/ProductosGet.php';
-               $datoCategorias = \Logica\ProductosGet::mostrarProductosPorCategoria();
-               $agregadoProductos = new \Iterator\AgregadoProductos();
-                foreach ($datoCategorias as $dato1) {
-                  $productos= new \clase\Producto();
-                  $productos->setIdProducto($dato1["idProducto"]);
-                  $productos->setIdTipoProducto($dato1["idTipoProducto"]);
-                  $productos->setNombreProducto($dato1["nombreProducto"]);
-                  $productos->setPrecioProducto($dato1["precioProducto"]);
-                  $productos->setCantidadProducto($dato1["cantidadProducto"]);
-                  $productos->setFotoProducto($dato1["fotoProducto"]);
-                  $productos->setIdUsuario($dato1["idUsuario"]);
-                  $agregadoProductos->agregar($productos->getNombreProducto());
-                  $agregadoProductos->agregar($productos->getFotoProducto());
-                  $agregadoProductos->agregar($productos->getPrecioProducto());
-                  $agregadoProductos->agregar($productos->getIdProducto());
-                }
+			    include_once 'clases/patron/iterator/AgregadoProductos.php';
+			    include_once 'clases/class/Producto.php';
+			      $agregadoProductos = array();
+			      $iterator;
+			      $productos;
+				    require_once 'control/logica/ProductosGet.php';
+				   $datoCategorias = \Logica\ProductosGet::mostrarProductosPorCategoria();
+				   $agregadoProductos = new \Iterator\AgregadoProductos();
+				   //print_r($datoCategorias);
+				    foreach ($datoCategorias as $dato1) {
+				      $productos= new \clase\Producto();
+				      $productos->setIdProducto($dato1["idProducto"]);
+				      $productos->setIdTipoProducto($dato1["idTipoProducto"]);
+				      $productos->setNombreProducto($dato1["nombreProducto"]);
+				      $productos->setPrecioProducto($dato1["precioProducto"]);
+				      $productos->setCantidadProducto($dato1["cantidadProducto"]);
+				      $productos->setFotoProducto($dato1["fotoProducto"]);
+				      $productos->setIdUsuario($dato1["idUsuario"]);
+				      $agregadoProductos->agregar($productos);
+				    }
 
 
           
-          //Obtiene iterador Concreto
-          $iterator = $agregadoProductos->crearIterator();
-          //$fila = count($iterator);
-          //echo $fila;
-          //var_dump($fila);
+			//Obtiene iterador Concreto
+			$iterator = $agregadoProductos->crearIterator();
+			//$fila = count($iterator);
+			//echo $fila;
+			//var_dump($fila);
 
-          for ($i=0; $iterator->hayMas() == true; $i++) {
-            echo "<tr>";
-
-            for ($j=0; $j < 3; $j++) { 
-            echo '
-              <td style="border: 0px solid transparent;" align="center">
-              <ul id="prodCliente">
-              <li>';
-              print $iterator->siguiente();
-              echo '</li>
-              <li><img src="src/assets/productos/';
-              print $iterator->siguiente();
-              echo '" width="110px" class="profile-user-img img-responsive img-circle"></li>
-              <li>';
-              print $iterator->siguiente();
-              echo '</li>
-              <li><button class="botonDetalle" id="detailProducto" data-toggle="modal" data-target="#detalle-modal-cliente" value="';
-              print $iterator->siguiente();
-              echo '">Detalle</button></li><br>
-              <li></li>              
-              </ul>
-              </td>';
-              //var_dump($iterator->siguiente());
-            }
-            echo "</tr>";
-          }
-          
-          
-        /*$cont = 0;
-        for ($i=0; $cont < count($datoProductos) ; $i++) { 
-            
-          echo "<tr>";
-          for ($j=0; $j < 4 && $cont < count($datoProductos); $j++) { 
-            
-            echo '
-              <td style="border: 0px solid transparent;" align="center">
-              <ul id="prodCliente">
-              <li>'.$datoProductos[$cont]["nombreProducto"].'</li>
-              <li><img src="src/assets/productos/'.$datoProductos[$cont]["fotoProducto"].'" width="110px" class="profile-user-img img-responsive img-circle"></li>
-              <li>'.$datoProductos[$cont]["precioProducto"].'</li>
-              <li><button class="botonDetalle" id="detailProducto" data-toggle="modal" data-target="#detalle-modal-cliente" value="'.$datoProductos[$cont]["idProducto"].'">Detalle</button></li><br>
-              <li></li>              
-</ul>
-              </td>';
-              $cont++;
-          }
-          echo "</tr>";
-              
-        }*/
-        echo '<script>
-        $(document).ready(function(){
-          $(document).on("click", "#detailProducto", function(){       
-            var id=$(this).val();
-            $.post("views/modal/detalleProducto.php?idCompraProducto="+id, function(respuesta){
-              $("#cliDetalleProducto").html(respuesta);
-            });
-          });
-        });
-        </script>';
-        ?>
-                    </div>
+			while ($iterator->hayMas()) {
+			    $siguiente = $iterator->siguiente();
+			  echo "
+                                <div class='ul'>
+                                
+                                    <div class='li'>" .$siguiente->getNombreProducto() . "</div>
+                                        <div class='li'><img src='src/assets/productos/" . $siguiente->getFotoProducto() . "'></div>
+                                    <div class='li' class='dinerito'> $ " . $siguiente->getPrecioProducto() . "</div>
+                                    <div class='li' id='buttonLi'>
+                                        <a id='buttonA'>
+                                            <button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$siguiente->getIdProducto()."'>
+                                                Detalle
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>";
+                        }
+                        echo '<script>
+                            $(document).ready(function(){
+                                    $(document).on("click", "#detail", function(){       
+                            var id=$(this).val();
+                            
+                              $.post("views/modal/detalleProducto.php?v_idProductoCompra="+id, function(respuesta){
+                                $("#contDetalleProducto1").html(respuesta);
+                                $("#idCompraProducto").hide();
+                            });
+                            
+                            
+                          });
+                          });</script>';
+			?>
+                        </div>
+                    </form>
                 </div>
+
+
             </section>
+	    
+	    
+	    
             <section class="content">
                 <div class="error-page">
                     <div class="error-content">
