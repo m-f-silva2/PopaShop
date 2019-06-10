@@ -40,7 +40,10 @@ class RegistroProducto{
 
 	//Validar datos enviados del formulario con los de la base de datos.
 	public function validarRegistro(){
-			
+			//Validar imagen.
+		    $titulo = $this->Class_Producto->getNombreProducto();
+		    $nombre_file = $titulo .'.jpg';
+			//-------------------------------------------
 			require_once "conexion.php";
 			$tabla = "producto";
 			$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(
@@ -51,14 +54,22 @@ class RegistroProducto{
 				cantidadProducto,
 				fotoProducto, idUsuario) VALUES(NULL,:item1,:item2,:item3,:item4,:item5,:item6)");
 
-			$stmt->bindParam(":item1", $this->Class_Producto->getIdTipoProducto(), \PDO::PARAM_INT);
-			$stmt->bindParam(":item2", $this->Class_Producto->getNombreProducto(), \PDO::PARAM_STR);
-			$stmt->bindParam(":item3", $this->Class_Producto->getPrecioProducto(), \PDO::PARAM_INT);
-			$stmt->bindParam(":item4", $this->Class_Producto->getCantidadProducto(), \PDO::PARAM_INT);
-            $stmt->bindParam(":item5", $this->Class_Producto->getFotoProducto(), \PDO::PARAM_STR);
-            $stmt->bindParam(":item6", $this->Class_Usuario->getIdUsuario(), \PDO::PARAM_STR);
-			
+			@$stmt->bindParam(":item1", $this->Class_Producto->getIdTipoProducto(), \PDO::PARAM_INT);
+			@$stmt->bindParam(":item2", $this->Class_Producto->getNombreProducto(), \PDO::PARAM_STR);
+			@$stmt->bindParam(":item3", $this->Class_Producto->getPrecioProducto(), \PDO::PARAM_INT);
+			@$stmt->bindParam(":item4", $this->Class_Producto->getCantidadProducto(), \PDO::PARAM_INT);
+
+            $stmt->bindParam(":item5", $nombre_file, \PDO::PARAM_STR);
+            @$stmt->bindParam(":item6", $this->Class_Usuario->getIdUsuario(), \PDO::PARAM_STR);
+            $imagen = $this->Class_Producto->getFotoProducto();
 			$stmt->execute();
+			//Agregar imagen a la carpeta src/assets/productos/
+			    //Si $imagen es igual a 0 no tiene errores y se puede subir la imagen.
+				if($imagen["error"] == 0){
+				    $origen = $imagen["tmp_name"];
+				    $destino = "src/assets/productos/$nombre_file";
+				    move_uploaded_file ($origen, $destino);
+				}
 			if ($stmt) {
 				$d = true;
 				return $d;

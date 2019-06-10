@@ -26,39 +26,65 @@
       <tbody>
         <?php 
         require_once "control/logica/ProductosGet.php";
-        $datoProductos = Logica\ProductosGet::productoPorVendedor(3);
-        $cont = 0;
-        for ($i=0; $cont < count($datoProductos) ; $i++) { 
-          echo "<tr>";
-          for ($j=0; $j < 3; $j++) { 
-            echo '
-              <td style="border: 0px solid transparent;" align="center">
-              <ul id="prodCliente">
-              <li>'.$datoProductos[$cont]["nombreProducto"].'</li>
-              <li><img src="src/assets/productos/'.$datoProductos[$cont]["fotoProducto"].'" width="110px" class="profile-user-img img-responsive img-circle"></li>
-              <li>'.$datoProductos[$cont]["precioProducto"].'</li>
-              <li><button class="btn btn-default btn-block" data-toggle="modal" data-target="#modalAgregarSucursal" id="prodClienteButton">Detalle</button></li><br>
-              </ul>
-              </td>';
-              $cont++;
-          }
-          echo "</tr>";
-              
-        }
-        /*foreach ($datoProductos as $dato) {
-          echo '
-            <tr>
-              <td>
-              <ul>
-              <li>'.$dato["nombreProducto"].'</li>
-              <li><img src="src/assets/productos/'.$dato["fotoProducto"].'" width="110px" height:"70px"></li>
-              <li>'.$dato["precioProducto"].'</li>
-              </ul>
-                <button class="botonDetalle" data-toggle="modal" data-target="#modalAgregarSucursal">Dellate</button>
+        include_once 'clases/patron/iterator/AgregadoProductos.php';
+        include_once 'clases/class/Producto.php';
+          $agregadoProductos = array();
+          $iterator;
+          $productos;
+          $v_idUsuario = $_SESSION["idUsuario"];
+          $datoProductos = Logica\ProductosGet::productoPorVendedor($v_idUsuario);
+          $cont = 0;
+               $agregadoProductos = new \Iterator\AgregadoProductos();
+                foreach ($datoProductos as $dato1) {
+                  $productos= new \clase\Producto();
+                  $productos->setIdProducto($dato1["idProducto"]);
+                  $productos->setIdTipoProducto($dato1["idTipoProducto"]);
+                  $productos->setNombreProducto($dato1["nombreProducto"]);
+                  $productos->setPrecioProducto($dato1["precioProducto"]);
+                  $productos->setCantidadProducto($dato1["cantidadProducto"]);
+                  $productos->setFotoProducto($dato1["fotoProducto"]);
+                  $productos->setIdUsuario($dato1["idUsuario"]);
+                  $agregadoProductos->agregar($productos);
+                }
 
-              </td>
-            </tr>';
-        }*/
+
+          
+          //Obtiene iterador Concreto
+          $iterator = $agregadoProductos->crearIterator();
+          $fila = count($datoProductos);
+          $cont = 0;
+          while ($iterator->hayMas() == true) {
+            $siguiente = @$iterator->siguiente();
+            if ($cont == 0) {
+                echo "<tr>";
+              }
+              $cont++;
+              if($fila > 0){
+                $fila = $fila-1;
+              echo "
+              <td style='border: 0px solid transparent;' align='center'>
+              <ul id='prodCliente'>
+              <li>".@$siguiente->getNombreProducto()."
+              </li>
+              <li><img src='src/assets/productos/".$siguiente->getFotoProducto()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
+              <li>".$siguiente->getPrecioProducto()."</li>
+              <li><button class='botonDetalle' id='detailProducto' data-toggle='modal' data-target='#detalle-modal-cliente' value='".$siguiente->getIdProducto()."'>Detalle</button></li><br>
+              <li></li>              
+              </ul>
+              </td>";
+            }
+            if($iterator->hayMas() == false ){
+              if ((3 - $cont) == 2) {
+                echo "<td></td><td></td>";
+              }else{
+                echo "<td></td>";
+              }
+            }
+              if ($cont == 3) {
+                $cont = 0;
+                echo "</tr>";
+              }
+          }
         ?>
       </tbody>
       <tfoot>
