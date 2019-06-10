@@ -38,10 +38,7 @@
                   $productos->setCantidadProducto($dato1["cantidadProducto"]);
                   $productos->setFotoProducto($dato1["fotoProducto"]);
                   $productos->setIdUsuario($dato1["idUsuario"]);
-                  $agregadoProductos->agregar($productos->getNombreProducto());
-                  $agregadoProductos->agregar($productos->getFotoProducto());
-                  $agregadoProductos->agregar($productos->getPrecioProducto());
-                  $agregadoProductos->agregar($productos->getIdProducto());
+                  $agregadoProductos->agregar($productos);
                 }
 
 
@@ -49,20 +46,21 @@
           //Obtiene iterador Concreto
           $iterator = $agregadoProductos->crearIterator();
           while ($iterator->hayMas() == true) {
+	      $siguiente = @$iterator->siguiente();
             echo "<tr>";
-            for ($j=0; $j < 3; $j++) {
+	    for ($j=0; $j < 3; $j++) {
               echo "
               <td style='border: 0px solid transparent;' align='center'>
               <ul id='prodCliente'>
-              <li>".@$iterator->siguiente()."
+              <li>".$siguiente->getNombreProducto()."
               </li>
-              <li><img src='src/assets/productos/".@$iterator->siguiente()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
-              <li>".@$iterator->siguiente()."</li>
-              <li><button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".@$iterator->siguiente()."'>Detalle</button></li><br>
+              <li><img src='src/assets/productos/".$siguiente->getFotoProducto()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
+              <li>".$siguiente->getPrecioProducto()."</li>
+              <li><button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$siguiente->getIdProducto()."'>Detalle</button></li><br>
               <li></li>              
               </ul>
               </td>";
-            }
+	    }
             echo "</tr>";
           }
         echo '<script>

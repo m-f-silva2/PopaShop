@@ -56,10 +56,12 @@
 			foreach ($datoProductos as $dato){
 			    $productos->setNombreProducto($dato["nombreProducto"]);
 			}
-			echo $productos->getNombreProducto();
-		      
-		      
-		      
+			
+			echo '<script>';
+			echo 'console.log('. json_encode( $productos->getNombreProducto() ) .')';
+			echo '</script>';
+
+			
                       foreach ($datoProductos as $dato) {
                           //Imagen Producto
                           echo "
