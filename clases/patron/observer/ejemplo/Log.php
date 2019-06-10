@@ -6,8 +6,8 @@ class Log implements \SplObserver
 {
     public function update(\SplSubject $subject)
     {
-        echo 'Guardando archivo con marcador ' . $subject->getScore() . PHP_EOL;
-        file_put_contents('partido.log', $subject->getScore(), FILE_APPEND);
+        echo 'Guardando archivo con estado: ' . $subject->getEstado() . PHP_EOL;
+        file_put_contents('pedido.log', $subject->getEstado(), FILE_APPEND);
     }
 }
 ?>

@@ -1,20 +1,27 @@
-<?php  namespace Observer;
-/*
- *Patron observer
- *Clase Pedido.
- *Se implementa con una de las librerias de php
-**/
-class Pedido implements \SplSubject{
-	//Atributos
-	private $estado;
-	private $observers = array();
-
-	public function __construct($estado)
+<?php namespace Clase;
+/**
+ * Clase Partido
+ * En este caso este es nuestro sujeto
+ */
+class Pedido implements \SplSubject
+{
+    protected $estado;
+    protected $observers = array();
+    public function __construct()
     {
-        $this->estado = $estado;
     }
-	
-	/**
+    public function setEstado($estado)
+    {
+        if ($estado != null) {
+            $this->estado = $estado;
+            $this->notify();
+        }
+    }
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+    /**
      * La interface SplSubject nos obliga
      * a implementar los siguientes métodos
      */
@@ -34,11 +41,5 @@ class Pedido implements \SplSubject{
         foreach ($this->observers as $observer)
             $observer->update($this);
     }
-	public function setEstado(){
-		
-	}
-	public function getEstado(){
-		
-	}
 }
 ?>
