@@ -1,7 +1,7 @@
 <?php namespace Builder;
 
- include_once 'clases/patron/ProductoConcreto.php';
- include_once 'clases/patron/BuilderProducto.php';
+ require_once 'ProductoConcreto.php';
+ require_once 'BuilderProducto.php';
 class TestBuilder {
     private $ProductoConcreto;
     private $ProductoConcretoResultante;

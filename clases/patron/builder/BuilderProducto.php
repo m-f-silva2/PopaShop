@@ -3,7 +3,7 @@
  *Patron builder
  *clase Builder.
 **/
-include_once 'clases/class/Producto.php';
+include_once '../../class/Producto.php';
 abstract class BuilderProducto{
 	//metodos
 	protected $producto;
