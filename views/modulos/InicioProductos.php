@@ -38,32 +38,42 @@
                   $productos->setCantidadProducto($dato1["cantidadProducto"]);
                   $productos->setFotoProducto($dato1["fotoProducto"]);
                   $productos->setIdUsuario($dato1["idUsuario"]);
-                  $agregadoProductos->agregar($productos->getNombreProducto());
-                  $agregadoProductos->agregar($productos->getFotoProducto());
-                  $agregadoProductos->agregar($productos->getPrecioProducto());
-                  $agregadoProductos->agregar($productos->getIdProducto());
+                  $agregadoProductos->agregar($productos);
                 }
 
 
           
           //Obtiene iterador Concreto
           $iterator = $agregadoProductos->crearIterator();
+          $fila = count($datoCategorias);
+          $cont = 0;
           while ($iterator->hayMas() == true) {
-            echo "<tr>";
-            for ($j=0; $j < 3; $j++) {
+            $siguiente = @$iterator->siguiente();
+            if ($cont == 0) {
+                echo "<tr>";
+              }
+              $cont++;
+              if($fila > 0){
+                $fila = $fila-1;
               echo "
               <td style='border: 0px solid transparent;' align='center'>
               <ul id='prodCliente'>
-              <li>".@$iterator->siguiente()."
+              <li>".@$siguiente->getNombreProducto()."
               </li>
-              <li><img src='src/assets/productos/".@$iterator->siguiente()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
-              <li>".@$iterator->siguiente()."</li>
-              <li><button class='botonDetalle' id='detailProducto' data-toggle='modal' data-target='#detalle-modal-cliente' value='".@$iterator->siguiente()."'>Detalle</button></li><br>
+              <li><img src='src/assets/productos/".$siguiente->getFotoProducto()."' width='110px' class='profile-user-img img-responsive img-circle'></li>
+              <li>".$siguiente->getPrecioProducto()."</li>
+              <li><button class='botonDetalle' id='detailProducto' data-toggle='modal' data-target='#detalle-modal-cliente' value='".$siguiente->getIdProducto()."'>Detalle</button></li><br>
               <li></li>              
               </ul>
               </td>";
             }
-            echo "</tr>";
+            if($iterator->hayMas() == false){
+              echo "<td></td><td></td>";
+            }
+              if ($cont == 3) {
+                $cont = 0;
+                echo "</tr>";
+              }
           }
         echo '<script>
         $(document).ready(function(){
@@ -112,27 +122,3 @@
     });*/
   </script>
 </div>
-
- <div class='li' id='buttonLi'>
-                                        <a id='buttonA'>
-                                            <button class='botonDetalle' id='detail' data-toggle='modal' data-target='#detalle-modal' value='".$siguiente->getIdProducto()."'>
-                                                Detalle
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>";
-                        }
-                        echo '<script>
-                            $(document).ready(function(){
-                                    $(document).on("click", "#detail", function(){       
-                            var id=$(this).val();
-                            
-                              $.post("views/modal/detalleProducto.php?v_idProductoCompra="+id, function(respuesta){
-                                $("#contDetalleProducto1").html(respuesta);
-                                $("#idCompraProducto").hide();
-                            });
-                            
-                            
-                          });
-                          });</script>';
-      ?>
