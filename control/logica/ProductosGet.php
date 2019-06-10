@@ -42,8 +42,7 @@ class ProductosGet{
             $tabla = "producto";
             $tabla2 ="tipoproducto";
             require_once "clases/class/Producto.php";
-            
-                $tabla = "producto";
+           
 			require_once "conexion.php";
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
 			$stmt->execute();
